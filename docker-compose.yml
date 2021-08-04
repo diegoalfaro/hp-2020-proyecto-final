@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.2
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=app_user
+      - MARIADB_DATABASE=app_database
+      - MARIADB_PASSWORD=wR66mDHX3V2bKhkL
+
+  app:
+    tty: true
+    image: docker.io/bitnami/laravel:8
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=app_user
+      - DB_DATABASE=app_database
+      - DB_PASSWORD=wR66mDHX3V2bKhkL
+    depends_on:
+      - mariadb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+    privileged: true
