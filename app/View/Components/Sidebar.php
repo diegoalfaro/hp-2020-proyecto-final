@@ -17,32 +17,32 @@ class Sidebar extends Component
      */
     public function __construct()
     {
-        $this->items = array_map(function($item) {
-            return (object) array_merge($item, [
-                'active' => request()->route()->named($item['route'])
-            ]);
-        }, [
-            [
+        $this->items = [
+            (object) [
                 'title' => __('sections.home.title'),
                 'icon' => __('sections.home.icon'),
-                'route' => __('sections.home.route')
+                'href' => route('home'),
+                'active' => request()->route()->named('home')
             ],
-            [
+            (object) [
                 'title' => __('sections.orders.title'),
                 'icon' => __('sections.orders.icon'),
-                'route' => __('sections.orders.route')
+                'href' => route('orders'),
+                'active' => request()->route()->named('orders')
             ],
-            [
+            (object) [
                 'title' => __('sections.products.title'),
                 'icon' => __('sections.products.icon'),
-                'route' => __('sections.products.route')
+                'href' => route('products'),
+                'active' => request()->route()->named('products')
             ],
-            [
+            (object) [
                 'title' => __('sections.customers.title'),
                 'icon' => __('sections.customers.icon'),
-                'route' => __('sections.customers.route')
+                'href' => route('customers'),
+                'active' => request()->route()->named('customers')
             ]
-        ]);
+        ];
 
         $this->avatarSrc = 'https://github.com/mdo.png';
     }

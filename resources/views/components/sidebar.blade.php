@@ -4,7 +4,7 @@
         @foreach ($items as $item)
             <li class="nav-item">
                 <a
-                    href="{{ route($item->route) }}"
+                    href="{{ $item->href }}"
                     @class([
                         "nav-link",
                         "active" => $item->active,

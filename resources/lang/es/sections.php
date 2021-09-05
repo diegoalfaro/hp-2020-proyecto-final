@@ -3,22 +3,18 @@
 return [
     'home' => [
         'title' => 'Inicio',
-        'icon' => 'home',
-        'route' => 'home',
+        'icon' => 'home'
     ],
     'orders' => [
         'title' => 'Ventas',
-        'icon' => 'archive',
-        'route' => 'orders'
+        'icon' => 'archive'
     ],
     'products' => [
         'title' => 'Productos',
-        'icon' => 'shopping-bag',
-        'route' => 'products'
+        'icon' => 'shopping-bag'
     ],
     'customers' => [
         'title' => 'Clientes',
-        'icon' => 'users',
-        'route' => 'customers'
+        'icon' => 'users'
     ],
 ];
