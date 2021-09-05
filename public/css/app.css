@@ -11274,8 +11274,8 @@ textarea.form-control-lg {
   }
 }
 .main-layout {
-  min-height: 100vh;
-  width: 100vw;
+  height: 100vh;
+  width: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
@@ -11290,6 +11290,7 @@ textarea.form-control-lg {
 }
 .main-layout main {
   grid-area: main;
+  overflow: auto;
 }
 
 .sidebar .icon {
