@@ -1,10 +1,21 @@
-@extends('layouts.base')
+@extends('base.app')
 
-@section('content')
-    @section('navbar')
-        <p>Navbar</p>
-    @show
-    @section('sidebar')
-        <p>Sidebar</p>
-    @show
-@endsection
+@push('class', 'main-layout')
+
+@push('content')
+    <header>
+        @section('header')
+            <x-navbar/>
+        @show
+    </header>
+
+    <aside>
+        @section('aside')
+            <x-sidebar/>
+        @show
+    </aside>
+
+    <main>
+        @yield('main')
+    </main>
+@endpush
