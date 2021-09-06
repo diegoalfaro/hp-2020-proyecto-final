@@ -4,5 +4,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require('./i18n');
 require('./bootstrap');
 require('./vue');
