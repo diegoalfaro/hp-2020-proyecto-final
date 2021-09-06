@@ -3,6 +3,7 @@ const loadDependencies = () => {
   window.$ = window.jQuery = require('jquery');
   window.bootstrap = require('bootstrap');
   window.feather = require('feather-icons');
+  window.moment = require('moment');
   window.axios = require('axios');
   window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 };

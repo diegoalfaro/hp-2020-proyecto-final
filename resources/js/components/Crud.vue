@@ -20,6 +20,7 @@
                 v-bind:onDelete="onDelete"
                 v-bind:onViewDetail="onViewDetail"
                 v-bind:dataUrl="dataUrl"
+                height="100%"
             />
         </div>
     </div>
@@ -28,6 +29,9 @@
 <style scoped lang="scss">
 .card-header {
     gap: 8px;
+}
+.card {
+    height: 400px;
 }
 </style>
 

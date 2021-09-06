@@ -7,7 +7,7 @@
       <div class="row justify-content-center">
           <div class="col-md-12">
             <h1>{{ __('sections.customers.title') }}</h1>
-            <crud data-url="/api/customers" />
+            <customers-crud />
           </div>
       </div>
   </div>

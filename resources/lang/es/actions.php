@@ -5,5 +5,6 @@ return [
     'addNew' => 'Agregar nuevo',
     'viewDetail' => 'Ver detalle',
     'edit' => 'Editar',
-    'delete' => 'Eliminar'
+    'delete' => 'Eliminar',
+    'deselect' => 'Quitar selección',
 ];

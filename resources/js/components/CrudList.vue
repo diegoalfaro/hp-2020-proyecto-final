@@ -57,7 +57,6 @@ export default {
     props: {
         height: {
             type: String,
-            default: "420px",
         },
         paginationSize: {
             type: Number,
@@ -65,6 +64,9 @@ export default {
         },
         fields: {
             type: Array,
+            default() {
+                return [];
+            },
         },
         dataUrl: {
             type: String,
@@ -88,9 +90,10 @@ export default {
                 selectable: 1,
                 pagination: "local",
                 paginationSize: this.paginationSize,
-                locale: true,
+                locale: "es",
                 paginationSizeSelector: true,
-                autoColumns: !this.fields,
+                columns: this.fields,
+                autoColumns: !this.fields || !this.fields.length,
                 autoColumnsDefinitions: (definitions) => {
                     definitions.forEach((column) => {
                         column.headerFilter = true;
@@ -119,10 +122,8 @@ export default {
                         separator: true,
                     },
                     {
-                        label: "Quitar selección",
-                        action: (e, row) => {
-                            row.deselect();
-                        },
+                        label: this.__("actions.deselect"),
+                        action: (e, row) => row.deselect(),
                     },
                 ],
                 langs: {
@@ -148,7 +149,6 @@ export default {
 
     mounted() {
         this.loadData();
-        this.getInstance().setLocale("es");
     },
 
     methods: {
