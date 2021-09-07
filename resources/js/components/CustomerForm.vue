@@ -5,20 +5,22 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="number" class="form-label">Número de cliente</label>
+            <label for="id" class="form-label">
+                {{ __("fields.customerId") }}
+            </label>
             <input
                 type="text"
                 class="form-control"
                 id="id"
                 v-model="formData.id"
                 :disabled="true"
-                required
             />
-            <div class="invalid-feedback">Número de cliente requerido</div>
         </div>
 
         <div class="col-md-6">
-            <label for="identity" class="form-label">DNI</label>
+            <label for="identity" class="form-label">
+                {{ __("fields.identity") }}
+            </label>
             <input
                 type="text"
                 class="form-control"
@@ -27,7 +29,11 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">DNI requerido</div>
+            <div class="invalid-feedback">
+                {{
+                    __("validations.required", { field: __("fields.identity") })
+                }}
+            </div>
         </div>
 
         <div class="col-md-6">
