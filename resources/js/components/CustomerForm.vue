@@ -9,12 +9,25 @@
             <input
                 type="text"
                 class="form-control"
-                id="number"
-                v-model="formData.number"
-                :disabled="!interactiveAction"
+                id="id"
+                v-model="formData.id"
+                :disabled="true"
                 required
             />
             <div class="invalid-feedback">Número de cliente requerido</div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="identity" class="form-label">DNI</label>
+            <input
+                type="text"
+                class="form-control"
+                id="identity"
+                v-model="formData.identity"
+                :disabled="!interactiveAction"
+                required
+            />
+            <div class="invalid-feedback">DNI requerido</div>
         </div>
 
         <div class="col-md-6">
@@ -41,19 +54,6 @@
                 required
             />
             <div class="invalid-feedback">Apellido requerido</div>
-        </div>
-
-        <div class="col-md-6">
-            <label for="identity" class="form-label">DNI</label>
-            <input
-                type="text"
-                class="form-control"
-                id="identity"
-                v-model="formData.identity"
-                :disabled="!interactiveAction"
-                required
-            />
-            <div class="invalid-feedback">DNI requerido</div>
         </div>
 
         <div class="col-md-6">
@@ -118,14 +118,11 @@ export default {
     watch: {
         formData: {
             handler() {
-                this.valid = this.$refs.form.checkValidity();
+                this.$nextTick(function () {
+                    this.valid = this.$refs.form.checkValidity();
+                });
             },
             deep: true,
-        },
-        valid(newValue, oldValue) {
-            if (!newValue && oldValue) {
-                this.validated = true;
-            }
         },
     },
 
@@ -134,7 +131,7 @@ export default {
             this.validated = true;
             return this.valid;
         },
-        resetValidation() {
+        resetForm() {
             this.validated = false;
         },
     },

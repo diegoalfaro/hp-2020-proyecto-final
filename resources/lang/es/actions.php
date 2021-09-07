@@ -6,6 +6,8 @@ return [
     'add' => 'Agregar',
     'open' => 'Abrir',
     'close' => 'Cerrar',
+    'accept' => 'Aceptar',
+    'cancel' => 'Cancelar',
     'save' => 'Guardar',
     'reload' => 'Recargar',
     'viewDetails' => 'Ver detalles',

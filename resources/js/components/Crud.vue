@@ -31,20 +31,13 @@
             ></component>
             <template #footer>
                 <btn outline color="dark" @click="closeModal">
-                    {{ __("actions.close") }}
+                    {{ __("actions.cancel") }}
                 </btn>
                 <template v-if="showActionButton">
                     <btn v-if="action == 'delete'" color="danger" @click="save">
-                        <icon name="trash" />
                         {{ __("actions.delete") }}
                     </btn>
-                    <btn
-                        v-else
-                        color="success"
-                        :disabled="!formValid"
-                        @click="save"
-                    >
-                        <icon name="check-circle" />
+                    <btn v-else color="success" @click="save">
                         {{ __("actions.save") }}
                     </btn>
                 </template>
@@ -84,7 +77,6 @@ export default {
         return {
             action: "add",
             formData: {},
-            formValid: false,
         };
     },
 
@@ -122,45 +114,38 @@ export default {
         },
     },
 
-    mounted() {
-        this.$watch("$refs.form.valid", (value) => (this.formValid = value));
-    },
-
     methods: {
         onReload() {
             this.$refs.list.loadData();
         },
         onAdd() {
-            this.action = "add";
-            this.formData = {};
-            this.$refs.form.resetValidation();
-            this.openModal();
+            this.handleAction("add", {});
         },
         onEdit(formData) {
-            this.action = "edit";
-            this.formData = formData;
-            this.$refs.form.resetValidation();
-            this.openModal();
+            this.handleAction("edit", formData);
         },
         onDelete(formData) {
-            this.action = "delete";
-            this.formData = formData;
-            this.$refs.form.resetValidation();
-            this.openModal();
+            this.handleAction("delete", formData);
         },
         onViewDetails(formData) {
-            this.action = "viewDetails";
-            this.formData = formData;
-            this.$refs.form.resetValidation();
+            this.handleAction("viewDetails", formData);
+        },
+        handleAction(action, values) {
+            this.$refs.form.resetForm();
+            this.action = action;
+            this.formData = values;
             this.openModal();
         },
         save() {
             if (this.$refs.form.submit(this.action, this.formData)) {
-                this.actionHandler(this.formData);
-                this.$refs.list.loadData();
-                this.closeModal();
-            } else {
-                alert("El formulario no fue cargado correctamente");
+                this.actionHandler(this.formData)
+                    .then(() => {
+                        this.$refs.list.loadData();
+                        this.closeModal();
+                    })
+                    .catch(() => {
+                        alert("No se pudo procesar la acción solicitada");
+                    });
             }
         },
         openModal() {

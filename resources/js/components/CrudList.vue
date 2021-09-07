@@ -99,6 +99,8 @@ export default {
                 locale: "es",
                 paginationSizeSelector: true,
                 columns: this.fields,
+                layoutColumnsOnNewData: true,
+                reactive: true,
                 autoColumns: !this.fields || !this.fields.length,
                 autoColumnsDefinitions: (definitions) => {
                     definitions.forEach((column) => {
@@ -113,15 +115,21 @@ export default {
                 rowContextMenu: [
                     {
                         label: this.__("actions.viewDetails"),
-                        action: (_, row) => this.onViewDetails(row.getData()),
+                        action: (_, row) => {
+                            this.onViewDetails({ ...row.getData() });
+                        },
                     },
                     {
                         label: this.__("actions.edit"),
-                        action: (_, row) => this.onEdit(row.getData()),
+                        action: (_, row) => {
+                            this.onEdit({ ...row.getData() });
+                        },
                     },
                     {
                         label: this.__("actions.delete"),
-                        action: (_, row) => this.onDelete(row.getData()),
+                        action: (_, row) => {
+                            this.onDelete({ ...row.getData() });
+                        },
                     },
                     {
                         separator: true,
