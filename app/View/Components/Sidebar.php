@@ -7,7 +7,6 @@ use Illuminate\View\Component;
 class Sidebar extends Component
 {
     public $items;
-
     public $avatarSrc;
 
     /**
@@ -43,8 +42,6 @@ class Sidebar extends Component
                 'active' => request()->route()->named('customers')
             ]
         ];
-
-        $this->avatarSrc = 'https://github.com/mdo.png';
     }
 
     /**

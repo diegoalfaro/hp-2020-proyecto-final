@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'number' => 'Número de cliente',
+    'customerId' => 'Número de cliente',
     'firstName' => 'Nombre',
     'lastName' => 'Apellido',
     'identity' => 'DNI',

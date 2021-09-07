@@ -22,7 +22,6 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            'number' => $this->faker->unique()->numberBetween(1, 999999),
             'firstName' => $this->faker->firstName(),
             'lastName' => $this->faker->lastName(),
             'identity' => $this->faker->unique()->numberBetween(20000000, 40000000),
