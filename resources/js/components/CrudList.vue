@@ -1,5 +1,10 @@
 <template>
-    <VueTabulator ref="tabulator" v-model="data" :options="options" />
+    <VueTabulator
+        ref="tabulator"
+        v-model="data"
+        :options="options"
+        :integration="{ updateStrategy: 'REPLACE' }"
+    />
 </template>
 
 <style lang="scss">
@@ -68,10 +73,11 @@ export default {
                 return [];
             },
         },
-        dataUrl: {
-            type: String,
+        getData: {
+            type: Function,
+            required: true,
         },
-        onViewDetail: {
+        onViewDetails: {
             type: Function,
         },
         onEdit: {
@@ -98,7 +104,6 @@ export default {
                     definitions.forEach((column) => {
                         column.headerFilter = true;
                     });
-
                     return definitions;
                 },
                 rowContext: (e, row) => {
@@ -107,16 +112,16 @@ export default {
                 },
                 rowContextMenu: [
                     {
-                        label: this.__("actions.viewDetail"),
-                        action: this.onViewDetail,
+                        label: this.__("actions.viewDetails"),
+                        action: (_, row) => this.onViewDetails(row.getData()),
                     },
                     {
                         label: this.__("actions.edit"),
-                        action: this.onEdit,
+                        action: (_, row) => this.onEdit(row.getData()),
                     },
                     {
                         label: this.__("actions.delete"),
-                        action: this.onDelete,
+                        action: (_, row) => this.onDelete(row.getData()),
                     },
                     {
                         separator: true,
@@ -152,10 +157,8 @@ export default {
     },
 
     methods: {
-        loadData() {
-            axios.get(this.dataUrl).then((response) => {
-                this.data = response.data;
-            });
+        async loadData() {
+            this.data = await this.getData();
         },
         setFilter(field, operator, value) {
             this.getInstance().setFilter(field, operator, value);

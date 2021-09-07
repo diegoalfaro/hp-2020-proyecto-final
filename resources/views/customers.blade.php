@@ -7,7 +7,7 @@
       <div class="row justify-content-center">
           <div class="col-md-12">
             <h1>{{ __('sections.customers.title') }}</h1>
-            <customers-crud />
+            <customer-crud />
           </div>
       </div>
   </div>

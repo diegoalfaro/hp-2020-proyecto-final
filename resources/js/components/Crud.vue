@@ -1,39 +1,57 @@
 <template>
-    <div class="card">
-        <div class="card-header d-flex justify-content-end">
-            <button
-                v-on:click="reloadData"
-                type="button"
-                class="btn btn-primary mr-2"
-            >
-                {{ __("actions.reload") }}
-            </button>
-            <button v-on:click="onCreate" type="button" class="btn btn-primary">
-                {{ __("actions.addNew") }}
-            </button>
-        </div>
-        <div class="card-body p-0">
-            <crud-list
-                ref="list"
-                v-bind:fields="fields"
-                v-bind:onEdit="onEdit"
-                v-bind:onDelete="onDelete"
-                v-bind:onViewDetail="onViewDetail"
-                v-bind:dataUrl="dataUrl"
-                height="100%"
-            />
-        </div>
-    </div>
-</template>
+    <card>
+        <template #header>
+            <div class="text-end">
+                <btn @click="onReload" class="mr-2">
+                    <icon name="sync" />
+                    {{ __("actions.reload") }}
+                </btn>
+                <btn @click="onAdd" color="dark">
+                    <icon name="plus-circle" />
+                    {{ __("actions.add") }}
+                </btn>
+            </div>
+        </template>
 
-<style scoped lang="scss">
-.card-header {
-    gap: 8px;
-}
-.card {
-    height: 400px;
-}
-</style>
+        <crud-list
+            ref="list"
+            :fields="fields"
+            :onEdit="onEdit"
+            :onDelete="onDelete"
+            :onViewDetails="onViewDetails"
+            :getData="getData"
+        />
+
+        <modal ref="modal" :title="modalTitle">
+            <component
+                ref="form"
+                :is="form"
+                :action="action"
+                :formData="formData"
+            ></component>
+            <template #footer>
+                <btn outline color="dark" @click="closeModal">
+                    {{ __("actions.close") }}
+                </btn>
+                <template v-if="showActionButton">
+                    <btn v-if="action == 'delete'" color="danger" @click="save">
+                        <icon name="trash" />
+                        {{ __("actions.delete") }}
+                    </btn>
+                    <btn
+                        v-else
+                        color="success"
+                        :disabled="!formValid"
+                        @click="save"
+                    >
+                        <icon name="check-circle" />
+                        {{ __("actions.save") }}
+                    </btn>
+                </template>
+            </template>
+        </modal>
+    </card>
+</template>
 
 <script>
 export default {
@@ -41,26 +59,115 @@ export default {
         fields: {
             type: Array,
         },
-        dataUrl: {
-            type: String,
+        getData: {
+            type: Function,
+            required: true,
+        },
+        form: {
+            required: true,
+        },
+        create: {
+            type: Function,
+            required: true,
+        },
+        update: {
+            type: Function,
+            required: true,
+        },
+        delete: {
+            type: Function,
+            required: true,
         },
     },
 
+    data() {
+        return {
+            action: "add",
+            formData: {},
+            formValid: false,
+        };
+    },
+
+    computed: {
+        modalTitle() {
+            switch (this.action) {
+                case "add":
+                    return this.__("actions.add");
+                case "edit":
+                    return this.__("actions.edit");
+                case "delete":
+                    return this.__("actions.delete");
+                case "viewDetails":
+                    return this.__("actions.viewDetails");
+            }
+        },
+        showActionButton() {
+            switch (this.action) {
+                case "add":
+                case "edit":
+                case "delete":
+                    return true;
+            }
+            return false;
+        },
+        actionHandler() {
+            switch (this.action) {
+                case "add":
+                    return this.create;
+                case "edit":
+                    return this.update;
+                case "delete":
+                    return this.delete;
+            }
+        },
+    },
+
+    mounted() {
+        this.$watch("$refs.form.valid", (value) => (this.formValid = value));
+    },
+
     methods: {
-        onCreate() {
-            console.log("create");
-        },
-        onEdit(e, row) {
-            console.log("edit: ", row);
-        },
-        onDelete(e, row) {
-            console.log("delete: ", row);
-        },
-        onViewDetail(e, row) {
-            console.log("viewDetail: ", row);
-        },
-        reloadData() {
+        onReload() {
             this.$refs.list.loadData();
+        },
+        onAdd() {
+            this.action = "add";
+            this.formData = {};
+            this.$refs.form.resetValidation();
+            this.openModal();
+        },
+        onEdit(formData) {
+            this.action = "edit";
+            this.formData = formData;
+            this.$refs.form.resetValidation();
+            this.openModal();
+        },
+        onDelete(formData) {
+            this.action = "delete";
+            this.formData = formData;
+            this.$refs.form.resetValidation();
+            this.openModal();
+        },
+        onViewDetails(formData) {
+            this.action = "viewDetails";
+            this.formData = formData;
+            this.$refs.form.resetValidation();
+            this.openModal();
+        },
+        save() {
+            if (this.$refs.form.submit(this.action, this.formData)) {
+                this.actionHandler(this.formData);
+                this.$refs.list.loadData();
+                this.closeModal();
+            } else {
+                alert("El formulario no fue cargado correctamente");
+            }
+        },
+        openModal() {
+            this.$refs.modal.show();
+        },
+        closeModal() {
+            this.$refs.modal.hide();
         },
     },
 };
