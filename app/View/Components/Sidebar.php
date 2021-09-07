@@ -40,6 +40,12 @@ class Sidebar extends Component
                 'icon' => __('sections.customers.icon'),
                 'href' => route('customers'),
                 'active' => request()->route()->named('customers')
+            ],
+            (object) [
+                'title' => __('sections.suppliers.title'),
+                'icon' => __('sections.suppliers.icon'),
+                'href' => route('suppliers'),
+                'active' => request()->route()->named('suppliers')
             ]
         ];
     }

@@ -17,4 +17,8 @@ return [
         'title' => 'Clientes',
         'icon' => 'users'
     ],
+    'suppliers' => [
+        'title' => 'Proveedores',
+        'icon' => 'users'
+    ],
 ];
