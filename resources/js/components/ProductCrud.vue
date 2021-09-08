@@ -17,13 +17,13 @@ export default {
         return {
             fields: [
                 {
-                    title: this.__("fields.productId"),
+                    title: this.__("fields.product_id"),
                     field: "id",
                     sorter: "number",
                 },
                 {
-                    title: this.__("fields.provider"),
-                    field: "provider",
+                    title: this.__("fields.supplier_id"),
+                    field: "supplier_id",
                     sorter: "string",
                 },
                 {

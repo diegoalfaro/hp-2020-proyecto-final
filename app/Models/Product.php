@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'provider',
+        'supplier_id',
         'name',
         'mark',
         'cost',
@@ -18,4 +18,9 @@ class Product extends Model
         'list_price',
         'existence'
     ];
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 }

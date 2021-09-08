@@ -6,7 +6,7 @@
     >
         <div class="col-md-6">
             <label for="id" class="form-label">
-                {{ __("fields.productId") }}
+                {{ __("fields.product_id") }}
             </label>
             <input
                 type="text"
@@ -18,21 +18,21 @@
         </div>
 
         <div class="col-md-6">
-            <label for="provider" class="form-label">
-                {{ __("fields.provider") }}
+            <label for="supplier_id" class="form-label">
+                {{ __("fields.supplier_id") }}
             </label>
             <input
                 type="text"
                 class="form-control"
-                id="provider"
-                v-model="formData.provider"
+                id="supplier_id"
+                v-model="formData.supplier_id"
                 :disabled="!interactiveAction"
                 required
             />
             <div class="invalid-feedback">
                 {{
                     __("validations.required", {
-                        field: __("fields.provider"),
+                        field: __("fields.supplier_id"),
                     })
                 }}
             </div>
@@ -102,9 +102,7 @@
                 required
             />
             <div class="invalid-feedback">
-                {{
-                    __("validations.required", { field: __("fields.gains") })
-                }}
+                {{ __("validations.required", { field: __("fields.gains") }) }}
             </div>
         </div>
 

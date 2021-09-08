@@ -17,7 +17,7 @@ export default {
         return {
             fields: [
                 {
-                    title: this.__("fields.supplierId"),
+                    title: this.__("fields.supplier_id"),
                     field: "id",
                     sorter: "number",
                 },

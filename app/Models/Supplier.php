@@ -17,4 +17,9 @@ class Supplier extends Model
         'postalCode',
         'email',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

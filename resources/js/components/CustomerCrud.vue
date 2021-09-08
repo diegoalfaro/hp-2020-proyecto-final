@@ -17,7 +17,7 @@ export default {
         return {
             fields: [
                 {
-                    title: this.__("fields.customerId"),
+                    title: this.__("fields.customer_id"),
                     field: "id",
                     sorter: "number",
                 },

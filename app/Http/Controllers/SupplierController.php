@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SupplierController extends Controller
 {
     public function index() {
-        return Supplier::all();
+        return Supplier::with('products')->get();
     }
 
     public function show(Supplier $supplier)

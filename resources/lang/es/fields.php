@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'customerId' => 'Número de cliente',
-    'supplierId' => 'Número de proveedor',
-    'productId' => 'Número de producto',
+    'customer_id' => 'Número de cliente',
+    'supplier_id' => 'Número de proveedor',
+    'product_id' => 'Número de producto',
     'firstName' => 'Nombre',
     'lastName' => 'Apellido',
     'identity' => 'DNI',
