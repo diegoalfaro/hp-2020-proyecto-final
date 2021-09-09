@@ -37,12 +37,12 @@
         </div>
 
         <div class="col-md-6">
-            <label for="firstName" class="form-label">Nombre</label>
+            <label for="first_name" class="form-label">Nombre</label>
             <input
                 type="text"
                 class="form-control"
-                id="firstName"
-                v-model="formData.firstName"
+                id="first_name"
+                v-model="formData.first_name"
                 :disabled="!interactiveAction"
                 required
             />
@@ -50,12 +50,12 @@
         </div>
 
         <div class="col-md-6">
-            <label for="lastName" class="form-label">Apellido</label>
+            <label for="last_name" class="form-label">Apellido</label>
             <input
                 type="text"
                 class="form-control"
-                id="lastName"
-                v-model="formData.lastName"
+                id="last_name"
+                v-model="formData.last_name"
                 :disabled="!interactiveAction"
                 required
             />

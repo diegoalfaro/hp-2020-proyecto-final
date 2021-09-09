@@ -22,9 +22,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('mark');
             $table->float('cost');
-            $table->float('gains');
             $table->float('list_price');
-            $table->integer('existence');
+            $table->integer('initial_stock');
             $table->timestamps();
         });
     }

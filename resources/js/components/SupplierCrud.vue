@@ -22,8 +22,8 @@ export default {
                     sorter: "number",
                 },
                 {
-                    title: this.__("fields.businessName"),
-                    field: "businessName",
+                    title: this.__("fields.business_name"),
+                    field: "business_name",
                     sorter: "string",
                 },
                 {
@@ -47,8 +47,8 @@ export default {
                     sorter: "string",
                 },
                 {
-                    title: this.__("fields.postalCode"),
-                    field: "postalCode",
+                    title: this.__("fields.postal_code"),
+                    field: "postal_code",
                     sorter: "number",
                 },
                 {

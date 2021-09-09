@@ -90,19 +90,19 @@
         </div>
 
         <div class="col-md-6">
-            <label for="gains" class="form-label">
-                {{ __("fields.gains") }}
+            <label for="profit" class="form-label">
+                {{ __("fields.profit") }}
             </label>
             <input
                 type="text"
                 class="form-control"
-                id="gains"
-                v-model="formData.gains"
-                :disabled="!interactiveAction"
+                id="profit"
+                v-model="formData.profit"
+                :disabled="true"
                 required
             />
             <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.gains") }) }}
+                {{ __("validations.required", { field: __("fields.profit") }) }}
             </div>
         </div>
 
@@ -127,21 +127,21 @@
             </div>
         </div>
         <div class="col-md-6">
-            <label for="existence" class="form-label">
-                {{ __("fields.existence") }}
+            <label for="initial_stock" class="form-label">
+                {{ __("fields.initial_stock") }}
             </label>
             <input
                 type="text"
                 class="form-control"
-                id="existence"
-                v-model="formData.existence"
+                id="initial_stock"
+                v-model="formData.initial_stock"
                 :disabled="!interactiveAction"
                 required
             />
             <div class="invalid-feedback">
                 {{
                     __("validations.required", {
-                        field: __("fields.existence"),
+                        field: __("fields.initial_stock"),
                     })
                 }}
             </div>

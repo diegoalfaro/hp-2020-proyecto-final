@@ -23,10 +23,10 @@ class SupplierFactory extends Factory
     {
         return [
             'cuit' => $this->faker->unique()->numberBetween(20000000000, 40000000000),
-            'businessName' => $this->faker->unique()->numberBetween(20000000, 40000000),
+            'business_name' => $this->faker->company(),
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
-            'postalCode' => $this->faker->address(),
+            'postal_code' => $this->faker->address(),
             'email' => $this->faker->unique()->email(),
         ];
     }

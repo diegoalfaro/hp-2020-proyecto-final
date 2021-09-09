@@ -22,11 +22,6 @@ export default {
                     sorter: "number",
                 },
                 {
-                    title: this.__("fields.supplier_id"),
-                    field: "supplier_id",
-                    sorter: "string",
-                },
-                {
                     title: this.__("fields.name"),
                     field: "name",
                     sorter: "string",
@@ -37,13 +32,28 @@ export default {
                     sorter: "string",
                 },
                 {
+                    title: this.__("fields.supplier_id"),
+                    field: "supplier_id",
+                    sorter: "string",
+                },
+                {
+                    title: this.__("fields.business_name"),
+                    field: "supplier.business_name",
+                    sorter: "string",
+                },
+                {
+                    title: this.__("fields.cuit"),
+                    field: "supplier.cuit",
+                    sorter: "string",
+                },
+                {
                     title: this.__("fields.cost"),
                     field: "cost",
                     sorter: "number",
                 },
                 {
-                    title: this.__("fields.gains"),
-                    field: "gains",
+                    title: this.__("fields.profit"),
+                    field: "profit",
                     sorter: "number",
                 },
                 {
@@ -52,8 +62,8 @@ export default {
                     sorter: "number",
                 },
                 {
-                    title: this.__("fields.existence"),
-                    field: "existence",
+                    title: this.__("fields.initial_stock"),
+                    field: "initial_stock",
                     sorter: "number",
                 },
             ],

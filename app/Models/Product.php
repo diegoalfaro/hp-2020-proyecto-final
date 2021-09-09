@@ -14,13 +14,19 @@ class Product extends Model
         'name',
         'mark',
         'cost',
-        'gains',
         'list_price',
-        'existence'
+        'initial_stock'
     ];
 
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function getProfitAttribute()
+    {
+        return $this->list_price - $this->cost;
+    }
+
+    protected $appends = ['profit'];
 }

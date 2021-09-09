@@ -10,10 +10,17 @@ class Customer extends Model
     use HasFactory;
 
     protected $fillable = [
-        'firstName',
-        'lastName',
+        'first_name',
+        'last_name',
         'identity',
         'address',
         'phone'
     ];
+
+    public function getFullNameAttribute()
+    {
+        return "$this->first_name $this->last_name";
+    }
+
+    protected $appends = ['full_name'];
 }

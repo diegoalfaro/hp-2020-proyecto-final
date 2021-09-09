@@ -22,13 +22,13 @@ export default {
                     sorter: "number",
                 },
                 {
-                    title: this.__("fields.firstName"),
-                    field: "firstName",
+                    title: this.__("fields.first_name"),
+                    field: "first_name",
                     sorter: "string",
                 },
                 {
-                    title: this.__("fields.lastName"),
-                    field: "lastName",
+                    title: this.__("fields.last_name"),
+                    field: "last_name",
                     sorter: "string",
                 },
                 {

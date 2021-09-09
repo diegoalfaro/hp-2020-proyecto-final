@@ -11,10 +11,10 @@ class Supplier extends Model
 
     protected $fillable = [
         'cuit',
-        'businessName',
+        'business_name',
         'phone',
         'address',
-        'postalCode',
+        'postal_code',
         'email',
     ];
 

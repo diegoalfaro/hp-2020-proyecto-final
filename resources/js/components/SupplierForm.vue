@@ -18,21 +18,21 @@
         </div>
 
         <div class="col-md-6">
-            <label for="businessName" class="form-label">
-                {{ __("fields.businessName") }}
+            <label for="business_name" class="form-label">
+                {{ __("fields.business_name") }}
             </label>
             <input
                 type="text"
                 class="form-control"
-                id="businessName"
-                v-model="formData.businessName"
+                id="business_name"
+                v-model="formData.business_name"
                 :disabled="!interactiveAction"
                 required
             />
             <div class="invalid-feedback">
                 {{
                     __("validations.required", {
-                        field: __("fields.businessName"),
+                        field: __("fields.business_name"),
                     })
                 }}
             </div>
@@ -109,21 +109,21 @@
         </div>
 
         <div class="col-md-6">
-            <label for="postalCode" class="form-label">
-                {{ __("fields.postalCode") }}
+            <label for="postal_code" class="form-label">
+                {{ __("fields.postal_code") }}
             </label>
             <input
                 type="text"
                 class="form-control"
-                id="postalCode"
-                v-model="formData.postalCode"
+                id="postal_code"
+                v-model="formData.postal_code"
                 :disabled="!interactiveAction"
                 required
             />
             <div class="invalid-feedback">
                 {{
                     __("validations.required", {
-                        field: __("fields.postalCode"),
+                        field: __("fields.postal_code"),
                     })
                 }}
             </div>

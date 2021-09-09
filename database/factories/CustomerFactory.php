@@ -22,8 +22,8 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            'firstName' => $this->faker->firstName(),
-            'lastName' => $this->faker->lastName(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'identity' => $this->faker->unique()->numberBetween(20000000, 40000000),
             'address' => $this->faker->address(),
             'phone' => $this->faker->phoneNumber()
