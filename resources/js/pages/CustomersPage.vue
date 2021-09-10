@@ -1,10 +1,5 @@
 <template>
-    <div class="container pt-5 pb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <h1>{{ __("sections.customers.title") }}</h1>
-                <customer-crud />
-            </div>
-        </div>
-    </div>
+    <main-layout :title="__('sections.customers.title')">
+        <customers-crud />
+    </main-layout>
 </template>
