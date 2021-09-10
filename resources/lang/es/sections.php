@@ -21,4 +21,8 @@ return [
         'title' => 'Proveedores',
         'icon' => 'truck'
     ],
+    'budgets' => [
+        'title' => 'Presupuestos',
+        'icon' => 'clipboard'
+    ],
 ];

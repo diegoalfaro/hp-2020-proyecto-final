@@ -5,13 +5,13 @@
 @push('content')
     <header>
         @section('header')
-            <x-navbar/>
+            <navbar/>
         @show
     </header>
 
     <aside>
         @section('aside')
-            <x-sidebar/>
+            <sidebar/>
         @show
     </aside>
 
