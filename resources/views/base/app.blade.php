@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @stack('metas')
-  <title>@yield('title')</title>
+  <title>{{ __('app.title') }}</title>
   <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
   @stack('styles')
 @endpush

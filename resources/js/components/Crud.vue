@@ -15,6 +15,7 @@
 
         <crud-list
             ref="list"
+            height="50vh"
             :fields="fields"
             :onEdit="onEdit"
             :onDelete="onDelete"
@@ -141,7 +142,9 @@ export default {
                 this.actionHandler(this.formData)
                     .then(() => {
                         this.$refs.list.loadData();
-                        this.closeModal();
+                        setTimeout(() => {
+                            this.closeModal();
+                        }, 250);
                     })
                     .catch(() => {
                         alert("No se pudo procesar la acción solicitada");

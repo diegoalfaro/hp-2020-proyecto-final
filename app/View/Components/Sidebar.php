@@ -24,18 +24,6 @@ class Sidebar extends Component
                 'active' => request()->route()->named('home')
             ],
             (object) [
-                'title' => __('sections.orders.title'),
-                'icon' => __('sections.orders.icon'),
-                'href' => route('orders'),
-                'active' => request()->route()->named('orders')
-            ],
-            (object) [
-                'title' => __('sections.products.title'),
-                'icon' => __('sections.products.icon'),
-                'href' => route('products'),
-                'active' => request()->route()->named('products')
-            ],
-            (object) [
                 'title' => __('sections.customers.title'),
                 'icon' => __('sections.customers.icon'),
                 'href' => route('customers'),
@@ -46,7 +34,19 @@ class Sidebar extends Component
                 'icon' => __('sections.suppliers.icon'),
                 'href' => route('suppliers'),
                 'active' => request()->route()->named('suppliers')
-            ]
+            ],
+            (object) [
+                'title' => __('sections.products.title'),
+                'icon' => __('sections.products.icon'),
+                'href' => route('products'),
+                'active' => request()->route()->named('products')
+            ],
+            (object) [
+                'title' => __('sections.sales.title'),
+                'icon' => __('sections.sales.icon'),
+                'href' => route('sales'),
+                'active' => request()->route()->named('sales')
+            ],
         ];
     }
 

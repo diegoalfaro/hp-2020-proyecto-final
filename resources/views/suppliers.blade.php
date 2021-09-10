@@ -1,7 +1,5 @@
 @extends('layouts.main')
 
-@section('title', __('sections.suppliers.title'))
-
 @section('main')
   <div class="container pt-5 pb-5">
       <div class="row justify-content-center">

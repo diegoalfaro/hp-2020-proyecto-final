@@ -5,13 +5,13 @@ return [
         'title' => 'Inicio',
         'icon' => 'home'
     ],
-    'orders' => [
+    'sales' => [
         'title' => 'Ventas',
-        'icon' => 'archive'
+        'icon' => 'shopping-cart'
     ],
     'products' => [
         'title' => 'Productos',
-        'icon' => 'shopping-bag'
+        'icon' => 'box'
     ],
     'customers' => [
         'title' => 'Clientes',
@@ -19,6 +19,6 @@ return [
     ],
     'suppliers' => [
         'title' => 'Proveedores',
-        'icon' => 'users'
+        'icon' => 'truck'
     ],
 ];
