@@ -3,6 +3,7 @@ import SuppliersPage from './pages/SuppliersPage'
 import ProductsPage from './pages/ProductsPage'
 import SalesPage from './pages/SalesPage'
 import BudgetsPage from './pages/BudgetsPage'
+import VehicleBrandPage from './pages/VehicleBrandPage'
 
 export default [
     { name: 'home', path: '/' },
@@ -11,4 +12,5 @@ export default [
     { name: 'products', path: '/productos', component: ProductsPage },
     { name: 'sales', path: '/ventas', component: SalesPage },
     { name: 'budgets', path: '/presupuestos', component: BudgetsPage },
+    { name: 'vehicle_brands', path: '/marcaVehiculos', component: VehicleBrandPage },
 ]

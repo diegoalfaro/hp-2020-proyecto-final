@@ -4,6 +4,7 @@ return [
     'customer_id' => 'Número de cliente',
     'supplier_id' => 'Número de proveedor',
     'product_id' => 'Número de producto',
+    'brand_id' => 'Número de marca',
     'first_name' => 'Nombre',
     'last_name' => 'Apellido',
     'identity' => 'DNI',
@@ -21,5 +22,6 @@ return [
     'cost' => 'Costo',
     'profit' => 'Ganancia',
     'list_price' => 'Precio de lista',
-    'initial_stock' => 'Stock inicial'
+    'initial_stock' => 'Stock inicial',
+    'category' => 'Categoria'
 ];

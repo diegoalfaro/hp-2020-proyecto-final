@@ -74,6 +74,12 @@ export default {
                     routeName: "budgets",
                     active: true,
                 },
+                {
+                    title: this.__("sections.vehicle_brands.title"),
+                    icon: this.__("sections.vehicle_brands.icon"),
+                    routeName: "vehicle_brands",
+                    active: true,
+                },
             ];
         },
         currentRouteName() {

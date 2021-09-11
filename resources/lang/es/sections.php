@@ -25,4 +25,8 @@ return [
         'title' => 'Presupuestos',
         'icon' => 'clipboard'
     ],
+    'vehicle_brands' => [
+        'title' => 'Marca de vehículos',
+        'icon' => 'bookmark'
+    ],
 ];
