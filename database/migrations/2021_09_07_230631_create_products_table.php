@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('name');
-            $table->string('mark');
+            $table->string('brand');
             $table->float('cost');
             $table->float('list_price');
             $table->integer('initial_stock');

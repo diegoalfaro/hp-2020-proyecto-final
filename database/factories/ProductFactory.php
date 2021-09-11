@@ -29,7 +29,7 @@ class ProductFactory extends Factory
         return [
             'supplier_id' => Supplier::all()->random()->id,
             'name' => $this->faker->company(),
-            'mark' => $this->faker->company(),
+            'brand' => $this->faker->company(),
             'cost' => $cost,
             'list_price' => $list_price,
             'initial_stock' => $this->faker->unique()->numberBetween(20, 100),

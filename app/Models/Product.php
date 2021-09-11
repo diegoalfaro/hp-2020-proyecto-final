@@ -12,7 +12,7 @@ class Product extends Model
     protected $fillable = [
         'supplier_id',
         'name',
-        'mark',
+        'brand',
         'cost',
         'list_price',
         'initial_stock'
@@ -28,5 +28,10 @@ class Product extends Model
         return $this->list_price - $this->cost;
     }
 
-    protected $appends = ['profit'];
+    public function getStockAttribute()
+    {
+        return $this->initial_stock;
+    }
+
+    protected $appends = ['profit', 'stock'];
 }

@@ -27,8 +27,8 @@ export default {
                     sorter: "string",
                 },
                 {
-                    title: this.__("fields.mark"),
-                    field: "mark",
+                    title: this.__("fields.brand"),
+                    field: "brand",
                     sorter: "string",
                 },
                 {
@@ -91,6 +91,13 @@ export default {
                 {
                     title: this.__("fields.initial_stock"),
                     field: "initial_stock",
+                    sorter: "number",
+                    headerHozAlign: "right",
+                    hozAlign: "right",
+                },
+                {
+                    title: this.__("fields.stock"),
+                    field: "stock",
                     sorter: "number",
                     headerHozAlign: "right",
                     hozAlign: "right",
