@@ -56,19 +56,19 @@
         </div>
 
         <div class="col-md-6">
-            <label for="mark" class="form-label">
-                {{ __("fields.mark") }}
+            <label for="brand" class="form-label">
+                {{ __("fields.brand") }}
             </label>
             <input
                 type="text"
                 class="form-control"
-                id="mark"
-                v-model="formData.mark"
+                id="brand"
+                v-model="formData.brand"
                 :disabled="!interactiveAction"
                 required
             />
             <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.mark") }) }}
+                {{ __("validations.required", { field: __("fields.brand") }) }}
             </div>
         </div>
 
