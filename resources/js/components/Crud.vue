@@ -1,35 +1,72 @@
 <template>
     <card>
         <template #header>
-            <div class="text-end">
-                <btn @click="onReload" class="mr-2">
-                    <icon name="sync" />
-                    {{ __("actions.reload") }}
-                </btn>
-                <btn @click="onAdd" color="dark">
-                    <icon name="plus-circle" />
-                    {{ __("actions.add") }}
-                </btn>
+            <div class="row">
+                <div class="col-6 align-self-center">{{ title }}</div>
+                <div class="col-6 text-end">
+                    <btn
+                        v-if="!!$props.getData && !$props.readonly"
+                        @click="handleReload"
+                        :outline="true"
+                        color="dark"
+                        :title="__('actions.reload')"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                    >
+                        <icon name="sync" />
+                    </btn>
+                    <btn
+                        v-if="!!$props.delete && !$props.readonly"
+                        @click="handleDelete"
+                        :disabled="!selected"
+                        color="danger"
+                        :title="__('actions.delete')"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                    >
+                        <icon name="trash" />
+                    </btn>
+                    <btn
+                        v-if="!!$props.update && !$props.readonly"
+                        @click="handleEdit"
+                        :disabled="!selected"
+                        color="secondary"
+                        :title="__('actions.edit')"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                    >
+                        <icon name="pen" />
+                    </btn>
+                    <btn
+                        v-if="!!$props.create && !$props.readonly"
+                        @click="handleCreate"
+                        color="success"
+                        :title="__('actions.add')"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                    >
+                        <icon name="plus-circle" />
+                    </btn>
+                </div>
             </div>
         </template>
 
-        <crud-list
+        <list
             ref="list"
             height="50vh"
             :fields="fields"
-            :onEdit="onEdit"
-            :onDelete="onDelete"
-            :onViewDetails="onViewDetails"
-            :getData="getData"
+            :contextMenu="contextMenu"
+            :items="localItems"
+            @selection="selection = $event"
         />
 
-        <modal ref="modal" :title="modalTitle">
+        <modal size="lg" ref="modal" :title="modalTitle">
             <component
                 ref="form"
                 :is="form"
                 :action="action"
                 :formData="formData"
-            ></component>
+            />
             <template #footer>
                 <btn outline color="dark" @click="closeModal">
                     {{ __("actions.cancel") }}
@@ -50,27 +87,36 @@
 <script>
 export default {
     props: {
+        title: {
+            type: String,
+        },
+        items: {
+            type: Array,
+            default() {
+                return [];
+            },
+        },
         fields: {
             type: Array,
-        },
-        getData: {
-            type: Function,
-            required: true,
         },
         form: {
             required: true,
         },
+        readonly: {
+            type: Boolean,
+            default: false,
+        },
+        getData: {
+            type: Function,
+        },
         create: {
             type: Function,
-            required: true,
         },
         update: {
             type: Function,
-            required: true,
         },
         delete: {
             type: Function,
-            required: true,
         },
     },
 
@@ -78,21 +124,23 @@ export default {
         return {
             action: "add",
             formData: {},
+            localItems: [],
+            selection: [],
         };
     },
 
+    async mounted() {
+        if (this.getData) {
+            this.loadData();
+        }
+    },
+
     computed: {
+        selected() {
+            return this.selection.length > 0 ? this.selection[0] : null;
+        },
         modalTitle() {
-            switch (this.action) {
-                case "add":
-                    return this.__("actions.add");
-                case "edit":
-                    return this.__("actions.edit");
-                case "delete":
-                    return this.__("actions.delete");
-                case "viewDetails":
-                    return this.__("actions.viewDetails");
-            }
+            return this.__(`actions.${this.action}`);
         },
         showActionButton() {
             switch (this.action) {
@@ -113,23 +161,72 @@ export default {
                     return this.delete;
             }
         },
+        contextMenu() {
+            return [
+                ...(this.readonly
+                    ? []
+                    : [
+                          {
+                              label: this.__("actions.viewDetails"),
+                              action: this.handleViewDetails,
+                          },
+                          {
+                              label: this.__("actions.edit"),
+                              action: this.handleEdit,
+                          },
+                          {
+                              label: this.__("actions.delete"),
+                              action: this.handleDelete,
+                          },
+                          {
+                              separator: true,
+                          },
+                      ]),
+                {
+                    label: this.__("actions.deselect"),
+                    action: (_, row) => row.deselect(),
+                },
+            ];
+        },
+    },
+
+    watch: {
+        items(value) {
+            this.localItems = value;
+            this.$emit("items", value);
+        },
+        selection(value) {
+            this.$emit("selection", value);
+        },
     },
 
     methods: {
-        onReload() {
-            this.$refs.list.loadData();
+        async loadData() {
+            this.localItems = await this.getData();
         },
-        onAdd() {
+        handleReload() {
+            this.loadData();
+        },
+        handleCreate() {
             this.handleAction("add", {});
         },
-        onEdit(formData) {
-            this.handleAction("edit", formData);
+        handleEdit() {
+            this.handleAction(
+                "edit",
+                JSON.parse(JSON.stringify(this.selected))
+            );
         },
-        onDelete(formData) {
-            this.handleAction("delete", formData);
+        handleDelete() {
+            this.handleAction(
+                "delete",
+                JSON.parse(JSON.stringify(this.selected))
+            );
         },
-        onViewDetails(formData) {
-            this.handleAction("viewDetails", formData);
+        handleViewDetails() {
+            this.handleAction(
+                "viewDetails",
+                JSON.parse(JSON.stringify(this.selected))
+            );
         },
         handleAction(action, values) {
             this.$refs.form.resetForm();
@@ -141,7 +238,9 @@ export default {
             if (this.$refs.form.submit(this.action, this.formData)) {
                 this.actionHandler(this.formData)
                     .then(() => {
-                        this.$refs.list.loadData();
+                        if (this.getData) {
+                            this.loadData();
+                        }
                         setTimeout(() => {
                             this.closeModal();
                         }, 250);

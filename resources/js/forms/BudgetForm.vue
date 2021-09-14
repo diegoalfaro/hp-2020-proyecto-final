@@ -94,6 +94,14 @@
                 }}
             </div>
         </div>
+
+        <div class="col-md-12">
+            <budget-products-crud
+                :readonly="!interactiveAction"
+                :items="formData.products"
+                @items="formData.products = $event"
+            />
+        </div>
     </form>
 </template>
 
@@ -131,6 +139,7 @@ export default {
     watch: {
         formData: {
             handler() {
+                console.log(this.formData);
                 this.$nextTick(function () {
                     this.valid = this.$refs.form.checkValidity();
                 });

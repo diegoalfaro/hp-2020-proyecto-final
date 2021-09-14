@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Budget;
 use Illuminate\Http\Request;
+use App\Models\Budget;
+use App\Models\Product;
 
 class BudgetController extends Controller
 {
     public function index() {
-        return Budget::with('customer')->get();
+        return Budget::with(['customer', 'products'])->get();
     }
 
     public function show(Budget $budget)
@@ -24,7 +25,19 @@ class BudgetController extends Controller
 
     public function update(Request $request, Budget $budget)
     {
-        $budget->update($request->all());
+        $params = $request->all();
+        $products = [];
+        
+        foreach ($params['products'] as $item) {
+            $product = Product::find($item['id']);
+            $products[$product->id] = [
+                'quantity' => $item['detail']['quantity'],
+                'list_price' => $product->list_price,
+            ];
+        }
+        
+        $budget->update($params);
+        $budget->products()->sync($products);
 
         return response()->json($budget, 200);
     }

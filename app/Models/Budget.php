@@ -21,9 +21,24 @@ class Budget extends Model
         return $this->belongsTo(Customer::class);
     }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)
+            ->using(BudgetProduct::class)
+            ->as('detail')
+            ->withPivot('quantity', 'list_price')
+            ->withTimestamps();
+    }
+
     public function getTotalAttribute()
     {
-        return $this->workforce_cost;
+        $acc = $this->workforce_cost;
+
+        foreach ($this->products()->get() as $product) {
+            $acc += $product['detail']['subtotal'];
+        }
+
+        return $acc;
     }
 
     protected $appends = ['total'];

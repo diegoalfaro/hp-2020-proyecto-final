@@ -30,4 +30,6 @@ return [
     'total' => 'Total',
     'date' => 'Fecha',
     'due_date' => 'Fecha de vencimiento',
+    'quantity' => 'Cantidad',
+    'subtotal' => 'Subtotal',
 ];
