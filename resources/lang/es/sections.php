@@ -21,6 +21,10 @@ return [
         'title' => 'Proveedores',
         'icon' => 'truck'
     ],
+    'repairs' => [
+        'title' => 'Reparaciones',
+        'icon' => 'wrench'
+    ],
     'budgets' => [
         'title' => 'Presupuestos',
         'icon' => 'clipboard'

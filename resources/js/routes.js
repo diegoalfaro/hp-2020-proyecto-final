@@ -2,8 +2,9 @@ import CustomersPage from './pages/CustomersPage'
 import SuppliersPage from './pages/SuppliersPage'
 import ProductsPage from './pages/ProductsPage'
 import SalesPage from './pages/SalesPage'
+import RepairsPage from './pages/RepairsPage'
 import BudgetsPage from './pages/BudgetsPage'
-import VehicleBrandPage from './pages/VehicleBrandPage'
+import VehicleBrandsPage from './pages/VehicleBrandsPage'
 
 export default [
     { name: 'home', path: '/' },
@@ -11,6 +12,7 @@ export default [
     { name: 'suppliers', path: '/proveedores', component: SuppliersPage },
     { name: 'products', path: '/productos', component: ProductsPage },
     { name: 'sales', path: '/ventas', component: SalesPage },
+    { name: 'repairs', path: '/reparaciones', component: RepairsPage },
     { name: 'budgets', path: '/presupuestos', component: BudgetsPage },
-    { name: 'vehicle_brands', path: '/marcaVehiculos', component: VehicleBrandPage },
+    { name: 'vehicle_brands', path: '/marcaVehiculos', component: VehicleBrandsPage },
 ]

@@ -11,27 +11,44 @@
     >
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
             <li v-for="(item, key) in items" :key="key" class="nav-item">
-                <router-link :to="{ name: item.routeName }">
-                    <a
-                        href="#"
-                        :class="[
-                            'nav-link',
-                            { active: isActive(item.routeName) },
-                            'py-3',
-                            'border-bottom',
-                        ]"
-                        aria-current="page"
-                        :title="item.title"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="right"
-                    >
-                        <icon :name="item.icon" />
-                    </a>
+                <router-link
+                    :to="{ name: item.routeName }"
+                    :class="[
+                        'nav-link',
+                        { active: isActive(item.routeName) },
+                        'py-3',
+                        'border-bottom',
+                    ]"
+                    aria-current="page"
+                    :title="item.title"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                >
+                    <icon :name="item.icon" />
                 </router-link>
             </li>
         </ul>
     </nav>
 </template>
+
+<style scoped lang="scss">
+.sidebar {
+    min-width: 50px;
+
+    i {
+        font-size: 18px;
+    }
+
+    .nav-flush .nav-link {
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 54px;
+        height: 54px;
+    }
+}
+</style>
 
 <script>
 export default {
@@ -72,6 +89,12 @@ export default {
                     title: this.__("sections.budgets.title"),
                     icon: this.__("sections.budgets.icon"),
                     routeName: "budgets",
+                    active: true,
+                },
+                {
+                    title: this.__("sections.repairs.title"),
+                    icon: this.__("sections.repairs.icon"),
+                    routeName: "repairs",
                     active: true,
                 },
                 {

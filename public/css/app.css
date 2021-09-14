@@ -17417,19 +17417,3 @@ readers do not read off random characters that represent icons */
   grid-area: main;
   overflow: auto;
 }
-
-.sidebar {
-  min-width: 50px;
-}
-.sidebar .icon {
-  width: 20px;
-  height: 20px;
-}
-.sidebar .nav-flush .nav-link {
-  border-radius: 0;
-}
-
-.icon {
-  height: 1rem;
-  width: 1rem;
-}
