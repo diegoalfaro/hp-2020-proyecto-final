@@ -29,4 +29,8 @@ return [
         'title' => 'Marca de vehículos',
         'icon' => 'bookmark'
     ],
+    'vehicles' => [
+        'title' => 'Vehículos',
+        'icon' => 'car'
+    ],
 ];

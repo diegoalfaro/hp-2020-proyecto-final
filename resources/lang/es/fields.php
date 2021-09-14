@@ -6,6 +6,7 @@ return [
     'product_id' => 'Número de producto',
     'brand_id' => 'Número de marca',
     'budget_id' => 'Número de presupuesto',
+    'vehicle_id' => 'Número de vehículo',
     'first_name' => 'Nombre',
     'last_name' => 'Apellido',
     'identity' => 'DNI',
@@ -30,4 +31,8 @@ return [
     'total' => 'Total',
     'date' => 'Fecha',
     'due_date' => 'Fecha de vencimiento',
+    'domain' => 'Dominio',
+    'year' => 'Año',
+    'observations' => 'Observaciones',
+    'model' => 'Modelo',
 ];
