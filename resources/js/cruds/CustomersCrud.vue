@@ -12,51 +12,57 @@
 <script>
 import CustomerForm from "../forms/CustomerForm.vue";
 
+import {
+    datetimeFieldDefault,
+    numberFieldDefault,
+    stringFieldDefault,
+} from "../components/List.vue";
+
 export default {
     data() {
         return {
             fields: [
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.customer_id"),
                     field: "id",
-                    sorter: "number",
                 },
                 {
+                    ...stringFieldDefault,
                     title: this.__("fields.first_name"),
                     field: "first_name",
-                    sorter: "string",
                 },
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.last_name"),
                     field: "last_name",
-                    sorter: "string",
                 },
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.identity"),
                     field: "identity",
-                    sorter: "number",
                 },
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.address"),
                     field: "address",
-                    sorter: "string",
                 },
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.phone"),
                     field: "phone",
-                    sorter: "string",
                 },
                 {
+                    ...datetimeFieldDefault,
                     title: this.__("fields.created_at"),
                     field: "created_at",
                     formatter: "datetime",
-                    sorter: "date",
                 },
                 {
+                    ...datetimeFieldDefault,
                     title: this.__("fields.updated_at"),
                     field: "updated_at",
                     formatter: "datetime",
-                    sorter: "date",
                 },
             ],
             form: CustomerForm,

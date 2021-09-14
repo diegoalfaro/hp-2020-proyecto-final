@@ -35,4 +35,6 @@ return [
     'year' => 'Año',
     'observations' => 'Observaciones',
     'model' => 'Modelo',
+    'quantity' => 'Cantidad',
+    'subtotal' => 'Subtotal',
 ];

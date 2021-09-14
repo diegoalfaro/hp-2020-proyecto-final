@@ -12,95 +12,70 @@
 <script>
 import ProductForm from "../forms/ProductForm.vue";
 
+import {
+    moneyFieldDefault,
+    numberFieldDefault,
+    stringFieldDefault,
+} from "../components/List.vue";
+
 export default {
     data() {
         return {
             fields: [
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.product_id"),
                     field: "id",
-                    sorter: "number",
                 },
                 {
+                    ...stringFieldDefault,
                     title: this.__("fields.name"),
                     field: "name",
-                    sorter: "string",
                 },
                 {
+                    ...stringFieldDefault,
                     title: this.__("fields.brand"),
                     field: "brand",
-                    sorter: "string",
                 },
                 {
+                    ...stringFieldDefault,
                     title: this.__("fields.supplier_id"),
                     field: "supplier_id",
-                    sorter: "string",
                 },
                 {
+                    ...stringFieldDefault,
                     title: this.__("fields.business_name"),
                     field: "supplier.business_name",
-                    sorter: "string",
                 },
                 {
+                    ...stringFieldDefault,
                     title: this.__("fields.cuit"),
                     field: "supplier.cuit",
-                    sorter: "string",
                 },
                 {
+                    ...moneyFieldDefault,
                     title: this.__("fields.cost"),
                     field: "cost",
-                    sorter: "number",
-                    headerHozAlign: "right",
-                    hozAlign: "right",
-                    formatter: "money",
-                    formatterParams: {
-                        decimal: ",",
-                        thousand: ".",
-                        symbol: "$",
-                        precision: false,
-                    },
                 },
                 {
+                    ...moneyFieldDefault,
                     title: this.__("fields.profit"),
                     field: "profit",
-                    sorter: "number",
-                    headerHozAlign: "right",
-                    hozAlign: "right",
-                    formatter: "money",
-                    formatterParams: {
-                        decimal: ",",
-                        thousand: ".",
-                        symbol: "$",
-                        precision: false,
-                    },
                 },
                 {
+                    ...moneyFieldDefault,
                     title: this.__("fields.list_price"),
                     field: "list_price",
-                    sorter: "number",
-                    headerHozAlign: "right",
-                    hozAlign: "right",
-                    formatter: "money",
-                    formatterParams: {
-                        decimal: ",",
-                        thousand: ".",
-                        symbol: "$",
-                        precision: false,
-                    },
                 },
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.initial_stock"),
                     field: "initial_stock",
-                    sorter: "number",
-                    headerHozAlign: "right",
-                    hozAlign: "right",
                 },
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.stock"),
                     field: "stock",
-                    sorter: "number",
-                    headerHozAlign: "right",
-                    hozAlign: "right",
                 },
             ],
             form: ProductForm,

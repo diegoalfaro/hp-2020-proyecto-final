@@ -10,7 +10,6 @@ class VehicleBrand extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'category',
+        'name'
     ];
 }

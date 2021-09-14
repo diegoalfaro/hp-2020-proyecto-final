@@ -1,20 +1,20 @@
 <template>
     <div class="card">
-        <template v-if="this.title || !!this.$slots.header">
+        <template v-if="title || !!$slots.header">
             <div class="card-header">
                 <slot name="header">
                     {{ title }}
                 </slot>
             </div>
         </template>
-        <template v-if="this.$slots.default">
+        <template v-if="$slots.default">
             <slot name="body">
                 <div class="card-body">
                     <slot></slot>
                 </div>
             </slot>
         </template>
-        <template v-if="!!this.$slots.footer">
+        <template v-if="!!$slots.footer">
             <div class="card-footer">
                 <slot name="footer"></slot>
             </div>
