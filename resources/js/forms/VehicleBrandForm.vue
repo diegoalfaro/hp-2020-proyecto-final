@@ -33,23 +33,6 @@
                 {{ __("validations.required", { field: __("fields.name") }) }}
             </div>
         </div>
-
-        <div class="col-md-6">
-            <label for="category" class="form-label">
-                {{ __("fields.category") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="category"
-                v-model="formData.category"
-                :disabled="!interactiveAction"
-                required
-            />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.category") }) }}
-            </div>
-        </div>
     </form>
 </template>
 

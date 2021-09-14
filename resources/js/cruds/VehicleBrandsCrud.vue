@@ -28,11 +28,6 @@ export default {
                     title: this.__("fields.name"),
                     field: "name",
                 },
-                {
-                    ...stringFieldDefault,
-                    title: this.__("fields.category"),
-                    field: "category",
-                },
             ],
             form: VehicleBrandForm,
             async getData() {

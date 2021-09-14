@@ -198,6 +198,9 @@ export default {
         selection(value) {
             this.$emit("selection", value);
         },
+        selected(value) {
+            this.$emit("selected", value);
+        },
     },
 
     methods: {

@@ -26,7 +26,7 @@ return [
         'icon' => 'clipboard'
     ],
     'vehicle_brands' => [
-        'title' => 'Marca de vehículos',
+        'title' => 'Marcas de vehículos',
         'icon' => 'bookmark'
     ],
 ];
