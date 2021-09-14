@@ -103,6 +103,12 @@ export default {
                     routeName: "vehicle_brands",
                     active: true,
                 },
+                {
+                    title: this.__("sections.vehicles.title"),
+                    icon: this.__("sections.vehicles.icon"),
+                    routeName: "vehicles",
+                    active: true,
+                },
             ];
         },
         currentRouteName() {

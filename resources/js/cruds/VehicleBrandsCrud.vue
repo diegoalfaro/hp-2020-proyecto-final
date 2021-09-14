@@ -20,7 +20,7 @@ export default {
             fields: [
                 {
                     ...numberFieldDefault,
-                    title: this.__("fields.brand_id"),
+                    title: this.__("fields.vehicle_brand_id"),
                     field: "id",
                 },
                 {

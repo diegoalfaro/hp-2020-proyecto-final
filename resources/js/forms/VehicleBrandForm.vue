@@ -6,7 +6,7 @@
     >
         <div class="col-md-6">
             <label for="id" class="form-label">
-                {{ __("fields.brand_id") }}
+                {{ __("fields.vehicle_brand_id") }}
             </label>
             <input
                 type="text"
