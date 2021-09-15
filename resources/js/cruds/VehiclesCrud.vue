@@ -12,39 +12,41 @@
 <script>
 import VehicleForm from "../forms/VehicleForm.vue";
 
+import { numberFieldDefault, stringFieldDefault } from "../components/List.vue";
+
 export default {
     data() {
         return {
             fields: [
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.vehicle_id"),
                     field: "id",
-                    sorter: "number",
                 },
                 {
+                    ...stringFieldDefault,
                     title: this.__("fields.domain"),
                     field: "domain",
-                    sorter: "string",
                 },
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.vehicle_brand_id"),
                     field: "vehicle_brand_id",
-                    sorter: "number",
                 },
                 {
+                    ...stringFieldDefault,
                     title: this.__("fields.model"),
                     field: "model",
-                    sorter: "string",
                 },
                 {
+                    ...numberFieldDefault,
                     title: this.__("fields.year"),
                     field: "year",
-                    sorter: "number",
                 },
                 {
+                    ...stringFieldDefault,
                     title: this.__("fields.observations"),
                     field: "observations",
-                    sorter: "string",
                 },
             ],
             form: VehicleForm,

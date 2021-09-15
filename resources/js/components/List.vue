@@ -58,7 +58,12 @@
 </style>
 
 <script>
+export const fieldDefault = {
+    headerFilter: true,
+};
+
 export const numberFieldDefault = {
+    ...fieldDefault,
     sorter: "number",
     headerHozAlign: "right",
     hozAlign: "right",
@@ -69,21 +74,28 @@ export const numberFieldDefault = {
 };
 
 export const stringFieldDefault = {
+    ...fieldDefault,
     sorter: "string",
 };
 
 export const dateFieldDefault = {
+    ...fieldDefault,
     formatter: "datetime",
     formatterParams: {
         inputFormat: "YYYY-MM-DD",
         outputFormat: "DD/MM/YY",
     },
     sorter: "date",
+    headerHozAlign: "right",
+    hozAlign: "right",
 };
 
 export const datetimeFieldDefault = {
+    ...fieldDefault,
     formatter: "datetime",
     sorter: "date",
+    headerHozAlign: "right",
+    hozAlign: "right",
 };
 
 export const moneyFieldDefault = {
@@ -142,6 +154,9 @@ export default {
                         next: __("pagination.next"),
                         next_title: __("pagination.nextTitle"),
                         all: __("pagination.all"),
+                    },
+                    headerFilters: {
+                        default: __("placeholders.filter"),
                     },
                 },
             },

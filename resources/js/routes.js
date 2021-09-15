@@ -15,6 +15,6 @@ export default [
     { name: 'sales', path: '/ventas', component: SalesPage },
     { name: 'repairs', path: '/reparaciones', component: RepairsPage },
     { name: 'budgets', path: '/presupuestos', component: BudgetsPage },
-    { name: 'vehicle_brands', path: '/marcaVehiculos', component: VehicleBrandsPage },
-    { name: 'vehicles', path: '/Vehiculos', component: Vehicles },
+    { name: 'vehicle_brands', path: '/marcas-de-vehiculos', component: VehicleBrandsPage },
+    { name: 'vehicles', path: '/vehiculos', component: Vehicles },
 ]
