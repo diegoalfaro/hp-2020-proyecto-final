@@ -7,6 +7,7 @@ return [
     'vehicle_brand_id' => 'Número de marca',
     'budget_id' => 'Número de presupuesto',
     'vehicle_id' => 'Número de vehículo',
+    'supplier_payment_id' => 'Número de pago',
     'first_name' => 'Nombre',
     'last_name' => 'Apellido',
     'identity' => 'DNI',
@@ -37,4 +38,5 @@ return [
     'model' => 'Modelo',
     'quantity' => 'Cantidad',
     'subtotal' => 'Subtotal',
+    'amount' => 'Monto',
 ];

@@ -5,7 +5,8 @@ import SalesPage from './pages/SalesPage'
 import RepairsPage from './pages/RepairsPage'
 import BudgetsPage from './pages/BudgetsPage'
 import VehicleBrandsPage from './pages/VehicleBrandsPage'
-import Vehicles from './pages/VehiclesPage'
+import VehiclesPage from './pages/VehiclesPage'
+import SupplierPaymentsPage from './pages/SupplierPaymentsPage'
 
 export default [
     { name: 'home', path: '/' },
@@ -16,5 +17,6 @@ export default [
     { name: 'repairs', path: '/reparaciones', component: RepairsPage },
     { name: 'budgets', path: '/presupuestos', component: BudgetsPage },
     { name: 'vehicle_brands', path: '/marcas-de-vehiculos', component: VehicleBrandsPage },
-    { name: 'vehicles', path: '/vehiculos', component: Vehicles },
+    { name: 'vehicles', path: '/vehiculos', component: VehiclesPage },
+    { name: 'supplier_payments', path: '/pagos-a-proveedores', component: SupplierPaymentsPage },
 ]

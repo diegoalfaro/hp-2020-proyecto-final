@@ -37,4 +37,8 @@ return [
         'title' => 'Vehículos',
         'icon' => 'car-side'
     ],
+    'supplierPayments' => [
+        'title' => 'Pagos a proveedores',
+        'icon' => 'money-bill-wave'
+    ],
 ];

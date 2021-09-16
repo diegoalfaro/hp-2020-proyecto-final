@@ -109,6 +109,12 @@ export default {
                     routeName: "vehicles",
                     active: true,
                 },
+                {
+                    title: this.__("sections.supplierPayments.title"),
+                    icon: this.__("sections.supplierPayments.icon"),
+                    routeName: "supplier_payments",
+                    active: true,
+                },
             ];
         },
         currentRouteName() {

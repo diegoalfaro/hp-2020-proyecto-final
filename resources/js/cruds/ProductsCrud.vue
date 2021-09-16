@@ -38,7 +38,7 @@ export default {
                     field: "brand",
                 },
                 {
-                    ...stringFieldDefault,
+                    ...numberFieldDefault,
                     title: this.__("fields.supplier_id"),
                     field: "supplier_id",
                 },
