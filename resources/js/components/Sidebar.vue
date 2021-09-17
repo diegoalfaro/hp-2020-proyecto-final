@@ -115,6 +115,12 @@ export default {
                     routeName: "supplier_payments",
                     active: true,
                 },
+                {
+                    title: this.__("sections.customerPayments.title"),
+                    icon: this.__("sections.customerPayments.icon"),
+                    routeName: "customer_payments",
+                    active: true,
+                },
             ];
         },
         currentRouteName() {

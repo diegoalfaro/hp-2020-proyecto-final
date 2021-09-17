@@ -41,4 +41,8 @@ return [
         'title' => 'Pagos a proveedores',
         'icon' => 'money-bill-wave'
     ],
+    'customerPayments' => [
+        'title' => 'Pagos de clientes',
+        'icon' => 'money-bill-wave'
+    ],
 ];

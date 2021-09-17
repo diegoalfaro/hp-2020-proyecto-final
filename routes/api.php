@@ -6,6 +6,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VehicleBrandController;
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\CustomerPaymentController;
 use App\Http\Controllers\SupplierPaymentController;
 use App\Http\Controllers\VehicleController;
 
@@ -17,6 +18,7 @@ Route::resources([
     'budgets'  => BudgetController::class,
     'vehicles' => VehicleController::class,
     'supplier_payments' => SupplierPaymentController::class,
+    'customer_payments' => CustomerPaymentController::class,
 ], [
     'except' => ['create', 'edit']
 ]);

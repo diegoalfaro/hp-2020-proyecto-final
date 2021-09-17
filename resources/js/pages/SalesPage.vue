@@ -1,5 +1,5 @@
 <template>
     <main-layout :title="__('sections.sales.title')">
-        Proximamente, solo en cines
+        Proximamente
     </main-layout>
 </template>
