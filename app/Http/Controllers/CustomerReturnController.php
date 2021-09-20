@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CustomerReturn;
 use App\Models\Product;
+use Dompdf\Dompdf;
 
 class CustomerReturnController extends Controller
 {
@@ -15,6 +16,19 @@ class CustomerReturnController extends Controller
     public function show(CustomerReturn $customerReturn)
     {
         return $customerReturn;
+    }
+
+    public function document(CustomerReturn $customerReturn)
+    {
+        $dompdf = new Dompdf();
+        $data = [
+            'customerReturn' => $customerReturn
+        ];
+        $html = view('documents/customer_return', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $dompdf->stream("devolucion_de_cliente_$customerReturn->id.pdf");
     }
 
     public function store(Request $request)

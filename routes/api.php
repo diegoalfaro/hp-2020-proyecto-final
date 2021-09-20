@@ -12,6 +12,8 @@ use App\Http\Controllers\SupplierPaymentController;
 use App\Http\Controllers\SupplierReturnController;
 use App\Http\Controllers\VehicleController;
 
+Route::get('/customer_returns/{customer_return}/document', [CustomerReturnController::class, 'document']);
+
 Route::resources([
     'customers' => CustomerController::class,
     'suppliers' => SupplierController::class,
