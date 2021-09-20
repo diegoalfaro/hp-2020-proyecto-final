@@ -49,4 +49,8 @@ return [
         'title' => 'Devoluciones de clientes',
         'icon' => 'exchange-alt'
     ],
+    'supplierReturns' => [
+        'title' => 'Devoluciones a proveedores',
+        'icon' => 'exchange-alt'
+    ],
 ];

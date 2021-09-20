@@ -36,6 +36,6 @@ class CreateCustomerReturnProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('budget_product');
+        Schema::dropIfExists('customer_return_product');
     }
 }

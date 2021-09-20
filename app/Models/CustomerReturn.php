@@ -21,7 +21,7 @@ class CustomerReturn extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)
+        return $this->belongsToMany(Product::class, 'customer_return_product')
             ->using(CustomerReturnProduct::class)
             ->as('detail')
             ->withPivot('quantity', 'list_price')
