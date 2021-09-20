@@ -45,4 +45,8 @@ return [
         'title' => 'Pagos de clientes',
         'icon' => 'money-bill-wave'
     ],
+    'customerReturns' => [
+        'title' => 'Devoluciones de clientes',
+        'icon' => 'exchange-alt'
+    ],
 ];

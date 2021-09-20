@@ -9,6 +9,7 @@ return [
     'vehicle_id' => 'Número de vehículo',
     'supplier_payment_id' => 'Número de pago',
     'customer_payment_id' => 'Número de pago',
+    'customer_return_id' => 'Número de devolución',
     'first_name' => 'Nombre',
     'last_name' => 'Apellido',
     'full_name' => 'Nombre completo',

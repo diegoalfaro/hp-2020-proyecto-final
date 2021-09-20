@@ -121,6 +121,12 @@ export default {
                     routeName: "customer_payments",
                     active: true,
                 },
+                {
+                    title: this.__("sections.customerReturns.title"),
+                    icon: this.__("sections.customerReturns.icon"),
+                    routeName: "customer_returns",
+                    active: true,
+                },
             ];
         },
         currentRouteName() {

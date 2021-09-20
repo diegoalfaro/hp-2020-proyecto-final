@@ -8,6 +8,7 @@ import VehicleBrandsPage from './pages/VehicleBrandsPage'
 import VehiclesPage from './pages/VehiclesPage'
 import SupplierPaymentsPage from './pages/SupplierPaymentsPage'
 import CustomerPaymentsPage from './pages/CustomerPaymentsPage'
+import CustomerReturnsPage from './pages/CustomerReturnsPage'
 
 export default [
     { name: 'home', path: '/' },
@@ -21,4 +22,5 @@ export default [
     { name: 'vehicles', path: '/vehiculos', component: VehiclesPage },
     { name: 'supplier_payments', path: '/pagos-a-proveedores', component: SupplierPaymentsPage },
     { name: 'customer_payments', path: '/pagos-de-clientes', component: CustomerPaymentsPage },
+    { name: 'customer_returns', path: '/devoluciones-de-clientes', component: CustomerReturnsPage },
 ]

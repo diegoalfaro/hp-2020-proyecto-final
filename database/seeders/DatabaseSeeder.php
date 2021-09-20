@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             BudgetProductSeeder::class,
             SupplierPaymentSeeder::class,
             CustomerPaymentSeeder::class,
+            CustomerReturnSeeder::class,
+            CustomerReturnProductSeeder::class,
         ]);
     }
 }
