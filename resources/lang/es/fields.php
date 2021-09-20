@@ -43,4 +43,5 @@ return [
     'quantity' => 'Cantidad',
     'subtotal' => 'Subtotal',
     'amount' => 'Monto',
+    'supplier' => 'Proveedor',
 ];
