@@ -6,6 +6,7 @@
         :create="createSupplierReturn"
         :update="updateSupplierReturn"
         :delete="deleteSupplierReturn"
+        :additionalContextMenuItems="additionalContextMenuItems"
     />
 </template>
 
@@ -65,6 +66,12 @@ export default {
                     field: "updated_at",
                 },
             ],
+            additionalContextMenuItems: [
+                {
+                    label: this.__("actions.downloadDocument"),
+                    action: (_, row) => this.downloadDocument(row.getData()),
+                },
+            ],
             form: SupplierReturnForm,
             async getData() {
                 const { data } = await axios.get("/api/supplier_returns");
@@ -78,6 +85,17 @@ export default {
             },
             async deleteSupplierReturn({ id }) {
                 await axios.delete(`/api/supplier_returns/${id}`);
+            },
+            async downloadDocument({ id }) {
+                const { data, headers } = await axios.get(
+                    `/api/supplier_returns/${id}/document`,
+                    { responseType: "arraybuffer" }
+                );
+                const fileName = headers["content-disposition"].replace(
+                    /.*filename="(.*)"/,
+                    "$1"
+                );
+                download(data, fileName);
             },
         };
     },

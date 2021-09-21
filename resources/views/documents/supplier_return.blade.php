@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Devolución de cliente #{{ $customerReturn->id }}</title>
+<title>Devolución a proveedor #{{ $supplierReturn->id }}</title>
 
 <style type="text/css">
     * {
@@ -27,14 +27,14 @@
     <tr>
         <td valign="top">
             <h1>Tecnomecánica Fain</h1>
-            <h2>Devolución de cliente #{{ $customerReturn->id }}</h2>
+            <h2>Devolución a proveedor #{{ $supplierReturn->id }}</h2>
         </td>
         <td align="right">
-            <h3>Información del cliente #{{ $customer->id }}</h3>
+            <h3>Información del proveedor #{{ $supplier->id }}</h3>
             <ul style="list-style-type:none">
-                <li>{{ $customer->fullName }}</li>
-                <li>{{ $customer->address }}</li>
-                <li>{{ $customer->phone }}</li>
+                <li>{{ $supplier->business_name }} (CUIT {{ $supplier->cuit }})</li>
+                <li>{{ $supplier->address }}</li>
+                <li>{{ $supplier->phone }}</li>
             </ul>
         </td>
     </tr>
@@ -73,7 +73,7 @@
     </tbody>
     <tfoot>
         @php
-            $total = app('MoneyFormatter')->format($customerReturn->total);
+            $total = app('MoneyFormatter')->format($supplierReturn->total);
         @endphp
         <tr>
             <td colspan="3"></td>
