@@ -139,7 +139,6 @@ export default {
     watch: {
         formData: {
             handler() {
-                console.log(this.formData);
                 this.$nextTick(function () {
                     this.valid = this.$refs.form.checkValidity();
                 });

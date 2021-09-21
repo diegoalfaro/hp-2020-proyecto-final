@@ -23,7 +23,7 @@ class Budget extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)
+        return $this->belongsToMany(Product::class, 'budget_product')
             ->using(BudgetProduct::class)
             ->as('detail')
             ->withPivot('quantity', 'list_price')

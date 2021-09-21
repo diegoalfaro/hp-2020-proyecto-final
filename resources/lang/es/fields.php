@@ -8,10 +8,18 @@ return [
     'product_brand_id' => 'Número de marca producto',
     'budget_id' => 'Número de presupuesto',
     'vehicle_id' => 'Número de vehículo',
+<<<<<<< HEAD
     'repair_id' => 'Número de reparación',
     'sale_id' => 'Número de venta',
+=======
+    'supplier_payment_id' => 'Número de pago',
+    'customer_payment_id' => 'Número de pago',
+    'customer_return_id' => 'Número de devolución',
+    'supplier_return_id' => 'Número de devolución',
+>>>>>>> ad18784bad612f016bf007dc42339160ccedc1c0
     'first_name' => 'Nombre',
     'last_name' => 'Apellido',
+    'full_name' => 'Nombre completo',
     'identity' => 'DNI',
     'cuit' => 'CUIT',
     'business_name' => 'Razón social',
@@ -40,4 +48,6 @@ return [
     'model' => 'Modelo',
     'quantity' => 'Cantidad',
     'subtotal' => 'Subtotal',
+    'amount' => 'Monto',
+    'supplier' => 'Proveedor',
 ];

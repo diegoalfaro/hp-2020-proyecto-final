@@ -37,6 +37,7 @@ return [
         'title' => 'Vehículos',
         'icon' => 'car-side'
     ],
+<<<<<<< HEAD
     'repairs' => [
         'title' => 'Reperaciones',
         'icon' => 'tools'
@@ -44,5 +45,22 @@ return [
     'product_brands' => [
         'title' => 'Marcas de productos',
         'icon' => 'bookmark'
+=======
+    'supplierPayments' => [
+        'title' => 'Pagos a proveedores',
+        'icon' => 'money-bill-wave'
+    ],
+    'customerPayments' => [
+        'title' => 'Pagos de clientes',
+        'icon' => 'money-bill-wave'
+    ],
+    'customerReturns' => [
+        'title' => 'Devoluciones de clientes',
+        'icon' => 'exchange-alt'
+    ],
+    'supplierReturns' => [
+        'title' => 'Devoluciones a proveedores',
+        'icon' => 'exchange-alt'
+>>>>>>> ad18784bad612f016bf007dc42339160ccedc1c0
     ],
 ];
