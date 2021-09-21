@@ -22,7 +22,9 @@ class CustomerReturnController extends Controller
     {
         $dompdf = new Dompdf();
         $data = [
-            'customerReturn' => $customerReturn
+            'customerReturn' => $customerReturn,
+            'customer' => $customerReturn->customer,
+            'products' => $customerReturn->products()->get(),
         ];
         $html = view('documents/customer_return', $data);
         $dompdf->loadHtml($html);

@@ -5,6 +5,7 @@ const loadDependencies = () => {
   window.moment = require('moment');
   window.axios = require('axios');
   window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+  window.download = require('downloadjs');
 };
 
 const loadTooltips = () => {

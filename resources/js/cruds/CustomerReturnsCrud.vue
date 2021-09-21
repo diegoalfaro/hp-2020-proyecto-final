@@ -6,6 +6,7 @@
         :create="createCustomerReturn"
         :update="updateCustomerReturn"
         :delete="deleteCustomerReturn"
+        :additionalContextMenuItems="additionalContextMenuItems"
     />
 </template>
 
@@ -75,6 +76,12 @@ export default {
                     field: "updated_at",
                 },
             ],
+            additionalContextMenuItems: [
+                {
+                    label: this.__("actions.downloadDocument"),
+                    action: (_, row) => this.downloadDocument(row.getData()),
+                },
+            ],
             form: CustomerReturnForm,
             async getData() {
                 const { data } = await axios.get("/api/customer_returns");
@@ -88,6 +95,17 @@ export default {
             },
             async deleteCustomerReturn({ id }) {
                 await axios.delete(`/api/customer_returns/${id}`);
+            },
+            async downloadDocument({ id }) {
+                const { data, headers } = await axios.get(
+                    `/api/customer_returns/${id}/document`,
+                    { responseType: "arraybuffer" }
+                );
+                const fileName = headers["content-disposition"].replace(
+                    /.*filename="(.*)"/,
+                    "$1"
+                );
+                download(data, fileName);
             },
         };
     },
