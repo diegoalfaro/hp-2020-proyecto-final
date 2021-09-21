@@ -5,7 +5,7 @@
                 <div class="col-6 align-self-center">{{ title }}</div>
                 <div class="col-6 text-end">
                     <btn
-                        v-if="!!$props.getData && !$props.readonly"
+                        v-if="!!$props.getData"
                         @click="handleReload"
                         :outline="true"
                         color="dark"
@@ -16,7 +16,7 @@
                         <icon name="sync" />
                     </btn>
                     <btn
-                        v-if="!!$props.delete && !$props.readonly"
+                        v-if="deleteEnabled"
                         @click="handleDelete"
                         :disabled="!selected"
                         color="danger"
@@ -27,7 +27,7 @@
                         <icon name="trash" />
                     </btn>
                     <btn
-                        v-if="!!$props.update && !$props.readonly"
+                        v-if="updateEnabled"
                         @click="handleEdit"
                         :disabled="!selected"
                         color="secondary"
@@ -38,7 +38,7 @@
                         <icon name="pen" />
                     </btn>
                     <btn
-                        v-if="!!$props.create && !$props.readonly"
+                        v-if="createEnabled"
                         @click="handleCreate"
                         color="success"
                         :title="__('actions.add')"
@@ -85,12 +85,36 @@
 </template>
 
 <script>
+export const CrudActions = {
+    Add: "add",
+    Edit: "edit",
+    Delete: "delete",
+    ViewDetails: "viewDetails",
+};
+
 export default {
     props: {
         title: {
             type: String,
         },
+        actions: {
+            type: Array,
+            default() {
+                return [
+                    CrudActions.Add,
+                    CrudActions.Edit,
+                    CrudActions.Delete,
+                    CrudActions.ViewDetails,
+                ];
+            },
+        },
         items: {
+            type: Array,
+            default() {
+                return [];
+            },
+        },
+        additionalContextMenuItems: {
             type: Array,
             default() {
                 return [];
@@ -122,7 +146,7 @@ export default {
 
     data() {
         return {
-            action: "add",
+            action: CrudActions.Add,
             formData: {},
             localItems: [],
             selection: [],
@@ -144,49 +168,90 @@ export default {
         },
         showActionButton() {
             switch (this.action) {
-                case "add":
-                case "edit":
-                case "delete":
+                case CrudActions.Add:
+                case CrudActions.Edit:
+                case CrudActions.Delete:
                     return true;
             }
             return false;
         },
         actionHandler() {
             switch (this.action) {
-                case "add":
+                case CrudActions.Add:
                     return this.create;
-                case "edit":
+                case CrudActions.Edit:
                     return this.update;
-                case "delete":
+                case CrudActions.Delete:
                     return this.delete;
             }
         },
         contextMenu() {
-            return [
-                ...(this.readonly
-                    ? []
-                    : [
-                          {
-                              label: this.__("actions.viewDetails"),
-                              action: this.handleViewDetails,
-                          },
-                          {
-                              label: this.__("actions.edit"),
-                              action: this.handleEdit,
-                          },
-                          {
-                              label: this.__("actions.delete"),
-                              action: this.handleDelete,
-                          },
-                          {
-                              separator: true,
-                          },
-                      ]),
+            const separationItems = [{ separator: true }];
+
+            const additionalsItems =
+                this.additionalContextMenuItems.length > 0
+                    ? this.additionalContextMenuItems
+                    : [];
+
+            const createItems = [
+                {
+                    label: this.__("actions.viewDetails"),
+                    action: this.handleViewDetails,
+                },
+            ];
+
+            const updateItems = [
+                {
+                    label: this.__("actions.edit"),
+                    action: this.handleEdit,
+                },
+            ];
+
+            const deleteItems = [
+                {
+                    label: this.__("actions.delete"),
+                    action: this.handleDelete,
+                },
+            ];
+
+            const actionsItems = [
+                ...(additionalsItems.length > 0 ? separationItems : []),
+                ...(this.createEnabled ? createItems : []),
+                ...(this.updateEnabled ? updateItems : []),
+                ...(this.deleteEnabled ? deleteItems : []),
+            ];
+
+            const deselectItems = [
+                ...(actionsItems.length > 0 ? separationItems : []),
                 {
                     label: this.__("actions.deselect"),
                     action: (_, row) => row.deselect(),
                 },
             ];
+
+            return [...additionalsItems, ...actionsItems, ...deselectItems];
+        },
+        createEnabled() {
+            return (
+                this.actions.includes(CrudActions.Add) && !this.$props.readonly
+            );
+        },
+        updateEnabled() {
+            return (
+                this.actions.includes(CrudActions.Edit) && !this.$props.readonly
+            );
+        },
+        deleteEnabled() {
+            return (
+                this.actions.includes(CrudActions.Delete) &&
+                !this.$props.readonly
+            );
+        },
+        viewDetailsEnabled() {
+            return (
+                this.actions.includes(CrudActions.ViewDetails) &&
+                !this.$props.readonly
+            );
         },
     },
 
@@ -211,23 +276,23 @@ export default {
             this.loadData();
         },
         handleCreate() {
-            this.handleAction("add", {});
+            this.handleAction(CrudActions.Add, {});
         },
         handleEdit() {
             this.handleAction(
-                "edit",
+                CrudActions.Edit,
                 JSON.parse(JSON.stringify(this.selected))
             );
         },
         handleDelete() {
             this.handleAction(
-                "delete",
+                CrudActions.Delete,
                 JSON.parse(JSON.stringify(this.selected))
             );
         },
         handleViewDetails() {
             this.handleAction(
-                "viewDetails",
+                CrudActions.ViewDetails,
                 JSON.parse(JSON.stringify(this.selected))
             );
         },
@@ -248,8 +313,8 @@ export default {
                             this.closeModal();
                         }, 250);
                     })
-                    .catch(() => {
-                        alert("No se pudo procesar la acción solicitada");
+                    .catch((error) => {
+                        alert(error.message);
                     });
             }
         },

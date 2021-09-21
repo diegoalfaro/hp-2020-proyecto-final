@@ -14,4 +14,6 @@ return [
     'edit' => 'Editar',
     'delete' => 'Eliminar',
     'deselect' => 'Quitar selección',
+    'download' => 'Descargar',
+    'downloadDocument' => 'Descargar comprobante',
 ];
