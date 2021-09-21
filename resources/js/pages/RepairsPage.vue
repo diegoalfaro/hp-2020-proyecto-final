@@ -1,5 +1,5 @@
 <template>
     <main-layout :title="__('sections.repairs.title')">
-        Proximamente, solo en cines
+        <repairs-crud />
     </main-layout>
 </template>

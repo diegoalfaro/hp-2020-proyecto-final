@@ -90,7 +90,7 @@ export default {
                 );
                 this.$set(this.localItems, index, formData);
             },
-            async deleteBugetProduct({ id }) {
+            async deleteBudgetProduct({ id }) {
                 const index = this.localItems.findIndex(
                     (item) => item.id == id
                 );

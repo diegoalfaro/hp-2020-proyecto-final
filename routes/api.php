@@ -7,6 +7,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VehicleBrandController;
 use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\RepairController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\ProductBrandController;
 
 Route::resources([
     'customers' => CustomerController::class,
@@ -15,6 +18,9 @@ Route::resources([
     'vehicle_brands' => VehicleBrandController::class,
     'budgets'  => BudgetController::class,
     'vehicles' => VehicleController::class,
+    'repairs' => RepairController::class,
+    'sales' => SaleController::class,
+    'product_brands' => ProductBrandController::class,
 ], [
     'except' => ['create', 'edit']
 ]);

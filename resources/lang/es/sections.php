@@ -37,4 +37,12 @@ return [
         'title' => 'Vehículos',
         'icon' => 'car-side'
     ],
+    'repairs' => [
+        'title' => 'Reperaciones',
+        'icon' => 'tools'
+    ],
+    'product_brands' => [
+        'title' => 'Marcas de productos',
+        'icon' => 'bookmark'
+    ],
 ];
