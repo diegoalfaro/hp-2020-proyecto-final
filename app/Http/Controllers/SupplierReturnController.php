@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SupplierReturn;
 use App\Models\Product;
+use Dompdf\Dompdf;
 
 class SupplierReturnController extends Controller
 {
@@ -16,6 +17,22 @@ class SupplierReturnController extends Controller
     {
         return $supplierReturn;
     }
+
+    public function document(SupplierReturn $supplierReturn)
+    {
+        $dompdf = new Dompdf();
+        $data = [
+            'supplierReturn' => $supplierReturn,
+            'supplier' => $supplierReturn->supplier,
+            'products' => $supplierReturn->products()->get(),
+        ];
+        $html = view('documents/supplier_return', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $dompdf->stream("devolucion_a_proveedor_$supplierReturn->id.pdf");
+    }
+
 
     public function store(Request $request)
     {

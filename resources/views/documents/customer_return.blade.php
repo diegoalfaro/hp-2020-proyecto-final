@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Devolución de cliente</title>
+<title>Devolución de cliente #{{ $customerReturn->id }}</title>
 
 <style type="text/css">
     * {
