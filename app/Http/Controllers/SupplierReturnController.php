@@ -28,7 +28,7 @@ class SupplierReturnController extends Controller
         ];
         $html = view('documents/supplier_return', $data);
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
         $dompdf->stream("devolucion_a_proveedor_$supplierReturn->id.pdf");
     }

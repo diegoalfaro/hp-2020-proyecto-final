@@ -313,9 +313,15 @@ export default {
                             this.closeModal();
                         }, 250);
                     })
-                    .catch((error) => {
-                        alert(error.message);
-                    });
+                    .catch(
+                        ({
+                            response: {
+                                data: { message },
+                            },
+                        }) => {
+                            alert(message);
+                        }
+                    );
             }
         },
         openModal() {

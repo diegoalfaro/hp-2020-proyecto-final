@@ -80,6 +80,11 @@ export default {
                     active: true,
                 },
                 {
+                    title: this.__("sections.product_brands.title"),
+                    icon: this.__("sections.product_brands.icon"),
+                    routeName: "product_brands",
+                },
+                {
                     title: this.__("sections.sales.title"),
                     icon: this.__("sections.sales.icon"),
                     routeName: "sales",
@@ -110,9 +115,6 @@ export default {
                     active: true,
                 },
                 {
-                    title: this.__("sections.product_brands.title"),
-                    icon: this.__("sections.product_brands.icon"),
-                    routeName: "product_brands",
                     title: this.__("sections.supplierPayments.title"),
                     icon: this.__("sections.supplierPayments.icon"),
                     routeName: "supplier_payments",

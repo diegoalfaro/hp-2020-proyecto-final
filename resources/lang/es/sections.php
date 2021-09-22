@@ -37,15 +37,14 @@ return [
         'title' => 'Vehículos',
         'icon' => 'car-side'
     ],
-<<<<<<< HEAD
     'repairs' => [
-        'title' => 'Reperaciones',
+        'title' => 'Reparaciones',
         'icon' => 'tools'
     ],
     'product_brands' => [
         'title' => 'Marcas de productos',
         'icon' => 'bookmark'
-=======
+    ],
     'supplierPayments' => [
         'title' => 'Pagos a proveedores',
         'icon' => 'money-bill-wave'
@@ -61,6 +60,5 @@ return [
     'supplierReturns' => [
         'title' => 'Devoluciones a proveedores',
         'icon' => 'exchange-alt'
->>>>>>> ad18784bad612f016bf007dc42339160ccedc1c0
     ],
 ];

@@ -28,7 +28,7 @@ class CustomerReturnController extends Controller
         ];
         $html = view('documents/customer_return', $data);
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
         $dompdf->stream("devolucion_de_cliente_$customerReturn->id.pdf");
     }

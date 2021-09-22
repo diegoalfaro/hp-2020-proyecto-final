@@ -7,7 +7,7 @@
         :form="form"
         :create="createBudgetProduct"
         :update="updateBudgetProduct"
-        :delete="deleteBugetProduct"
+        :delete="deleteBudgetProduct"
         :readonly="readonly"
     />
 </template>
@@ -90,11 +90,10 @@ export default {
                 );
                 this.$set(this.localItems, index, formData);
             },
-            async deleteBugetProduct({ id }) {
+            async deleteBudgetProduct({ id }) {
                 const index = this.localItems.findIndex(
                     (item) => item.id == id
                 );
-                console.log(this.$delete);
                 this.$delete(this.localItems, index);
             },
         };

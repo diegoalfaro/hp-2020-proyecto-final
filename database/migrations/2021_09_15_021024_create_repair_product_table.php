@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRepairProductsTable extends Migration
+class CreateRepairProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRepairProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('repair_products', function (Blueprint $table) {
+        Schema::create('repair_product', function (Blueprint $table) {
             $table->foreignId('repair_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -36,6 +36,6 @@ class CreateRepairProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('repair_products');
+        Schema::dropIfExists('repair_product');
     }
 }

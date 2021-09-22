@@ -5,8 +5,7 @@ import SalesPage from './pages/SalesPage'
 import RepairsPage from './pages/RepairsPage'
 import BudgetsPage from './pages/BudgetsPage'
 import VehicleBrandsPage from './pages/VehicleBrandsPage'
-import Vehicles from './pages/VehiclesPage'
-import ProductBrandPage from './pages/ProductBrandPage'
+import ProductBrandsPage from './pages/ProductBrandsPage'
 import VehiclesPage from './pages/VehiclesPage'
 import SupplierPaymentsPage from './pages/SupplierPaymentsPage'
 import CustomerPaymentsPage from './pages/CustomerPaymentsPage'
@@ -22,8 +21,7 @@ export default [
     { name: 'repairs', path: '/reparaciones', component: RepairsPage },
     { name: 'budgets', path: '/presupuestos', component: BudgetsPage },
     { name: 'vehicle_brands', path: '/marcas-de-vehiculos', component: VehicleBrandsPage },
-    { name: 'vehicles', path: '/vehiculos', component: Vehicles },
-    { name: 'product_brands', path: '/marca-de-productos', component: ProductBrandPage },
+    { name: 'product_brands', path: '/marca-de-productos', component: ProductBrandsPage },
     { name: 'vehicles', path: '/vehiculos', component: VehiclesPage },
     { name: 'supplier_payments', path: '/pagos-a-proveedores', component: SupplierPaymentsPage },
     { name: 'customer_payments', path: '/pagos-de-clientes', component: CustomerPaymentsPage },

@@ -94,7 +94,6 @@ export default {
                 const index = this.localItems.findIndex(
                     (item) => item.id == id
                 );
-                console.log(this.$delete);
                 this.$delete(this.localItems, index);
             },
         };

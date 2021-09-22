@@ -55,11 +55,19 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-12">
+            <sale-products-crud
+                :readonly="!interactiveAction"
+                :items="formData.products"
+                @items="formData.products = $event"
+            />
+        </div>
+
+        <div class="col-md-12">
             <label for="observations" class="form-label">
                 {{ __("fields.observations") }}
             </label>
-            <input
+            <textarea
                 type="text"
                 class="form-control"
                 id="observations"
@@ -74,14 +82,6 @@
                     })
                 }}
             </div>
-        </div>
-
-        <div class="col-md-12">
-            <sale-products-crud
-                :readonly="!interactiveAction"
-                :items="formData.products"
-                @items="formData.products = $event"
-            />
         </div>
     </form>
 </template>
@@ -120,7 +120,6 @@ export default {
     watch: {
         formData: {
             handler() {
-                console.log(this.formData);
                 this.$nextTick(function () {
                     this.valid = this.$refs.form.checkValidity();
                 });

@@ -19,7 +19,20 @@ class SaleController extends Controller
 
     public function store(Request $request)
     {
-        $sale = Sale::create($request->all());
+        $params = $request->all();
+        $products = [];
+        
+        foreach ($params['products'] as $item) {
+            $product = Product::find($item['id']);
+            $products[$product->id] = [
+                'quantity' => $item['detail']['quantity'],
+                'list_price' => $product->list_price,
+            ];
+        }
+
+        $sale = Sale::create($params);
+        $sale->products()->sync($products);
+        
         return response()->json($sale, 201);
     }
 

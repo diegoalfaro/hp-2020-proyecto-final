@@ -19,7 +19,20 @@ class BudgetController extends Controller
 
     public function store(Request $request)
     {
-        $budget = Budget::create($request->all());
+        $params = $request->all();
+        $products = [];
+        
+        foreach ($params['products'] as $item) {
+            $product = Product::find($item['id']);
+            $products[$product->id] = [
+                'quantity' => $item['detail']['quantity'],
+                'list_price' => $product->list_price,
+            ];
+        }
+
+        $budget = Budget::create($params);
+        $budget->products()->sync($products);
+        
         return response()->json($budget, 201);
     }
 
