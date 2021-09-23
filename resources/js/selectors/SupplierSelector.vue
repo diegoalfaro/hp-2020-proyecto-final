@@ -3,8 +3,7 @@
         v-bind="$attrs"
         v-on="$listeners"
         :options="options"
-        :reduce="(supplier) => supplier.id"
-        label="business_name"
+        :reduce="(item) => item.id"
     />
 </template>
 
@@ -18,7 +17,10 @@ export default {
 
     async mounted() {
         const { data } = await axios.get("/api/suppliers");
-        this.options = data;
+        this.options = data.map((item) => ({
+            label: __("selectors.supplier", item),
+            ...item,
+        }));
     },
 };
 </script>
