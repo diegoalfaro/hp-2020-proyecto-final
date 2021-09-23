@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use App\Models\ProductBrand;
 use App\Models\Supplier;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -28,8 +29,8 @@ class ProductFactory extends Factory
 
         return [
             'supplier_id' => Supplier::all()->random()->id,
+            'product_brand_id' => ProductBrand::all()->random()->id,
             'name' => $this->faker->company(),
-            'brand' => $this->faker->company(),
             'cost' => $cost,
             'list_price' => $list_price,
             'initial_stock' => $this->faker->unique()->numberBetween(20, 100),

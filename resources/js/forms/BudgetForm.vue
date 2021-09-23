@@ -19,15 +19,12 @@
 
         <div class="col-md-6">
             <label for="customer_id" class="form-label">
-                {{ __("fields.customer_id") }}
+                {{ __("fields.customer") }}
             </label>
-            <input
-                type="text"
-                class="form-control"
+            <customer-selector
                 id="customer_id"
                 v-model="formData.customer_id"
                 :disabled="!interactiveAction"
-                required
             />
             <div class="invalid-feedback">
                 {{

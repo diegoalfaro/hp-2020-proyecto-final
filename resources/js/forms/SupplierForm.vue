@@ -60,7 +60,7 @@
                 {{ __("fields.email") }}
             </label>
             <input
-                type="text"
+                type="email"
                 class="form-control"
                 id="email"
                 v-model="formData.email"
@@ -77,7 +77,7 @@
                 {{ __("fields.phone") }}
             </label>
             <input
-                type="text"
+                type="tel"
                 class="form-control"
                 id="phone"
                 v-model="formData.phone"

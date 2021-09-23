@@ -19,15 +19,12 @@
 
         <div class="col-md-6">
             <label for="supplier_id" class="form-label">
-                {{ __("fields.supplier_id") }}
+                {{ __("fields.supplier") }}
             </label>
-            <input
-                type="text"
-                class="form-control"
+            <supplier-selector
                 id="supplier_id"
                 v-model="formData.supplier_id"
                 :disabled="!interactiveAction"
-                required
             />
             <div class="invalid-feedback">
                 {{

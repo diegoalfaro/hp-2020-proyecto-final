@@ -19,8 +19,11 @@ class CreateProductsTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->foreignId('product_brand_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('name');
-            $table->string('brand');
             $table->float('cost');
             $table->float('list_price');
             $table->integer('initial_stock');

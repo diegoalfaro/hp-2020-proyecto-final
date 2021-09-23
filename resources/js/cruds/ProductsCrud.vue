@@ -35,7 +35,7 @@ export default {
                 {
                     ...stringFieldDefault,
                     title: this.__("fields.brand"),
-                    field: "brand",
+                    field: "product_brand.name",
                 },
                 {
                     ...numberFieldDefault,

@@ -46,5 +46,6 @@ return [
     'quantity' => 'Cantidad',
     'subtotal' => 'Subtotal',
     'amount' => 'Monto',
+    'customer' => 'Cliente',
     'supplier' => 'Proveedor',
 ];

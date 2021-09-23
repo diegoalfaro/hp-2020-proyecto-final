@@ -11,8 +11,8 @@ class Product extends Model
 
     protected $fillable = [
         'supplier_id',
+        'product_brand_id',
         'name',
-        'brand',
         'cost',
         'list_price',
         'initial_stock'
@@ -21,6 +21,11 @@ class Product extends Model
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
+    }
+
+    public function product_brand()
+    {
+        return $this->belongsTo(ProductBrand::class);
     }
 
     public function getProfitAttribute()

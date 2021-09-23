@@ -8,7 +8,7 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index() {
-        return Product::with('supplier')->get();
+        return Product::with('supplier', 'product_brand')->get();
     }
 
     public function show(Product $product)

@@ -29,9 +29,9 @@ export default {
                     field: "domain",
                 },
                 {
-                    ...numberFieldDefault,
-                    title: this.__("fields.vehicle_brand_id"),
-                    field: "vehicle_brand_id",
+                    ...stringFieldDefault,
+                    title: this.__("fields.brand"),
+                    field: "vehicle_brand.name",
                 },
                 {
                     ...stringFieldDefault,

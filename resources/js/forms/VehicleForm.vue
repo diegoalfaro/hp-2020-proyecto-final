@@ -40,15 +40,12 @@
 
         <div class="col-md-6">
             <label for="vehicle_brand_id" class="form-label">
-                {{ __("fields.vehicle_brand_id") }}
+                {{ __("fields.brand") }}
             </label>
-            <input
-                type="text"
-                class="form-control"
+            <vehicle-brand-selector
                 id="vehicle_brand_id"
                 v-model="formData.vehicle_brand_id"
                 :disabled="!interactiveAction"
-                required
             />
             <div class="invalid-feedback">
                 {{
