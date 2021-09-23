@@ -80,7 +80,7 @@
             <repair-products-crud
                 :readonly="!interactiveAction"
                 :items="formData.products"
-                @items="formData.products = $event"
+                @items="$set(formData, 'products', $event)"
             />
         </div>
     </form>

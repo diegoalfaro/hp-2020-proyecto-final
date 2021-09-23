@@ -258,6 +258,8 @@ export default {
     watch: {
         items(value) {
             this.localItems = value;
+        },
+        localItems(value) {
             this.$emit("items", value);
         },
         selection(value) {
