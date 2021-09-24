@@ -5,39 +5,26 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="id" class="form-label">
-                {{ __("fields.customer_id") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="id"
-                v-model="formData.id"
-                :disabled="true"
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="identity" class="form-label">
                 {{ __("fields.identity") }}
             </label>
             <input
-                type="text"
+                type="number"
+                min="1000000"
+                max="999999999"
+                step="1"
                 class="form-control"
                 id="identity"
                 v-model="formData.identity"
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", { field: __("fields.identity") })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
-            <label for="first_name" class="form-label">Nombre</label>
+            <label for="first_name" class="form-label">
+                {{ __("fields.first_name") }}
+            </label>
             <input
                 type="text"
                 class="form-control"
@@ -46,11 +33,12 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">Nombre requerido</div>
         </div>
 
         <div class="col-md-6">
-            <label for="last_name" class="form-label">Apellido</label>
+            <label for="last_name" class="form-label">
+                {{ __("fields.last_name") }}
+            </label>
             <input
                 type="text"
                 class="form-control"
@@ -59,11 +47,12 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">Apellido requerido</div>
         </div>
 
         <div class="col-md-6">
-            <label for="phone" class="form-label">Teléfono</label>
+            <label for="phone" class="form-label">
+                {{ __("fields.phone") }}
+            </label>
             <input
                 type="text"
                 class="form-control"
@@ -72,11 +61,12 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">Teléfono requerido</div>
         </div>
 
         <div class="col-md-6">
-            <label for="address" class="form-label">Dirección</label>
+            <label for="address" class="form-label">
+                {{ __("fields.address") }}
+            </label>
             <input
                 type="text"
                 class="form-control"
@@ -85,7 +75,6 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">Dirección requerida</div>
         </div>
     </form>
 </template>

@@ -41,7 +41,7 @@ export default {
 
     data() {
         return {
-            title: "Detalles del presupuesto",
+            title: "Detalles de la devolución",
             fields: [
                 {
                     ...numberFieldDefault,

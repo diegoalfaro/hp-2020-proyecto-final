@@ -5,19 +5,6 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="id" class="form-label">
-                {{ __("fields.sale_id") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="id"
-                v-model="formData.id"
-                :disabled="true"
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="customer_id" class="form-label">
                 {{ __("fields.customer") }}
             </label>
@@ -26,13 +13,6 @@
                 v-model="formData.customer_id"
                 :disabled="!interactiveAction"
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.customer_id"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -47,9 +27,6 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.date") }) }}
-            </div>
         </div>
 
         <div class="col-md-12">
@@ -70,15 +47,7 @@
                 id="observations"
                 v-model="formData.observations"
                 :disabled="!interactiveAction"
-                required
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.observations"),
-                    })
-                }}
-            </div>
         </div>
     </form>
 </template>

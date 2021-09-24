@@ -33,7 +33,7 @@ export default {
                     field: "first_name",
                 },
                 {
-                    ...numberFieldDefault,
+                    ...stringFieldDefault,
                     title: this.__("fields.last_name"),
                     field: "last_name",
                 },
@@ -43,12 +43,12 @@ export default {
                     field: "identity",
                 },
                 {
-                    ...numberFieldDefault,
+                    ...stringFieldDefault,
                     title: this.__("fields.address"),
                     field: "address",
                 },
                 {
-                    ...numberFieldDefault,
+                    ...stringFieldDefault,
                     title: this.__("fields.phone"),
                     field: "phone",
                 },

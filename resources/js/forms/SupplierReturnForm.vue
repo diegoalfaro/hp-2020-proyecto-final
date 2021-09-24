@@ -5,19 +5,6 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="id" class="form-label">
-                {{ __("fields.budget_id") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="id"
-                v-model="formData.id"
-                :disabled="true"
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="supplier_id" class="form-label">
                 {{ __("fields.supplier") }}
             </label>
@@ -26,13 +13,6 @@
                 v-model="formData.supplier_id"
                 :disabled="!interactiveAction"
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.supplier_id"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -47,16 +27,13 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.date") }) }}
-            </div>
         </div>
 
         <div class="col-md-12">
             <supplier-return-products-crud
                 :readonly="!interactiveAction"
                 :items="formData.products"
-                @items="formData.products = $event"
+                @items="$set(formData, 'products', $event)"
             />
         </div>
     </form>

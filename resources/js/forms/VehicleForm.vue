@@ -5,19 +5,6 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="id" class="form-label">
-                {{ __("fields.vehicle_id") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="id"
-                v-model="formData.id"
-                :disabled="true"
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="domain" class="form-label">
                 {{ __("fields.domain") }}
             </label>
@@ -25,17 +12,11 @@
                 type="text"
                 class="form-control"
                 id="domain"
+                pattern="[A-Za-z0-9]+"
                 v-model="formData.domain"
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.domain"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -47,13 +28,6 @@
                 v-model="formData.vehicle_brand_id"
                 :disabled="!interactiveAction"
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.vehicle_brand_id"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -68,9 +42,6 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.model") }) }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -78,19 +49,19 @@
                 {{ __("fields.year") }}
             </label>
             <input
-                type="text"
+                type="number"
+                min="1900"
+                :max="currentYear"
+                step="1"
                 class="form-control"
                 id="year"
                 v-model="formData.year"
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.year") }) }}
-            </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-12">
             <label for="observations" class="form-label">
                 {{ __("fields.observations") }}
             </label>
@@ -106,6 +77,8 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
     props: {
         action: {
@@ -122,6 +95,7 @@ export default {
         return {
             valid: false,
             validated: false,
+            currentYear: moment().format("YYYY"),
         };
     },
 

@@ -19,7 +19,7 @@ class CreateSuppliersTable extends Migration
             $table->string('business_name');
             $table->string('phone');
             $table->string('address');
-            $table->string('postal_code');
+            $table->integer('postal_code');
             $table->string('email')->unique();
             $table->timestamps();
         });

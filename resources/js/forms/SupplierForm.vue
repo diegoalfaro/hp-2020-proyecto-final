@@ -5,19 +5,6 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="id" class="form-label">
-                {{ __("fields.supplier_id") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="id"
-                v-model="formData.id"
-                :disabled="true"
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="business_name" class="form-label">
                 {{ __("fields.business_name") }}
             </label>
@@ -29,13 +16,6 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.business_name"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -43,16 +23,16 @@
                 {{ __("fields.cuit") }}
             </label>
             <input
-                type="text"
+                type="number"
+                min="1000000"
+                max="99999999999"
+                step="1"
                 class="form-control"
                 id="cuit"
                 v-model="formData.cuit"
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.cuit") }) }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -67,9 +47,6 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.email") }) }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -84,9 +61,6 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.phone") }) }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -101,11 +75,6 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", { field: __("fields.address") })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -113,20 +82,16 @@
                 {{ __("fields.postal_code") }}
             </label>
             <input
-                type="text"
+                type="number"
+                min="1"
+                max="9999999"
+                step="1"
                 class="form-control"
                 id="postal_code"
                 v-model="formData.postal_code"
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.postal_code"),
-                    })
-                }}
-            </div>
         </div>
     </form>
 </template>

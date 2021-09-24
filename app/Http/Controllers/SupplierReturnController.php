@@ -33,10 +33,22 @@ class SupplierReturnController extends Controller
         $dompdf->stream("devolucion_a_proveedor_$supplierReturn->id.pdf");
     }
 
-
     public function store(Request $request)
     {
-        $supplierReturn = SupplierReturn::create($request->all());
+        $params = $request->all();
+        $products = [];
+        
+        foreach ($params['products'] as $item) {
+            $product = Product::find($item['id']);
+            $products[$product->id] = [
+                'quantity' => $item['detail']['quantity'],
+                'list_price' => $product->list_price,
+            ];
+        }
+
+        $supplierReturn = SupplierReturn::create($params);
+        $supplierReturn->products()->sync($products);
+        
         return response()->json($supplierReturn, 201);
     }
 

@@ -35,7 +35,20 @@ class CustomerReturnController extends Controller
 
     public function store(Request $request)
     {
-        $customerReturn = CustomerReturn::create($request->all());
+        $params = $request->all();
+        $products = [];
+        
+        foreach ($params['products'] as $item) {
+            $product = Product::find($item['id']);
+            $products[$product->id] = [
+                'quantity' => $item['detail']['quantity'],
+                'list_price' => $product->list_price,
+            ];
+        }
+
+        $customerReturn = CustomerReturn::create($params);
+        $customerReturn->products()->sync($products);
+        
         return response()->json($customerReturn, 201);
     }
 

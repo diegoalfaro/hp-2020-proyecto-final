@@ -6,11 +6,9 @@
     >
         <div class="col-md-6">
             <label for="id" class="form-label">
-                {{ __("fields.product_id") }}
+                {{ __("fields.product") }}
             </label>
-            <input
-                type="text"
-                class="form-control"
+            <product-selector
                 id="id"
                 v-model="formData.id"
                 :disabled="action != 'add'"
@@ -22,20 +20,16 @@
                 {{ __("fields.quantity") }}
             </label>
             <input
-                type="text"
+                type="number"
+                min="1"
+                max="99999999"
+                step="1"
                 class="form-control"
                 id="quantity"
                 v-model="quantity"
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.quantity"),
-                    })
-                }}
-            </div>
         </div>
     </form>
 </template>
@@ -59,7 +53,7 @@ export default {
         return {
             valid: false,
             validated: false,
-            quantityProxy: 0,
+            quantityProxy: 1,
         };
     },
 

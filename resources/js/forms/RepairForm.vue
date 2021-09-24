@@ -5,19 +5,6 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="id" class="form-label">
-                {{ __("fields.repair_id") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="id"
-                v-model="formData.id"
-                :disabled="true"
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="customer_id" class="form-label">
                 {{ __("fields.customer") }}
             </label>
@@ -26,13 +13,6 @@
                 v-model="formData.customer_id"
                 :disabled="!interactiveAction"
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.customer_id"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -47,29 +27,22 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.date") }) }}
-            </div>
         </div>
 
         <div class="col-md-6">
             <label for="workforce_cost" class="form-label">
                 {{ __("fields.workforce_cost") }}
             </label>
-            <input
-                type="text"
-                class="form-control"
-                id="workforce_cost"
-                v-model="formData.workforce_cost"
-                :disabled="!interactiveAction"
-                required
-            />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.workforce_cost"),
-                    })
-                }}
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="workforce_cost"
+                    v-model="formData.workforce_cost"
+                    :disabled="!interactiveAction"
+                    required
+                />
             </div>
         </div>
 

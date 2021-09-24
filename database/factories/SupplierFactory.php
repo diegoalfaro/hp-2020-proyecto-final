@@ -26,7 +26,7 @@ class SupplierFactory extends Factory
             'business_name' => $this->faker->company(),
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
-            'postal_code' => $this->faker->address(),
+            'postal_code' => $this->faker->unique()->numberBetween(1000, 10000),
             'email' => $this->faker->unique()->email(),
         ];
     }

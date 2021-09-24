@@ -5,19 +5,6 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="id" class="form-label">
-                {{ __("fields.budget_id") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="id"
-                v-model="formData.id"
-                :disabled="true"
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="customer_id" class="form-label">
                 {{ __("fields.customer") }}
             </label>
@@ -26,12 +13,25 @@
                 v-model="formData.customer_id"
                 :disabled="!interactiveAction"
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.customer_id"),
-                    })
-                }}
+        </div>
+
+        <div class="col-md-6">
+            <label for="workforce_cost" class="form-label">
+                {{ __("fields.workforce_cost") }}
+            </label>
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input
+                    type="number"
+                    min="0.00"
+                    max="99999999.00"
+                    step="0.01"
+                    class="form-control"
+                    id="workforce_cost"
+                    v-model="formData.workforce_cost"
+                    :disabled="!interactiveAction"
+                    required
+                />
             </div>
         </div>
 
@@ -47,9 +47,6 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.date") }) }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -64,32 +61,6 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", { field: __("fields.due_date") })
-                }}
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <label for="workforce_cost" class="form-label">
-                {{ __("fields.workforce_cost") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="workforce_cost"
-                v-model="formData.workforce_cost"
-                :disabled="!interactiveAction"
-                required
-            />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.workforce_cost"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-12">

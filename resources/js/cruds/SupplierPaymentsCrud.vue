@@ -30,11 +30,6 @@ export default {
                     field: "id",
                 },
                 {
-                    ...numberFieldDefault,
-                    title: this.__("fields.supplier_id"),
-                    field: "supplier.id",
-                },
-                {
                     ...stringFieldDefault,
                     title: this.__("fields.business_name"),
                     field: "supplier.business_name",

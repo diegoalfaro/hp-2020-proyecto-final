@@ -5,19 +5,6 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="id" class="form-label">
-                {{ __("fields.supplier_payment_id") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="id"
-                v-model="formData.id"
-                :disabled="true"
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="supplier_id" class="form-label">
                 {{ __("fields.supplier") }}
             </label>
@@ -26,13 +13,6 @@
                 v-model="formData.supplier_id"
                 :disabled="!interactiveAction"
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.supplier_id"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -47,30 +27,23 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.date") }) }}
-            </div>
         </div>
 
         <div class="col-md-6">
             <label for="amount" class="form-label">
                 {{ __("fields.amount") }}
             </label>
-            <input
-                type="number"
-                class="form-control"
-                id="amount"
-                v-model="formData.amount"
-                :disabled="!interactiveAction"
-                :min="0"
-                required
-            />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.amount"),
-                    })
-                }}
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="amount"
+                    v-model="formData.amount"
+                    :disabled="!interactiveAction"
+                    :min="0"
+                    required
+                />
             </div>
         </div>
     </form>

@@ -1,5 +1,9 @@
 <template>
-    <v-select v-bind="$attrs" v-on="$listeners" />
+    <v-select
+        v-bind="$attrs"
+        v-on="$listeners"
+        :placeholder="__('placeholders.select')"
+    />
 </template>
 
 <style lang="scss">

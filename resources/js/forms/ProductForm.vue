@@ -5,19 +5,6 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="id" class="form-label">
-                {{ __("fields.product_id") }}
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                id="id"
-                v-model="formData.id"
-                :disabled="true"
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="name" class="form-label">
                 {{ __("fields.name") }}
             </label>
@@ -29,9 +16,23 @@
                 :disabled="!interactiveAction"
                 required
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.name") }) }}
-            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="initial_stock" class="form-label">
+                {{ __("fields.initial_stock") }}
+            </label>
+            <input
+                type="number"
+                min="0"
+                max="99999999"
+                step="1"
+                class="form-control"
+                id="initial_stock"
+                v-model="formData.initial_stock"
+                :disabled="!interactiveAction"
+                required
+            />
         </div>
 
         <div class="col-md-6">
@@ -43,13 +44,6 @@
                 v-model="formData.supplier_id"
                 :disabled="!interactiveAction"
             />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.supplier_id"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-6">
@@ -61,9 +55,6 @@
                 v-model="formData.product_brand_id"
                 :disabled="!interactiveAction"
             />
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.brand") }) }}
-            </div>
         </div>
 
         <div class="col-md-4">
@@ -83,9 +74,6 @@
                     :disabled="!interactiveAction"
                     required
                 />
-            </div>
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.cost") }) }}
             </div>
         </div>
 
@@ -107,13 +95,6 @@
                     required
                 />
             </div>
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.list_price"),
-                    })
-                }}
-            </div>
         </div>
 
         <div class="col-md-4">
@@ -133,33 +114,6 @@
                     :disabled="true"
                     required
                 />
-            </div>
-            <div class="invalid-feedback">
-                {{ __("validations.required", { field: __("fields.profit") }) }}
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <label for="initial_stock" class="form-label">
-                {{ __("fields.initial_stock") }}
-            </label>
-            <input
-                type="number"
-                min="0"
-                max="99999999"
-                step="1"
-                class="form-control"
-                id="initial_stock"
-                v-model="formData.initial_stock"
-                :disabled="!interactiveAction"
-                required
-            />
-            <div class="invalid-feedback">
-                {{
-                    __("validations.required", {
-                        field: __("fields.initial_stock"),
-                    })
-                }}
             </div>
         </div>
     </form>

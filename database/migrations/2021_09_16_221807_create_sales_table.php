@@ -20,7 +20,7 @@ class CreateSalesTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->date('date');
-            $table->string('observations');
+            $table->string('observations')->nullable();
             $table->timestamps();
         });
     }

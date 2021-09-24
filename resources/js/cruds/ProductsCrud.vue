@@ -38,11 +38,6 @@ export default {
                     field: "product_brand.name",
                 },
                 {
-                    ...numberFieldDefault,
-                    title: this.__("fields.supplier_id"),
-                    field: "supplier_id",
-                },
-                {
                     ...stringFieldDefault,
                     title: this.__("fields.business_name"),
                     field: "supplier.business_name",
