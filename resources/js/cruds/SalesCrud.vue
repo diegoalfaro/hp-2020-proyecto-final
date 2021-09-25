@@ -6,6 +6,7 @@
         :create="createSale"
         :update="updateSale"
         :delete="deleteSale"
+        :additionalContextMenuItems="additionalContextMenuItems"
     />
 </template>
 
@@ -80,6 +81,12 @@ export default {
                     field: "updated_at",
                 },
             ],
+            additionalContextMenuItems: [
+                {
+                    label: this.__("actions.downloadDocument"),
+                    action: (_, row) => this.downloadDocument(row.getData()),
+                },
+            ],
             form: SaleForm,
             async getData() {
                 const { data } = await axios.get("/api/sales");
@@ -93,6 +100,17 @@ export default {
             },
             async deleteSale({ id }) {
                 await axios.delete(`/api/sales/${id}`);
+            },
+            async downloadDocument({ id }) {
+                const { data, headers } = await axios.get(
+                    `/api/sales/${id}/document`,
+                    { responseType: "arraybuffer" }
+                );
+                const fileName = headers["content-disposition"].replace(
+                    /.*filename="(.*)"/,
+                    "$1"
+                );
+                download(data, fileName);
             },
         };
     },

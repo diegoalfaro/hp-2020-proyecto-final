@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\CustomerPayment;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use Dompdf\Dompdf;
 
 class CustomerPaymentController extends Controller
 {
@@ -14,6 +16,20 @@ class CustomerPaymentController extends Controller
     public function show(CustomerPayment $customerPayment)
     {
         return $customerPayment;
+    }
+
+    public function document(CustomerPayment $customerPayment)
+    {
+        $dompdf = new Dompdf();
+        $data = [
+            'customerPayment' => $customerPayment,
+            'customer' => $customerPayment->customer,
+        ];
+        $html = view('documents/customer_payment', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("pago_de_cliente_$customerPayment->id.pdf");
     }
 
     public function store(Request $request)

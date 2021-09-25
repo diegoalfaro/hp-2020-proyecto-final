@@ -6,6 +6,7 @@
         :create="createBudget"
         :update="updateBudget"
         :delete="deleteBudget"
+        :additionalContextMenuItems="additionalContextMenuItems"
     />
 </template>
 
@@ -60,6 +61,12 @@ export default {
                     field: "updated_at",
                 },
             ],
+            additionalContextMenuItems: [
+                {
+                    label: this.__("actions.downloadDocument"),
+                    action: (_, row) => this.downloadDocument(row.getData()),
+                },
+            ],
             form: CustomerPaymentForm,
             async getData() {
                 const { data } = await axios.get("/api/customer_payments");
@@ -73,6 +80,17 @@ export default {
             },
             async deleteBudget({ id }) {
                 await axios.delete(`/api/customer_payments/${id}`);
+            },
+            async downloadDocument({ id }) {
+                const { data, headers } = await axios.get(
+                    `/api/customer_payments/${id}/document`,
+                    { responseType: "arraybuffer" }
+                );
+                const fileName = headers["content-disposition"].replace(
+                    /.*filename="(.*)"/,
+                    "$1"
+                );
+                download(data, fileName);
             },
         };
     },

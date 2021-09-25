@@ -6,6 +6,7 @@
         :create="createRepair"
         :update="updateRepair"
         :delete="deleteRepair"
+        :additionalContextMenuItems="additionalContextMenuItems"
     />
 </template>
 
@@ -80,6 +81,12 @@ export default {
                     field: "updated_at",
                 },
             ],
+            additionalContextMenuItems: [
+                {
+                    label: this.__("actions.downloadDocument"),
+                    action: (_, row) => this.downloadDocument(row.getData()),
+                },
+            ],
             form: RepairForm,
             async getData() {
                 const { data } = await axios.get("/api/repairs");
@@ -93,6 +100,17 @@ export default {
             },
             async deleteRepair({ id }) {
                 await axios.delete(`/api/repairs/${id}`);
+            },
+            async downloadDocument({ id }) {
+                const { data, headers } = await axios.get(
+                    `/api/repairs/${id}/document`,
+                    { responseType: "arraybuffer" }
+                );
+                const fileName = headers["content-disposition"].replace(
+                    /.*filename="(.*)"/,
+                    "$1"
+                );
+                download(data, fileName);
             },
         };
     },
