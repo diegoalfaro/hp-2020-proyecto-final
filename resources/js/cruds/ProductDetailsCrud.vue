@@ -1,19 +1,18 @@
 <template>
     <crud
-        :title="title"
         :items="localItems"
         @items="localItems = $event"
         :fields="fields"
         :form="form"
-        :create="createBudgetProduct"
-        :update="updateBudgetProduct"
-        :delete="deleteBudgetProduct"
+        :create="createSaleProduct"
+        :update="updateSaleProduct"
+        :delete="deleteSaleProduct"
         :readonly="readonly"
     />
 </template>
 
 <script>
-import SupplierReturnProductForm from "../forms/SupplierReturnProductForm.vue";
+import ProductDetailForm from "../forms/ProductDetailForm.vue";
 
 import {
     datetimeFieldDefault,
@@ -60,7 +59,7 @@ export default {
                 {
                     ...moneyFieldDefault,
                     title: this.__("fields.list_price"),
-                    field: "list_price",
+                    field: "detail.list_price",
                 },
                 {
                     ...moneyFieldDefault,
@@ -79,17 +78,23 @@ export default {
                 },
             ],
             localItems: [],
-            form: SupplierReturnProductForm,
-            async createBudgetProduct(formData) {
+            form: ProductDetailForm,
+            async createSaleProduct(formData) {
+                formData.detail.list_price = formData.list_price;
+                formData.detail.subtotal =
+                    formData.list_price * formData.detail.quantity;
                 this.localItems.push(formData);
             },
-            async updateBudgetProduct(formData) {
+            async updateSaleProduct(formData) {
+                formData.detail.list_price = formData.list_price;
+                formData.detail.subtotal =
+                    formData.list_price * formData.detail.quantity;
                 const index = this.localItems.findIndex(
                     (item) => item.id == formData.id
                 );
                 this.$set(this.localItems, index, formData);
             },
-            async deleteBudgetProduct({ id }) {
+            async deleteSaleProduct({ id }) {
                 const index = this.localItems.findIndex(
                     (item) => item.id == id
                 );

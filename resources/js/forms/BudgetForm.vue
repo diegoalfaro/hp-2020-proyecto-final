@@ -64,8 +64,8 @@
         </div>
 
         <div class="col-md-12">
-            <card title="Detalles del presupuesto">
-                <budget-products-crud
+            <card title="Detalles de productos">
+                <product-details-crud
                     :readonly="!interactiveAction"
                     :items="formData.products"
                     @items="$set(formData, 'products', $event)"
