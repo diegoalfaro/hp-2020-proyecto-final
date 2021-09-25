@@ -47,11 +47,13 @@
         </div>
 
         <div class="col-md-12">
-            <repair-products-crud
-                :readonly="!interactiveAction"
-                :items="formData.products"
-                @items="$set(formData, 'products', $event)"
-            />
+            <card title="Detalles de la reparación">
+                <repair-products-crud
+                    :readonly="!interactiveAction"
+                    :items="formData.products"
+                    @items="$set(formData, 'products', $event)"
+                />
+            </card>
         </div>
     </form>
 </template>

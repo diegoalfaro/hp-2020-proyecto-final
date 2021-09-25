@@ -41,7 +41,6 @@ export default {
 
     data() {
         return {
-            title: "Detalles de la devolución",
             fields: [
                 {
                     ...numberFieldDefault,

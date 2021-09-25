@@ -14,6 +14,26 @@ class ProductBrandSeeder extends Seeder
      */
     public function run()
     {
-        ProductBrand::factory(50)->create();
+        $brands = [
+            'BOSCH',
+            'ACDelco',
+            'VALEO',
+            'Febi Bilstein',
+            'DELPHI',
+            'CASTROL',
+            'MONROE',
+            'Continental AG',
+            'BREMBO',
+            'LuK',
+            'Grupo ZF',
+            'DENSO',
+            'MANN - FILTRO',
+        ];
+
+        foreach ($brands as $brand) {
+            ProductBrand::create([
+                'name' => $brand
+            ]);
+        }
     }
 }

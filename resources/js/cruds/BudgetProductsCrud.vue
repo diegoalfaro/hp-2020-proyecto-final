@@ -41,7 +41,6 @@ export default {
 
     data() {
         return {
-            title: "Detalles del presupuesto",
             fields: [
                 {
                     ...numberFieldDefault,

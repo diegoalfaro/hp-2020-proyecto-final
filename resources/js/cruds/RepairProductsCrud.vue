@@ -41,7 +41,6 @@ export default {
 
     data() {
         return {
-            title: "Detalles de la reparación",
             fields: [
                 {
                     ...numberFieldDefault,

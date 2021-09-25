@@ -56,12 +56,6 @@ export default {
         items() {
             return [
                 {
-                    title: this.__("sections.home.title"),
-                    icon: this.__("sections.home.icon"),
-                    routeName: "home",
-                    active: true,
-                },
-                {
                     title: this.__("sections.customers.title"),
                     icon: this.__("sections.customers.icon"),
                     routeName: "customers",
@@ -80,14 +74,9 @@ export default {
                     active: true,
                 },
                 {
-                    title: this.__("sections.product_brands.title"),
-                    icon: this.__("sections.product_brands.icon"),
-                    routeName: "product_brands",
-                },
-                {
-                    title: this.__("sections.sales.title"),
-                    icon: this.__("sections.sales.icon"),
-                    routeName: "sales",
+                    title: this.__("sections.vehicles.title"),
+                    icon: this.__("sections.vehicles.icon"),
+                    routeName: "vehicles",
                     active: true,
                 },
                 {
@@ -97,45 +86,15 @@ export default {
                     active: true,
                 },
                 {
+                    title: this.__("sections.sales.title"),
+                    icon: this.__("sections.sales.icon"),
+                    routeName: "sales",
+                    active: true,
+                },
+                {
                     title: this.__("sections.repairs.title"),
                     icon: this.__("sections.repairs.icon"),
                     routeName: "repairs",
-                    active: true,
-                },
-                {
-                    title: this.__("sections.vehicle_brands.title"),
-                    icon: this.__("sections.vehicle_brands.icon"),
-                    routeName: "vehicle_brands",
-                    active: true,
-                },
-                {
-                    title: this.__("sections.vehicles.title"),
-                    icon: this.__("sections.vehicles.icon"),
-                    routeName: "vehicles",
-                    active: true,
-                },
-                {
-                    title: this.__("sections.supplierPayments.title"),
-                    icon: this.__("sections.supplierPayments.icon"),
-                    routeName: "supplier_payments",
-                    active: true,
-                },
-                {
-                    title: this.__("sections.customerPayments.title"),
-                    icon: this.__("sections.customerPayments.icon"),
-                    routeName: "customer_payments",
-                    active: true,
-                },
-                {
-                    title: this.__("sections.customerReturns.title"),
-                    icon: this.__("sections.customerReturns.icon"),
-                    routeName: "customer_returns",
-                    active: true,
-                },
-                {
-                    title: this.__("sections.supplierReturns.title"),
-                    icon: this.__("sections.supplierReturns.icon"),
-                    routeName: "supplier_returns",
                     active: true,
                 },
             ];

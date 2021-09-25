@@ -1,5 +1,7 @@
 <template>
     <main-layout :title="__('sections.budgets.title')">
-        <budgets-crud />
+        <card>
+            <budgets-crud />
+        </card>
     </main-layout>
 </template>

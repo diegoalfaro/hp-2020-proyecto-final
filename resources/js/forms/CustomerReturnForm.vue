@@ -30,11 +30,13 @@
         </div>
 
         <div class="col-md-12">
-            <customer-return-products-crud
-                :readonly="!interactiveAction"
-                :items="formData.products"
-                @items="$set(formData, 'products', $event)"
-            />
+            <card title="Detalles de la devolución">
+                <customer-return-products-crud
+                    :readonly="!interactiveAction"
+                    :items="formData.products"
+                    @items="$set(formData, 'products', $event)"
+                />
+            </card>
         </div>
     </form>
 </template>

@@ -1,13 +1,11 @@
 <template>
-    <card>
-        <template #header>
-            <div class="row">
-                <div class="col-6 align-self-center">{{ title }}</div>
-                <div class="col-6 text-end">
+    <div>
+        <row class="row-cols-auto justify-content-end mb-2">
+            <row-col>
+                <btn-group>
                     <btn
                         v-if="!!$props.getData"
                         @click="handleReload"
-                        :outline="true"
                         color="dark"
                         :title="__('actions.reload')"
                         data-bs-toggle="tooltip"
@@ -47,18 +45,22 @@
                     >
                         <icon name="plus-circle" />
                     </btn>
-                </div>
-            </div>
-        </template>
+                </btn-group>
+            </row-col>
+        </row>
 
-        <list
-            ref="list"
-            height="50vh"
-            :fields="fields"
-            :contextMenu="contextMenu"
-            :items="localItems"
-            @selection="selection = $event"
-        />
+        <row>
+            <row-col>
+                <list
+                    ref="list"
+                    height="50vh"
+                    :fields="fields"
+                    :contextMenu="contextMenu"
+                    :items="localItems"
+                    @selection="selection = $event"
+                />
+            </row-col>
+        </row>
 
         <modal size="lg" ref="modal" :title="modalTitle">
             <component
@@ -81,7 +83,7 @@
                 </template>
             </template>
         </modal>
-    </card>
+    </div>
 </template>
 
 <script>

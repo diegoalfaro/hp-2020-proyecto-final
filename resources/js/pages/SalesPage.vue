@@ -1,5 +1,7 @@
 <template>
     <main-layout :title="__('sections.sales.title')">
-        <sales-crud />
+        <card>
+            <sales-crud />
+        </card>
     </main-layout>
 </template>

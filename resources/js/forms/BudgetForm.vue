@@ -64,11 +64,13 @@
         </div>
 
         <div class="col-md-12">
-            <budget-products-crud
-                :readonly="!interactiveAction"
-                :items="formData.products"
-                @items="$set(formData, 'products', $event)"
-            />
+            <card title="Detalles del presupuesto">
+                <budget-products-crud
+                    :readonly="!interactiveAction"
+                    :items="formData.products"
+                    @items="$set(formData, 'products', $event)"
+                />
+            </card>
         </div>
     </form>
 </template>

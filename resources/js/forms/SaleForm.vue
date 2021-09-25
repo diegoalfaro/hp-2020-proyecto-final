@@ -30,11 +30,13 @@
         </div>
 
         <div class="col-md-12">
-            <sale-products-crud
-                :readonly="!interactiveAction"
-                :items="formData.products"
-                @items="$set(formData, 'products', $event)"
-            />
+            <card title="Detalles de la venta">
+                <sale-products-crud
+                    :readonly="!interactiveAction"
+                    :items="formData.products"
+                    @items="$set(formData, 'products', $event)"
+                />
+            </card>
         </div>
 
         <div class="col-md-12">
