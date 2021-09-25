@@ -16,7 +16,13 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ProductBrandController;
 
 Route::get('/customer_returns/{customer_return}/document', [CustomerReturnController::class, 'document']);
+Route::get('/customer_payments/{customer_payment}/document', [CustomerPaymentController::class, 'document']);
 Route::get('/supplier_returns/{supplier_return}/document', [SupplierReturnController::class, 'document']);
+Route::get('/supplier_payments/{supplier_payment}/document', [SupplierPaymentController::class, 'document']);
+Route::get('/sales/{sale}/document', [SaleController::class, 'document']);
+Route::get('/budgets/{budget}/document', [BudgetController::class, 'document']);
+Route::get('/repairs/{repair}/document', [RepairController::class, 'document']);
+
 
 Route::resources([
     'customers' => CustomerController::class,

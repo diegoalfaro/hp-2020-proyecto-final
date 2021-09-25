@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Repair;
 use App\Models\Product;
+use Dompdf\Dompdf;
 
 class RepairController extends Controller
 {
@@ -15,6 +16,21 @@ class RepairController extends Controller
     public function show(Repair $repair)
     {
         return $repair;
+    }
+
+    public function document(Repair $repair)
+    {
+        $dompdf = new Dompdf();
+        $data = [
+            'repair' => $repair,
+            'customer' => $repair->customer,
+            'products' => $repair->products()->get(),
+        ];
+        $html = view('documents/repair', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("reparacion_$repair->id.pdf");
     }
 
     public function store(Request $request)

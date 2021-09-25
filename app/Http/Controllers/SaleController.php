@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sale;
 use App\Models\Product;
+use Dompdf\Dompdf;
 
 class SaleController extends Controller
 {
@@ -15,6 +16,21 @@ class SaleController extends Controller
     public function show(Sale $sale)
     {
         return $sale;
+    }
+
+    public function document(Sale $sale)
+    {
+        $dompdf = new Dompdf();
+        $data = [
+            'sale' => $sale,
+            'customer' => $sale->customer,
+            'products' => $sale->products()->get(),
+        ];
+        $html = view('documents/sale', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("ventas_$sale->id.pdf");
     }
 
     public function store(Request $request)

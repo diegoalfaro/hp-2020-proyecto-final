@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Budget;
 use App\Models\Product;
+use Dompdf\Dompdf;
 
 class BudgetController extends Controller
 {
@@ -15,6 +16,21 @@ class BudgetController extends Controller
     public function show(Budget $budget)
     {
         return $budget;
+    }
+
+    public function document(Budget $budget)
+    {
+        $dompdf = new Dompdf();
+        $data = [
+            'budget' => $budget,
+            'customer' => $budget->customer,
+            'products' => $budget->products()->get(),
+        ];
+        $html = view('documents/budget', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("presupuesto_$budget->id.pdf");
     }
 
     public function store(Request $request)
