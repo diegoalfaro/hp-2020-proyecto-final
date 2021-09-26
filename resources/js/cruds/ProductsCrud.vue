@@ -49,18 +49,18 @@ export default {
                 },
                 {
                     ...moneyFieldDefault,
-                    title: this.__("fields.cost"),
-                    field: "cost",
-                },
-                {
-                    ...moneyFieldDefault,
-                    title: this.__("fields.profit"),
-                    field: "profit",
+                    title: this.__("fields.cost_price"),
+                    field: "cost_price",
                 },
                 {
                     ...moneyFieldDefault,
                     title: this.__("fields.list_price"),
                     field: "list_price",
+                },
+                {
+                    ...moneyFieldDefault,
+                    title: this.__("fields.profit"),
+                    field: "profit",
                 },
                 {
                     ...numberFieldDefault,

@@ -162,7 +162,6 @@ export default {
             },
             layoutColumnsOnNewData: true,
             selection: [],
-            initialSort: [{ column: "id", dir: "asc" }],
         };
     },
 

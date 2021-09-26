@@ -61,4 +61,8 @@ return [
         'title' => 'Devoluciones a proveedores',
         'icon' => 'exchange-alt'
     ],
+    'supplierPurchases' => [
+        'title' => 'Compras a proveedores',
+        'icon' => 'shopping-cart'
+    ],
 ];

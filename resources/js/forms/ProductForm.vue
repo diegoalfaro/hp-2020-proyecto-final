@@ -60,8 +60,8 @@
         </div>
 
         <div class="col-md-4">
-            <label for="cost" class="form-label">
-                {{ __("fields.cost") }} <em class="text-danger">*</em>
+            <label for="cost_price" class="form-label">
+                {{ __("fields.cost_price") }} <em class="text-danger">*</em>
             </label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
@@ -71,8 +71,8 @@
                     max="99999999.00"
                     step="0.01"
                     class="form-control"
-                    id="cost"
-                    v-model="formData.cost"
+                    id="cost_price"
+                    v-model="formData.cost_price"
                     :disabled="!interactiveAction"
                     required
                 />
@@ -150,7 +150,7 @@ export default {
             return false;
         },
         profit() {
-            return this.formData.list_price - this.formData.cost;
+            return this.formData.list_price - this.formData.cost_price;
         },
     },
 

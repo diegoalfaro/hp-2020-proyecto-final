@@ -9,21 +9,39 @@
 
 <script>
 export default {
+    props: {
+        supplierId: {
+            type: Number,
+        },
+    },
+
     data() {
         return {
-            options: [],
+            products: [],
         };
     },
 
     async mounted() {
         const { data } = await axios.get("/api/products");
-        this.options = data.map((item) => ({
+        this.products = data.map((item) => ({
             label: __("selectors.product", {
                 brand: item.product_brand.name,
                 ...item,
             }),
             ...item,
         }));
+    },
+
+    computed: {
+        options() {
+            if (this.supplierId) {
+                return this.products.filter(
+                    (option) => option.supplier.id == this.supplierId
+                );
+            } else {
+                return this.products;
+            }
+        },
     },
 };
 </script>

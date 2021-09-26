@@ -14,11 +14,13 @@ use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\RepairController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ProductBrandController;
+use App\Http\Controllers\SupplierPurchaseController;
 
 Route::get('/customer_returns/{customer_return}/document', [CustomerReturnController::class, 'document']);
 Route::get('/customer_payments/{customer_payment}/document', [CustomerPaymentController::class, 'document']);
 Route::get('/supplier_returns/{supplier_return}/document', [SupplierReturnController::class, 'document']);
 Route::get('/supplier_payments/{supplier_payment}/document', [SupplierPaymentController::class, 'document']);
+Route::get('/supplier_purchases/{supplier_purchase}/document', [SupplierPurchaseController::class, 'document']);
 Route::get('/sales/{sale}/document', [SaleController::class, 'document']);
 Route::get('/budgets/{budget}/document', [BudgetController::class, 'document']);
 Route::get('/repairs/{repair}/document', [RepairController::class, 'document']);
@@ -38,6 +40,7 @@ Route::resources([
     'customer_payments' => CustomerPaymentController::class,
     'customer_returns' => CustomerReturnController::class,
     'supplier_returns' => SupplierReturnController::class,
+    'supplier_purchases' => SupplierPurchaseController::class,
 ], [
     'except' => ['create', 'edit']
 ]);

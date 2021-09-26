@@ -13,7 +13,7 @@ class Product extends Model
         'supplier_id',
         'product_brand_id',
         'name',
-        'cost',
+        'cost_price',
         'list_price',
         'initial_stock'
     ];
@@ -30,7 +30,7 @@ class Product extends Model
 
     public function getProfitAttribute()
     {
-        return $this->list_price - $this->cost;
+        return $this->list_price - $this->cost_price;
     }
 
     public function getStockAttribute()

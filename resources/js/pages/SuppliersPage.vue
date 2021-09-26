@@ -10,6 +10,12 @@
                         {{ __("sections.suppliers.title") }}
                     </nav-item>
                     <nav-item
+                        @click="currentTab = tabs.supplierPurchases"
+                        :active="currentTab == tabs.supplierPurchases"
+                    >
+                        {{ __("sections.supplierPurchases.title") }}
+                    </nav-item>
+                    <nav-item
                         @click="currentTab = tabs.supplierPayments"
                         :active="currentTab == tabs.supplierPayments"
                     >
@@ -30,11 +36,13 @@
 
 <script>
 import SuppliersCrud from "../cruds/SuppliersCrud.vue";
+import SupplierPurchasesCrud from "../cruds/SupplierPurchasesCrud.vue";
 import SupplierPaymentsCrud from "../cruds/SupplierPaymentsCrud.vue";
 import SupplierReturnsCrud from "../cruds/SupplierReturnsCrud.vue";
 
 const tabs = {
     suppliers: SuppliersCrud,
+    supplierPurchases: SupplierPurchasesCrud,
     supplierPayments: SupplierPaymentsCrud,
     supplierReturns: SupplierReturnsCrud,
 };

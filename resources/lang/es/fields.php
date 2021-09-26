@@ -29,7 +29,7 @@ return [
     'provider' => 'Proveedor',
     'name' => 'Nombre',
     'brand' => 'Marca',
-    'cost' => 'Costo',
+    'cost_price' => 'Costo',
     'profit' => 'Ganancia',
     'list_price' => 'Precio unitario',
     'initial_stock' => 'Stock inicial',

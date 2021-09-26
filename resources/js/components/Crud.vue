@@ -65,6 +65,7 @@
         <modal size="lg" ref="modal" :title="modalTitle">
             <component
                 ref="form"
+                v-bind="formProps"
                 :is="form"
                 :action="action"
                 :formData="formData"
@@ -127,6 +128,12 @@ export default {
         },
         form: {
             required: true,
+        },
+        formProps: {
+            type: Object,
+            default() {
+                return {};
+            },
         },
         readonly: {
             type: Boolean,
