@@ -12,6 +12,7 @@
                 id="supplier_id"
                 v-model="formData.supplier_id"
                 :disabled="!interactiveAction"
+                required
             />
         </div>
 
@@ -37,6 +38,25 @@
                     @items="$set(formData, 'products', $event)"
                 />
             </card>
+        </div>
+
+        <div class="col-md-6 offset-md-6">
+            <label for="total" class="form-label">
+                {{ __("fields.total") }}
+            </label>
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input
+                    type="number"
+                    min="0.01"
+                    max="99999999.00"
+                    step="0.01"
+                    class="form-control"
+                    id="total"
+                    v-model="total"
+                    readonly
+                />
+            </div>
         </div>
     </form>
 </template>
@@ -69,6 +89,12 @@ export default {
                     return true;
             }
             return false;
+        },
+        total() {
+            return (this.formData.products || []).reduce(
+                (acc, product) => parseFloat(acc + product.detail.subtotal),
+                0
+            );
         },
     },
 

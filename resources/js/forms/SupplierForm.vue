@@ -6,7 +6,7 @@
     >
         <div class="col-md-6">
             <label for="business_name" class="form-label">
-                {{ __("fields.business_name") }}
+                {{ __("fields.business_name") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="text"
@@ -20,7 +20,7 @@
 
         <div class="col-md-6">
             <label for="cuit" class="form-label">
-                {{ __("fields.cuit") }}
+                {{ __("fields.cuit") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="number"
@@ -37,7 +37,7 @@
 
         <div class="col-md-6">
             <label for="email" class="form-label">
-                {{ __("fields.email") }}
+                {{ __("fields.email") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="email"
@@ -51,7 +51,7 @@
 
         <div class="col-md-6">
             <label for="phone" class="form-label">
-                {{ __("fields.phone") }}
+                {{ __("fields.phone") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="tel"
@@ -65,7 +65,7 @@
 
         <div class="col-md-6">
             <label for="address" class="form-label">
-                {{ __("fields.address") }}
+                {{ __("fields.address") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="text"
@@ -79,7 +79,7 @@
 
         <div class="col-md-6">
             <label for="postal_code" class="form-label">
-                {{ __("fields.postal_code") }}
+                {{ __("fields.postal_code") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="number"

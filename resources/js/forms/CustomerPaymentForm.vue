@@ -6,18 +6,19 @@
     >
         <div class="col-md-6">
             <label for="customer_id" class="form-label">
-                {{ __("fields.customer") }}
+                {{ __("fields.customer") }} <em class="text-danger">*</em>
             </label>
             <customer-selector
                 id="customer_id"
                 v-model="formData.customer_id"
                 :disabled="!interactiveAction"
+                required
             />
         </div>
 
         <div class="col-md-6">
             <label for="date" class="form-label">
-                {{ __("fields.date") }}
+                {{ __("fields.date") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="date"
@@ -31,7 +32,7 @@
 
         <div class="col-md-6">
             <label for="amount" class="form-label">
-                {{ __("fields.amount") }}
+                {{ __("fields.amount") }} <em class="text-danger">*</em>
             </label>
             <div class="input-group">
                 <span class="input-group-text">$</span>

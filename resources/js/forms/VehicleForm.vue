@@ -6,7 +6,7 @@
     >
         <div class="col-md-6">
             <label for="domain" class="form-label">
-                {{ __("fields.domain") }}
+                {{ __("fields.domain") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="text"
@@ -21,18 +21,19 @@
 
         <div class="col-md-6">
             <label for="vehicle_brand_id" class="form-label">
-                {{ __("fields.brand") }}
+                {{ __("fields.brand") }} <em class="text-danger">*</em>
             </label>
             <vehicle-brand-selector
                 id="vehicle_brand_id"
                 v-model="formData.vehicle_brand_id"
                 :disabled="!interactiveAction"
+                required
             />
         </div>
 
         <div class="col-md-6">
             <label for="model" class="form-label">
-                {{ __("fields.model") }}
+                {{ __("fields.model") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="text"
@@ -46,7 +47,7 @@
 
         <div class="col-md-6">
             <label for="year" class="form-label">
-                {{ __("fields.year") }}
+                {{ __("fields.year") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="number"

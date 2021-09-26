@@ -6,7 +6,7 @@
     >
         <div class="col-md-12">
             <label for="name" class="form-label">
-                {{ __("fields.name") }}
+                {{ __("fields.name") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="text"

@@ -4,9 +4,9 @@
         @items="localItems = $event"
         :fields="fields"
         :form="form"
-        :create="createSaleProduct"
-        :update="updateSaleProduct"
-        :delete="deleteSaleProduct"
+        :create="(formData) => createProductDetail(formData)"
+        :update="(formData) => updateProductDetail(formData)"
+        :delete="(formData) => deleteProductDetail(formData)"
         :readonly="readonly"
     />
 </template>
@@ -79,22 +79,28 @@ export default {
             ],
             localItems: [],
             form: ProductDetailForm,
-            async createSaleProduct(formData) {
-                formData.detail.list_price = formData.list_price;
-                formData.detail.subtotal =
-                    formData.list_price * formData.detail.quantity;
-                this.localItems.push(formData);
+            async createProductDetail(formData) {
+                await this.upsertProductDetail(formData);
             },
-            async updateSaleProduct(formData) {
+            async updateProductDetail(formData) {
+                await this.upsertProductDetail(formData);
+            },
+            async upsertProductDetail(formData) {
                 formData.detail.list_price = formData.list_price;
                 formData.detail.subtotal =
                     formData.list_price * formData.detail.quantity;
+
                 const index = this.localItems.findIndex(
                     (item) => item.id == formData.id
                 );
-                this.$set(this.localItems, index, formData);
+
+                if (index >= 0) {
+                    this.$set(this.localItems, index, formData);
+                } else {
+                    this.localItems.push(formData);
+                }
             },
-            async deleteSaleProduct({ id }) {
+            async deleteProductDetail({ id }) {
                 const index = this.localItems.findIndex(
                     (item) => item.id == id
                 );

@@ -6,18 +6,19 @@
     >
         <div class="col-md-6">
             <label for="id" class="form-label">
-                {{ __("fields.product") }}
+                {{ __("fields.product") }} <em class="text-danger">*</em>
             </label>
             <product-selector
                 id="id"
                 v-model="productId"
                 :disabled="action != 'add'"
+                required
             />
         </div>
 
         <div class="col-md-3">
             <label for="quantity" class="form-label">
-                {{ __("fields.quantity") }}
+                {{ __("fields.quantity") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="number"
@@ -46,8 +47,7 @@
                     class="form-control"
                     id="subtotal"
                     v-model="subtotal"
-                    :disabled="true"
-                    required
+                    readonly
                 />
             </div>
         </div>

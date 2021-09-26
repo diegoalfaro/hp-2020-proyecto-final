@@ -6,7 +6,7 @@
     >
         <div class="col-md-6">
             <label for="name" class="form-label">
-                {{ __("fields.name") }}
+                {{ __("fields.name") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="text"
@@ -20,7 +20,7 @@
 
         <div class="col-md-6">
             <label for="initial_stock" class="form-label">
-                {{ __("fields.initial_stock") }}
+                {{ __("fields.initial_stock") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="number"
@@ -37,29 +37,31 @@
 
         <div class="col-md-6">
             <label for="supplier_id" class="form-label">
-                {{ __("fields.supplier") }}
+                {{ __("fields.supplier") }} <em class="text-danger">*</em>
             </label>
             <supplier-selector
                 id="supplier_id"
                 v-model="formData.supplier_id"
                 :disabled="!interactiveAction"
+                required
             />
         </div>
 
         <div class="col-md-6">
             <label for="brand" class="form-label">
-                {{ __("fields.brand") }}
+                {{ __("fields.brand") }} <em class="text-danger">*</em>
             </label>
             <product-brand-selector
                 id="product_brand_id"
                 v-model="formData.product_brand_id"
                 :disabled="!interactiveAction"
+                required
             />
         </div>
 
         <div class="col-md-4">
             <label for="cost" class="form-label">
-                {{ __("fields.cost") }}
+                {{ __("fields.cost") }} <em class="text-danger">*</em>
             </label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
@@ -79,7 +81,7 @@
 
         <div class="col-md-4">
             <label for="list_price" class="form-label">
-                {{ __("fields.list_price") }}
+                {{ __("fields.list_price") }} <em class="text-danger">*</em>
             </label>
             <div class="input-group">
                 <span class="input-group-text">$</span>
@@ -111,8 +113,7 @@
                     class="form-control"
                     id="profit"
                     v-model="profit"
-                    :disabled="true"
-                    required
+                    readonly
                 />
             </div>
         </div>

@@ -38,12 +38,14 @@ class SupplierReturnController extends Controller
         $params = $request->all();
         $products = [];
         
-        foreach ($params['products'] as $item) {
-            $product = Product::find($item['id']);
-            $products[$product->id] = [
-                'quantity' => $item['detail']['quantity'],
-                'list_price' => $product->list_price,
-            ];
+        if (isset($params['products']) && !empty($params['products'])) {
+            foreach ($params['products'] as $item) {
+                $product = Product::find($item['id']);
+                $products[$product->id] = [
+                    'quantity' => $item['detail']['quantity'],
+                    'list_price' => $product->list_price,
+                ];
+            }
         }
 
         $supplierReturn = SupplierReturn::create($params);
@@ -57,12 +59,14 @@ class SupplierReturnController extends Controller
         $params = $request->all();
         $products = [];
         
-        foreach ($params['products'] as $item) {
-            $product = Product::find($item['id']);
-            $products[$product->id] = [
-                'quantity' => $item['detail']['quantity'],
-                'list_price' => $product->list_price,
-            ];
+        if (isset($params['products']) && !empty($params['products'])) {
+            foreach ($params['products'] as $item) {
+                $product = Product::find($item['id']);
+                $products[$product->id] = [
+                    'quantity' => $item['detail']['quantity'],
+                    'list_price' => $product->list_price,
+                ];
+            }
         }
         
         $supplierReturn->update($params);
