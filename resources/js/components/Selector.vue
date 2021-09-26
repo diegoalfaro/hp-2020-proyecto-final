@@ -14,6 +14,13 @@
                 v-on="events"
             />
         </template>
+        <template #no-options="{ search }">
+            {{
+                search
+                    ? `No se encontraron resultados para "${search}"`
+                    : "No existen opciones"
+            }}
+        </template>
     </v-select>
 </template>
 
