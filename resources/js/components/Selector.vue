@@ -17,8 +17,8 @@
         <template #no-options="{ search }">
             {{
                 search
-                    ? `No se encontraron resultados para "${search}"`
-                    : "No existen opciones"
+                    ? __("placeholders.selector_empty_search", { search })
+                    : __("placeholders.selector_empty")
             }}
         </template>
     </v-select>
