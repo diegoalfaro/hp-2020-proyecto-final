@@ -6,7 +6,7 @@
     >
         <div class="col-md-6">
             <label for="supplier_id" class="form-label">
-                {{ __("fields.supplier") }}
+                {{ __("fields.supplier") }} <em class="text-danger">*</em>
             </label>
             <supplier-selector
                 id="supplier_id"
@@ -18,7 +18,7 @@
 
         <div class="col-md-6">
             <label for="date" class="form-label">
-                {{ __("fields.date") }}
+                {{ __("fields.date") }} <em class="text-danger">*</em>
             </label>
             <input
                 type="date"

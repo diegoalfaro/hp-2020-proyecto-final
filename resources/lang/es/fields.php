@@ -31,7 +31,7 @@ return [
     'brand' => 'Marca',
     'cost' => 'Costo',
     'profit' => 'Ganancia',
-    'list_price' => 'Precio de lista',
+    'list_price' => 'Precio unitario',
     'initial_stock' => 'Stock inicial',
     'category' => 'Categoría',
     'stock' => 'Stock',
