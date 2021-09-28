@@ -35,4 +35,19 @@ class ProductController extends Controller
 
         return response()->json(null, 204);
     }
+
+    public function priceUpdate(Request $request)
+    {
+        $products = $request->input('products');
+        $percentage = $request->input('percentage');
+        $multiplier = 1 + floatval($percentage) / 100;
+        foreach ($products as $product) {
+            $product = Product::find($product['id']);
+            $data = [
+                "cost_price" => round(floatval($product->cost_price) * floatval($multiplier)),
+                "list_price" => round(floatval($product->list_price) * floatval($multiplier)),
+            ];
+            $product->update($data);
+        }
+    }
 }

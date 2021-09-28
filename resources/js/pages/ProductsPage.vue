@@ -15,6 +15,12 @@
                     >
                         {{ __("sections.product_brands.title") }}
                     </nav-item>
+                    <nav-item
+                        @click="currentTab = tabs.productPriceUpdate"
+                        :active="currentTab == tabs.productPriceUpdate"
+                    >
+                        {{ __("sections.product_price_update.title") }}
+                    </nav-item>
                 </nav-tabs>
             </template>
             <components :is="currentTab" />
@@ -25,10 +31,12 @@
 <script>
 import ProductsCrud from "../cruds/ProductsCrud.vue";
 import ProductBrandsCrud from "../cruds/ProductBrandsCrud.vue";
+import ProductPriceUpdatePage from "./ProductPriceUpdatePage.vue";
 
 const tabs = {
     products: ProductsCrud,
     productBrands: ProductBrandsCrud,
+    productPriceUpdate: ProductPriceUpdatePage,
 };
 
 export default {

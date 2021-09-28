@@ -49,4 +49,5 @@ return [
     'customer' => 'Cliente',
     'supplier' => 'Proveedor',
     'product' => 'Producto',
+    'percentage' => 'Porcentaje',
 ];

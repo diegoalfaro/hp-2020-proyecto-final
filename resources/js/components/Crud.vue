@@ -53,7 +53,6 @@
             <row-col>
                 <list
                     ref="list"
-                    height="50vh"
                     :fields="fields"
                     :contextMenu="contextMenu"
                     :items="localItems"

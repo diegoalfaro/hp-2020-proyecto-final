@@ -65,4 +65,8 @@ return [
         'title' => 'Compras a proveedores',
         'icon' => 'shopping-cart'
     ],
+    'product_price_update' => [
+        'title' => 'Actualizar precios',
+        'icon' => 'hand-holding-usd'
+    ],
 ];
