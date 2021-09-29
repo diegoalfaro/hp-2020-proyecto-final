@@ -9,8 +9,25 @@
 
 <style lang="scss">
 @import "~vue-tabulator/dist/scss/bootstrap/tabulator_bootstrap4";
-.tabulator .tabulator-header {
-    border-top: 0;
+.tabulator {
+    .tabulator-header {
+        border-top: 0;
+    }
+    .tabulator-footer {
+        .tabulator-page {
+            color: #1a63c1 !important;
+        }
+        .tabulator-page.active {
+            border-color: #1a63c1 !important;
+            background-color: #1a63c1 !important;
+            color: #fff !important;
+        }
+        .tabulator-page:disabled {
+            border-color: #dee2e6 !important;
+            background: #f1f1f1 !important;
+            color: #6c757d !important;
+        }
+    }
 }
 .tabulator-menu {
     position: absolute;

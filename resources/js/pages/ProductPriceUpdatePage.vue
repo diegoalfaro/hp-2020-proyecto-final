@@ -46,9 +46,9 @@
                     </div>
                 </row-col>
                 <row-col>
-                    <btn :disabled="percentage == 0" @click="priceUpdate"
-                        >Actualizar precios</btn
-                    >
+                    <btn :disabled="percentage == 0" @click="priceUpdate">
+                        Actualizar precios
+                    </btn>
                 </row-col>
             </row>
         </card>

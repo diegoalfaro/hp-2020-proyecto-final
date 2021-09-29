@@ -50,4 +50,5 @@ return [
     'supplier' => 'Proveedor',
     'product' => 'Producto',
     'percentage' => 'Porcentaje',
+    'document_type' => 'Tipo de comprobante',
 ];

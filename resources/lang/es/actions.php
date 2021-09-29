@@ -16,4 +16,5 @@ return [
     'deselect' => 'Quitar selección',
     'download' => 'Descargar',
     'downloadDocument' => 'Descargar comprobante',
+    'viewBalanceReport' => 'Ver reporte de cuenta',
 ];
