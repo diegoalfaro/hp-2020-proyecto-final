@@ -14,14 +14,8 @@ class CreateRepairProductTable extends Migration
     public function up()
     {
         Schema::create('repair_product', function (Blueprint $table) {
-            $table->foreignId('repair_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('product_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('repair_id')->constrained();
+            $table->foreignId('product_id')->constrained();
             $table->unique(['repair_id', 'product_id']);
             $table->integer('quantity');
             $table->integer('list_price');

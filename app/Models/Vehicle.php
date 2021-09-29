@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Vehicle extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable = [
         'domain',
         'vehicle_brand_id',
@@ -16,6 +19,6 @@ class Vehicle extends Model
 
     public function vehicle_brand()
     {
-        return $this->belongsTo(VehicleBrand::class);
+        return $this->belongsTo(VehicleBrand::class)->withTrashed();
     }
 }

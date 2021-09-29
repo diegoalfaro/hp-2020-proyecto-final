@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SupplierPurchase extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable = [
         'supplier_id',
         'date',
@@ -13,7 +16,7 @@ class SupplierPurchase extends Model
 
     public function supplier()
     {
-        return $this->belongsTo(Supplier::class);
+        return $this->belongsTo(Supplier::class)->withTrashed();
     }
 
     public function products()

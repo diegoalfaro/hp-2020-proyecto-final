@@ -15,13 +15,11 @@ class CreateSupplierPaymentsTable extends Migration
     {
         Schema::create('supplier_payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('supplier_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('supplier_id')->constrained();
             $table->date('date');
             $table->float('amount');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

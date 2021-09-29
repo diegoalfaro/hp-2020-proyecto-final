@@ -1,12 +1,33 @@
 <template>
-    <crud
-        :get-data="getData"
-        :fields="fields"
-        :form="form"
-        :create="createSupplier"
-        :update="updateSupplier"
-        :delete="deleteSupplier"
-    />
+    <div>
+        <crud
+            :get-data="getData"
+            :fields="fields"
+            :form="form"
+            :create="createSupplier"
+            :update="updateSupplier"
+            :delete="deleteSupplier"
+            :additionalContextMenuItems="additionalContextMenuItems"
+        />
+        <modal
+            ref="balanceReportModal"
+            :title="__('actions.viewBalanceReport')"
+        >
+            <balance-report
+                :items="balanceReportItems"
+                :total="balanceReportTotal"
+            />
+            <template #footer>
+                <btn
+                    outline
+                    color="dark"
+                    @click="$refs.balanceReportModal.hide()"
+                >
+                    {{ __("actions.close") }}
+                </btn>
+            </template>
+        </modal>
+    </div>
 </template>
 
 <script>
@@ -68,6 +89,14 @@ export default {
                     field: "updated_at",
                 },
             ],
+            additionalContextMenuItems: [
+                {
+                    label: this.__("actions.viewBalanceReport"),
+                    action: (_, row) => this.viewBalanceReport(row.getData()),
+                },
+            ],
+            balanceReportItems: [],
+            balanceReportTotal: 0,
             form: SupplierForm,
             async getData() {
                 const { data } = await axios.get("/api/suppliers");
@@ -81,6 +110,14 @@ export default {
             },
             async deleteSupplier({ id }) {
                 await axios.delete(`/api/suppliers/${id}`);
+            },
+            async viewBalanceReport({ id }) {
+                const {
+                    data: { items, total },
+                } = await axios.get(`/api/suppliers/${id}/balance_report`);
+                this.balanceReportItems = items;
+                this.balanceReportTotal = total;
+                this.$refs.balanceReportModal.show();
             },
         };
     },

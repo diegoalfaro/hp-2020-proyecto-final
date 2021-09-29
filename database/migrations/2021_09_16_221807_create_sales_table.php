@@ -15,13 +15,11 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained();
             $table->date('date');
             $table->string('observations')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

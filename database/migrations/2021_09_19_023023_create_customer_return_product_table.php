@@ -14,14 +14,8 @@ class CreateCustomerReturnProductTable extends Migration
     public function up()
     {
         Schema::create('customer_return_product', function (Blueprint $table) {
-            $table->foreignId('customer_return_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('product_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('customer_return_id')->constrained();
+            $table->foreignId('product_id')->constrained();
             $table->unique(['customer_return_id', 'product_id']);
             $table->integer('quantity');
             $table->integer('list_price');

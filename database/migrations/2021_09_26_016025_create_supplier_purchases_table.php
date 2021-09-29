@@ -15,12 +15,10 @@ class CreateSupplierPurchasesTable extends Migration
     {
         Schema::create('supplier_purchases', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('supplier_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('supplier_id')->constrained();
             $table->date('date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -26,6 +26,7 @@ Route::get('/budgets/{budget}/document', [BudgetController::class, 'document']);
 Route::get('/repairs/{repair}/document', [RepairController::class, 'document']);
 Route::post('/products/price_update', [ProductController::class, 'priceUpdate']);
 Route::get('/customers/{customer}/balance_report', [CustomerController::class, 'balanceReport']);
+Route::get('/suppliers/{supplier}/balance_report', [SupplierController::class, 'balanceReport']);
 
 
 Route::resources([

@@ -38,44 +38,7 @@ class CustomerController extends Controller
 
     public function balanceReport(Customer $customer)
     {
-        $sales = array_map(function($item){
-            return [
-                'type' => __('document_types.sale'),
-                'date' => $item['date'],
-                'amount' => -floatval($item['total']),
-            ];
-        }, $customer->sales()->get()->toArray());
-
-        $repairs = array_map(function($item){
-            return [
-                'type' => __('document_types.repair'),
-                'date' => $item['date'],
-                'amount' => -floatval($item['total']),
-            ];
-        }, $customer->repairs()->get()->toArray());
-
-        $payments = array_map(function($item){
-            return [
-                'type' => __('document_types.payment'),
-                'date' => $item['date'],
-                'amount' => floatval($item['amount']),
-            ];
-        }, $customer->customerPayments()->get()->toArray());
-
-        $items = array_merge($sales, $repairs, /*$returns,*/ $payments);
-
-        usort($items, function($a, $b) {
-            return $a['date'] < $b['date'];
-        });
-
-        $total = array_reduce($items, function($carry, $item){
-            return $carry + $item['amount'];
-        }, 0);
-
-        return [
-            'items' => $items,
-            'total' => $total
-        ];
+        return $customer->balanceReport();
     }
 
 }

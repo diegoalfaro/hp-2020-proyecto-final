@@ -35,4 +35,9 @@ class SupplierController extends Controller
 
         return response()->json(null, 204);
     }
+
+    public function balanceReport(Supplier $supplier)
+    {
+        return $supplier->balanceReport();
+    }
 }

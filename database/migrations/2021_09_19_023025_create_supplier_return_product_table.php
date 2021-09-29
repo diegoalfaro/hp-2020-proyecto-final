@@ -14,14 +14,8 @@ class CreateSupplierReturnProductTable extends Migration
     public function up()
     {
         Schema::create('supplier_return_product', function (Blueprint $table) {
-            $table->foreignId('supplier_return_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('product_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('supplier_return_id')->constrained();
+            $table->foreignId('product_id')->constrained();
             $table->unique(['supplier_return_id', 'product_id']);
             $table->integer('quantity');
             $table->integer('list_price');

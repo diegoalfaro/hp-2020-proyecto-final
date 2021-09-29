@@ -15,13 +15,11 @@ class CreateRepairsTable extends Migration
     {
         Schema::create('repairs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained();
             $table->date('date');
             $table->float('workforce_cost');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

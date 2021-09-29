@@ -15,14 +15,12 @@ class CreateBudgetsTable extends Migration
     {
         Schema::create('budgets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained();
             $table->date('date');
             $table->date('due_date');
             $table->float('workforce_cost');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

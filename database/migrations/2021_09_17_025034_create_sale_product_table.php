@@ -14,14 +14,8 @@ class CreateSaleProductTable extends Migration
     public function up()
     {
         Schema::create('sale_product', function (Blueprint $table) {
-            $table->foreignId('sale_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('product_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('sale_id')->constrained();
+            $table->foreignId('product_id')->constrained();
             $table->unique(['sale_id', 'product_id']);
             $table->integer('quantity');
             $table->integer('list_price');

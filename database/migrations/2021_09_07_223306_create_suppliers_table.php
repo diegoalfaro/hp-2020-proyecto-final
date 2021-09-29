@@ -22,6 +22,7 @@ class CreateSuppliersTable extends Migration
             $table->integer('postal_code');
             $table->string('email')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

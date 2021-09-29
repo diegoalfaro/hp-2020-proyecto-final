@@ -4,7 +4,7 @@
         v-on="$listeners"
         v-model="localValue"
         :placeholder="__('placeholders.select')"
-        :class="[{ valid: valid }]"
+        :class="[{ valid }]"
     >
         <template #search="{ attributes, events }">
             <input
@@ -74,6 +74,20 @@ $vs-dropdown-bg: #fff;
     background-repeat: no-repeat;
     background-position: right 24px center;
     background-size: calc(0.8em + 0.375rem) calc(0.8em + 0.375rem);
+}
+
+.vs__dropdown-toggle {
+    .vs__selected-options {
+        width: 0;
+
+        .vs__selected {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: calc(100% - 20px);
+            display: block;
+        }
+    }
 }
 
 @import "~vue-select/src/scss/vue-select";

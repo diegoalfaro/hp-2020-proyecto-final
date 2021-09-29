@@ -15,10 +15,7 @@ class CreateSupplierReturnsTable extends Migration
     {
         Schema::create('supplier_returns', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('supplier_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('supplier_id')->constrained();
             $table->date('date');
             $table->timestamps();
         });

@@ -15,19 +15,14 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('supplier_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('product_brand_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('supplier_id')->constrained();
+            $table->foreignId('product_brand_id')->constrained();
             $table->string('name');
             $table->float('cost_price');
             $table->float('list_price');
             $table->integer('initial_stock');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

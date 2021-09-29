@@ -14,14 +14,8 @@ class CreateBudgetProductTable extends Migration
     public function up()
     {
         Schema::create('budget_product', function (Blueprint $table) {
-            $table->foreignId('budget_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('product_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('budget_id')->constrained();
+            $table->foreignId('product_id')->constrained();
             $table->unique(['budget_id', 'product_id']);
             $table->integer('quantity');
             $table->integer('list_price');
