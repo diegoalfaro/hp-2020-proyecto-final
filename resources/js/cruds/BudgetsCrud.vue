@@ -1,13 +1,16 @@
 <template>
-    <crud
-        :get-data="getData"
-        :fields="fields"
-        :form="form"
-        :create="createBudget"
-        :update="updateBudget"
-        :delete="deleteBudget"
-        :additionalContextMenuItems="additionalContextMenuItems"
-    />
+    <div>
+        <crud
+            :get-data="getData"
+            :fields="fields"
+            :form="form"
+            :create="createBudget"
+            :update="updateBudget"
+            :delete="deleteBudget"
+            :additionalContextMenuItems="additionalContextMenuItems"
+        />
+        <confirm-modal ref="confirmModal" title="hola" />
+    </div>
 </template>
 
 <script>
@@ -118,6 +121,9 @@ export default {
                 download(data, fileName);
             },
         };
+    },
+    mounted() {
+        this.$refs.confirmModal.show();
     },
 };
 </script>

@@ -20,7 +20,7 @@ return [
     'identity' => 'DNI',
     'cuit' => 'CUIT',
     'business_name' => 'Razón social',
-    'address' => 'Dirección',
+    'address' => 'Domicilio',
     'postal_code' => 'Código postal',
     'phone' => 'Teléfono',
     'email' => 'E-mail',

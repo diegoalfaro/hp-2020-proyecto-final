@@ -5,23 +5,6 @@
         novalidate
     >
         <div class="col-md-6">
-            <label for="identity" class="form-label">
-                {{ __("fields.identity") }} <em class="text-danger">*</em>
-            </label>
-            <input
-                type="number"
-                min="1000000"
-                max="999999999"
-                step="1"
-                class="form-control"
-                id="identity"
-                v-model="formData.identity"
-                :disabled="!interactiveAction"
-                required
-            />
-        </div>
-
-        <div class="col-md-6">
             <label for="first_name" class="form-label">
                 {{ __("fields.first_name") }} <em class="text-danger">*</em>
             </label>
@@ -72,6 +55,23 @@
                 class="form-control"
                 id="address"
                 v-model="formData.address"
+                :disabled="!interactiveAction"
+                required
+            />
+        </div>
+
+        <div class="col-md-6">
+            <label for="identity" class="form-label">
+                {{ __("fields.identity") }} <em class="text-danger">*</em>
+            </label>
+            <input
+                type="number"
+                min="1000000"
+                max="999999999"
+                step="1"
+                class="form-control"
+                id="identity"
+                v-model="formData.identity"
                 :disabled="!interactiveAction"
                 required
             />

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -37,7 +38,35 @@ class Product extends Model
 
     public function getStockAttribute()
     {
-        return $this->initial_stock;
+        return DB::table('products')
+            ->where('id', $this->id)
+            ->selectSub('initial_stock', 'quantity')
+            ->union(
+                DB::table('sale_product')
+                    ->where('product_id', $this->id)
+                    ->selectSub('-quantity', 'quantity')
+            )
+            ->union(
+                DB::table('repair_product')
+                    ->where('product_id', $this->id)
+                    ->selectSub('-quantity', 'quantity')
+            )
+            ->union(
+                DB::table('customer_return_product')
+                    ->where('product_id', $this->id)
+                    ->selectSub('quantity', 'quantity')
+            )
+            ->union(
+                DB::table('supplier_return_product')
+                    ->where('product_id', $this->id)
+                    ->selectSub('-quantity', 'quantity')
+            )
+            ->union(
+                DB::table('supplier_purchase_product')
+                    ->where('product_id', $this->id)
+                    ->selectSub('quantity', 'quantity')
+            )
+            ->sum('quantity');
     }
 
     protected $appends = ['profit', 'stock'];
