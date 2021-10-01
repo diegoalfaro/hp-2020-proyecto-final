@@ -49,6 +49,7 @@ return [
     'customer' => 'Cliente',
     'supplier' => 'Proveedor',
     'product' => 'Producto',
+    'vehicle' => 'Vehículo',
     'percentage' => 'Porcentaje',
     'document_type' => 'Tipo de comprobante',
 ];

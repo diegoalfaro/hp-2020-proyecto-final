@@ -4,7 +4,7 @@
         :class="['row', 'g-3', { 'was-validated': validated }]"
         novalidate
     >
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label for="customer_id" class="form-label">
                 {{ __("fields.customer") }} <em class="text-danger">*</em>
             </label>
@@ -16,7 +16,19 @@
             />
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
+            <label for="vehicle_id" class="form-label">
+                {{ __("fields.vehicle") }} <em class="text-danger">*</em>
+            </label>
+            <vehicle-selector
+                id="vehicle_id"
+                v-model="formData.vehicle_id"
+                :disabled="!interactiveAction"
+                required
+            />
+        </div>
+
+        <div class="col-md-4">
             <label for="date" class="form-label">
                 {{ __("fields.date") }} <em class="text-danger">*</em>
             </label>
@@ -77,6 +89,19 @@
                     readonly
                 />
             </div>
+        </div>
+
+        <div class="col-md-12">
+            <label for="observations" class="form-label">
+                {{ __("fields.observations") }}
+            </label>
+            <textarea
+                type="text"
+                class="form-control"
+                id="observations"
+                v-model="formData.observations"
+                :disabled="!interactiveAction"
+            />
         </div>
     </form>
 </template>

@@ -56,11 +56,6 @@ export default {
                     field: "customer.phone",
                 },
                 {
-                    ...stringFieldDefault,
-                    title: this.__("fields.observations"),
-                    field: "observations",
-                },
-                {
                     ...moneyFieldDefault,
                     title: this.__("fields.total"),
                     field: "total",

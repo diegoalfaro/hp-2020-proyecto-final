@@ -17,7 +17,6 @@ class CreateSalesTable extends Migration
             $table->id();
             $table->foreignId('customer_id')->constrained();
             $table->date('date');
-            $table->string('observations')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

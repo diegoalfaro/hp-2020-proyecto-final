@@ -14,5 +14,5 @@
             (object) ['text' => 'Total $', 'price' => $supplierReturn->total],
         ];
     @endphp
-    <x-product-details-table :products="$products" :footerLines="$footerLines" />
+    <x-supplier-purchase-details-table :products="$products" :footerLines="$footerLines" />
 @endpush

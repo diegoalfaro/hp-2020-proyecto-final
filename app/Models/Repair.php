@@ -11,13 +11,20 @@ class Repair extends Model
     
     protected $fillable = [
         'customer_id',
+        'vehicle_id',
         'date',
-        'workforce_cost'
+        'workforce_cost',
+        'observations',
     ];
 
     public function customer()
     {
         return $this->belongsTo(Customer::class)->withTrashed();
+    }
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class)->withTrashed();
     }
 
     public function products()

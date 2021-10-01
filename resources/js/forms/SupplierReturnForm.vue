@@ -32,10 +32,11 @@
 
         <div class="col-md-12">
             <card title="Detalles de productos">
-                <product-details-crud
+                <supplier-purchase-products-crud
                     :readonly="!interactiveAction"
                     :items="formData.products"
                     @items="$set(formData, 'products', $event)"
+                    :supplier-id="formData.supplier_id"
                 />
             </card>
         </div>

@@ -24,7 +24,7 @@ class SupplierReturn extends Model
         return $this->belongsToMany(Product::class, 'supplier_return_product')
             ->using(SupplierReturnProduct::class)
             ->as('detail')
-            ->withPivot('quantity', 'list_price')
+            ->withPivot('quantity', 'cost_price')
             ->withTimestamps();
     }
 

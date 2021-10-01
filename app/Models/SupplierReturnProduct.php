@@ -10,12 +10,12 @@ class SupplierReturnProduct extends Pivot
         'supplier_return_id',
         'product_id',
         'quantity',
-        'list_price'
+        'cost_price'
     ];
 
     public function getSubtotalAttribute()
     {
-        return $this->quantity * $this->list_price;
+        return $this->quantity * $this->cost_price;
     }
 
     protected $appends = ['subtotal'];

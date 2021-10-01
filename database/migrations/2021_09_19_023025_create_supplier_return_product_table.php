@@ -18,7 +18,7 @@ class CreateSupplierReturnProductTable extends Migration
             $table->foreignId('product_id')->constrained();
             $table->unique(['supplier_return_id', 'product_id']);
             $table->integer('quantity');
-            $table->integer('list_price');
+            $table->integer('cost_price');
             $table->timestamps();
         });
     }

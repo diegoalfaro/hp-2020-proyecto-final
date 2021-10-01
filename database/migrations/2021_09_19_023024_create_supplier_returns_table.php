@@ -18,6 +18,7 @@ class CreateSupplierReturnsTable extends Migration
             $table->foreignId('supplier_id')->constrained();
             $table->date('date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

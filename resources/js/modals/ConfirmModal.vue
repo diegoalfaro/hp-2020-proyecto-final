@@ -22,10 +22,8 @@ export default {
         },
     },
 
-    methods() {
-        return {
-            ...this.$refs.modal,
-        };
+    data() {
+        return this.$refs.modal;
     },
 };
 </script>

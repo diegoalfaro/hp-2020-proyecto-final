@@ -56,6 +56,26 @@ export default {
                     field: "customer.phone",
                 },
                 {
+                    ...stringFieldDefault,
+                    title: this.__("fields.domain"),
+                    field: "vehicle.domain",
+                },
+                {
+                    ...stringFieldDefault,
+                    title: this.__("fields.brand"),
+                    field: "vehicle.vehicle_brand.name",
+                },
+                {
+                    ...stringFieldDefault,
+                    title: this.__("fields.model"),
+                    field: "vehicle.model",
+                },
+                {
+                    ...numberFieldDefault,
+                    title: this.__("fields.year"),
+                    field: "vehicle.year",
+                },
+                {
                     ...moneyFieldDefault,
                     title: this.__("fields.workforce_cost"),
                     field: "workforce_cost",
@@ -69,6 +89,11 @@ export default {
                     ...dateFieldDefault,
                     title: this.__("fields.date"),
                     field: "date",
+                },
+                {
+                    ...stringFieldDefault,
+                    title: this.__("fields.observations"),
+                    field: "observations",
                 },
                 {
                     ...datetimeFieldDefault,

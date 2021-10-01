@@ -16,4 +16,15 @@
         ];
     @endphp
     <x-product-details-table :products="$products" :footerLines="$footerLines" />
+
+    <table width="100%">
+        <thead style="background-color: lightgray;">
+            <tr>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td>{{ $sale->observations }}</td>
+        </tbody>
+    </table>
 @endpush

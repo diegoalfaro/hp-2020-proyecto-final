@@ -10,7 +10,7 @@ use Dompdf\Dompdf;
 class RepairController extends Controller
 {
     public function index() {
-        return Repair::with(['customer', 'products'])->get();
+        return Repair::with(['customer', 'vehicle.vehicle_brand', 'products'])->get();
     }
 
     public function show(Repair $repair)

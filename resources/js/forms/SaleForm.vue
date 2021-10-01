@@ -58,19 +58,6 @@
                 />
             </div>
         </div>
-
-        <div class="col-md-12">
-            <label for="observations" class="form-label">
-                {{ __("fields.observations") }}
-            </label>
-            <textarea
-                type="text"
-                class="form-control"
-                id="observations"
-                v-model="formData.observations"
-                :disabled="!interactiveAction"
-            />
-        </div>
     </form>
 </template>
 

@@ -43,7 +43,7 @@ class SupplierReturnController extends Controller
                 $product = Product::find($item['id']);
                 $products[$product->id] = [
                     'quantity' => $item['detail']['quantity'],
-                    'list_price' => $product->list_price,
+                    'cost_price' => $product->cost_price,
                 ];
             }
         }
@@ -64,7 +64,7 @@ class SupplierReturnController extends Controller
                 $product = Product::find($item['id']);
                 $products[$product->id] = [
                     'quantity' => $item['detail']['quantity'],
-                    'list_price' => $product->list_price,
+                    'cost_price' => $product->cost_price,
                 ];
             }
         }
