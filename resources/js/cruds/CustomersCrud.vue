@@ -1,6 +1,7 @@
 <template>
     <div>
         <crud
+            ref="crud"
             :get-data="getData"
             :fields="fields"
             :form="form"
@@ -9,24 +10,14 @@
             :delete="(formData) => deleteItem(formData)"
             :additionalContextMenuItems="additionalContextMenuItems"
         />
-        <modal
+        <balance-report-modal
             ref="balanceReportModal"
-            :title="__('actions.viewBalanceReport')"
-        >
-            <balance-report
-                :items="balanceReportItems"
-                :total="balanceReportTotal"
-            />
-            <template #footer>
-                <btn
-                    outline
-                    color="dark"
-                    @click="$refs.balanceReportModal.hide()"
-                >
-                    {{ __("actions.close") }}
-                </btn>
-            </template>
-        </modal>
+            :items="balanceReportItems"
+            :total="balanceReportTotal"
+        />
+        <confirm-modal ref="confirmDeleteModal" :action="confirmDeleteAction">
+            {{ __("answers.delete_debtor_customer") }}
+        </confirm-modal>
     </div>
 </template>
 
@@ -106,7 +97,18 @@ export default {
                 await axios.put(`/api/customers/${id}`, formData);
             },
             async deleteItem({ id }) {
-                await axios.delete(`/api/customers/${id}`);
+                const {
+                    data: { total },
+                } = await axios.get(`/api/customers/${id}/balance_report`);
+                if (total < 0) {
+                    this.confirmDeleteAction = async () => {
+                        await axios.delete(`/api/customers/${id}`);
+                        this.$refs.crud.handleReload();
+                    };
+                    this.$refs.confirmDeleteModal.show();
+                } else {
+                    await axios.delete(`/api/customers/${id}`);
+                }
             },
             async viewBalanceReport({ id }) {
                 const {
@@ -116,6 +118,7 @@ export default {
                 this.balanceReportTotal = total;
                 this.$refs.balanceReportModal.show();
             },
+            confirmDeleteAction: () => {},
         };
     },
 };

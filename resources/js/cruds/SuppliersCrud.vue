@@ -9,24 +9,11 @@
             :delete="(formData) => deleteItem(formData)"
             :additionalContextMenuItems="additionalContextMenuItems"
         />
-        <modal
+        <balance-report-modal
             ref="balanceReportModal"
-            :title="__('actions.viewBalanceReport')"
-        >
-            <balance-report
-                :items="balanceReportItems"
-                :total="balanceReportTotal"
-            />
-            <template #footer>
-                <btn
-                    outline
-                    color="dark"
-                    @click="$refs.balanceReportModal.hide()"
-                >
-                    {{ __("actions.close") }}
-                </btn>
-            </template>
-        </modal>
+            :items="balanceReportItems"
+            :total="balanceReportTotal"
+        />
     </div>
 </template>
 

@@ -7,4 +7,5 @@ return [
     'download_purchase' => '¿Quiere descargar el comprobante de la compra registrada?',
     'download_payment' => '¿Quiere descargar el comprobante del pago registrado?',
     'download_return' => '¿Quiere descargar el comprobante de la devolución registrada?',
+    'delete_debtor_customer' => 'El cliente posee deudas, ¿eliminar de todas formas?',
 ];
