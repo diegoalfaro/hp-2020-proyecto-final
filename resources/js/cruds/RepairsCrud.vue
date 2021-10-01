@@ -1,13 +1,21 @@
 <template>
-    <crud
-        :get-data="getData"
-        :fields="fields"
-        :form="form"
-        :create="createRepair"
-        :update="updateRepair"
-        :delete="deleteRepair"
-        :additionalContextMenuItems="additionalContextMenuItems"
-    />
+    <div>
+        <crud
+            :get-data="getData"
+            :fields="fields"
+            :form="form"
+            :create="(formData) => createItem(formData)"
+            :update="(formData) => updateItem(formData)"
+            :delete="(formData) => deleteItem(formData)"
+            :additionalContextMenuItems="additionalContextMenuItems"
+        />
+        <confirm-modal
+            ref="confirmDownloadModal"
+            :action="confirmDownloadAction"
+        >
+            {{ __("answers.download_repair") }}
+        </confirm-modal>
+    </div>
 </template>
 
 <script>
@@ -117,13 +125,16 @@ export default {
                 const { data } = await axios.get("/api/repairs");
                 return data;
             },
-            async createRepair(formData) {
-                await axios.post("/api/repairs", formData);
+            async createItem(formData) {
+                const {
+                    data: { id },
+                } = await axios.post("/api/repairs", formData);
+                this.answerDownloadDocument({ id });
             },
-            async updateRepair({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/repairs/${id}`, formData);
             },
-            async deleteRepair({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/repairs/${id}`);
             },
             async downloadDocument({ id }) {
@@ -136,6 +147,13 @@ export default {
                     "$1"
                 );
                 download(data, fileName);
+            },
+            confirmDownloadAction: () => {},
+            async answerDownloadDocument({ id }) {
+                this.confirmDownloadAction = () => {
+                    this.downloadDocument({ id });
+                };
+                this.$refs.confirmDownloadModal.show();
             },
         };
     },

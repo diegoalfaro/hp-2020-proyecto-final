@@ -1,13 +1,21 @@
 <template>
-    <crud
-        :get-data="getData"
-        :fields="fields"
-        :form="form"
-        :create="createSupplierReturn"
-        :update="updateSupplierReturn"
-        :delete="deleteSupplierReturn"
-        :additionalContextMenuItems="additionalContextMenuItems"
-    />
+    <div>
+        <crud
+            :get-data="getData"
+            :fields="fields"
+            :form="form"
+            :create="(formData) => createItem(formData)"
+            :update="(formData) => updateItem(formData)"
+            :delete="(formData) => deleteItem(formData)"
+            :additionalContextMenuItems="additionalContextMenuItems"
+        />
+        <confirm-modal
+            ref="confirmDownloadModal"
+            :action="confirmDownloadAction"
+        >
+            {{ __("answers.download_purchase") }}
+        </confirm-modal>
+    </div>
 </template>
 
 <script>
@@ -72,13 +80,16 @@ export default {
                 const { data } = await axios.get("/api/supplier_purchases");
                 return data;
             },
-            async createSupplierReturn(formData) {
-                await axios.post("/api/supplier_purchases", formData);
+            async createItem(formData) {
+                const {
+                    data: { id },
+                } = await axios.post("/api/supplier_purchases", formData);
+                this.answerDownloadDocument({ id });
             },
-            async updateSupplierReturn({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/supplier_purchases/${id}`, formData);
             },
-            async deleteSupplierReturn({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/supplier_purchases/${id}`);
             },
             async downloadDocument({ id }) {
@@ -91,6 +102,13 @@ export default {
                     "$1"
                 );
                 download(data, fileName);
+            },
+            confirmDownloadAction: () => {},
+            async answerDownloadDocument({ id }) {
+                this.confirmDownloadAction = () => {
+                    this.downloadDocument({ id });
+                };
+                this.$refs.confirmDownloadModal.show();
             },
         };
     },

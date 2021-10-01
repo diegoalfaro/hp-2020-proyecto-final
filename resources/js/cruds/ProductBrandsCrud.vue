@@ -3,9 +3,9 @@
         :get-data="getData"
         :fields="fields"
         :form="form"
-        :create="createProductBrand"
-        :update="updateProductBrand"
-        :delete="deleteProductBrand"
+        :create="(formData) => createItem(formData)"
+        :update="(formData) => updateItem(formData)"
+        :delete="(formData) => deleteItem(formData)"
     />
 </template>
 
@@ -34,13 +34,13 @@ export default {
                 const { data } = await axios.get("/api/product_brands");
                 return data;
             },
-            async createProductBrand(formData) {
+            async createItem(formData) {
                 await axios.post("/api/product_brands", formData);
             },
-            async updateProductBrand({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/product_brands/${id}`, formData);
             },
-            async deleteProductBrand({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/product_brands/${id}`);
             },
         };

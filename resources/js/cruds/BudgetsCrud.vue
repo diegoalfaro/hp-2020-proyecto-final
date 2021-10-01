@@ -4,12 +4,17 @@
             :get-data="getData"
             :fields="fields"
             :form="form"
-            :create="createBudget"
-            :update="updateBudget"
-            :delete="deleteBudget"
+            :create="(formData) => createItem(formData)"
+            :update="(formData) => updateItem(formData)"
+            :delete="(formData) => deleteItem(formData)"
             :additionalContextMenuItems="additionalContextMenuItems"
         />
-        <confirm-modal ref="confirmModal" title="hola" />
+        <confirm-modal
+            ref="confirmDownloadModal"
+            :action="confirmDownloadAction"
+        >
+            {{ __("answers.download_budget") }}
+        </confirm-modal>
     </div>
 </template>
 
@@ -100,13 +105,16 @@ export default {
                 const { data } = await axios.get("/api/budgets");
                 return data;
             },
-            async createBudget(formData) {
-                await axios.post("/api/budgets", formData);
+            async createItem(formData) {
+                const {
+                    data: { id },
+                } = await axios.post("/api/budgets", formData);
+                this.answerDownloadDocument({ id });
             },
-            async updateBudget({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/budgets/${id}`, formData);
             },
-            async deleteBudget({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/budgets/${id}`);
             },
             async downloadDocument({ id }) {
@@ -120,10 +128,14 @@ export default {
                 );
                 download(data, fileName);
             },
+            confirmDownloadAction: () => {},
+            async answerDownloadDocument({ id }) {
+                this.confirmDownloadAction = () => {
+                    this.downloadDocument({ id });
+                };
+                this.$refs.confirmDownloadModal.show();
+            },
         };
-    },
-    mounted() {
-        this.$refs.confirmModal.show();
     },
 };
 </script>

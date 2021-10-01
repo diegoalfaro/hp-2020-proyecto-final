@@ -1,13 +1,21 @@
 <template>
-    <crud
-        :get-data="getData"
-        :fields="fields"
-        :form="form"
-        :create="createBudget"
-        :update="updateBudget"
-        :delete="deleteBudget"
-        :additionalContextMenuItems="additionalContextMenuItems"
-    />
+    <div>
+        <crud
+            :get-data="getData"
+            :fields="fields"
+            :form="form"
+            :create="(formData) => createItem(formData)"
+            :update="(formData) => updateItem(formData)"
+            :delete="(formData) => deleteItem(formData)"
+            :additionalContextMenuItems="additionalContextMenuItems"
+        />
+        <confirm-modal
+            ref="confirmDownloadModal"
+            :action="confirmDownloadAction"
+        >
+            {{ __("answers.download_payment") }}
+        </confirm-modal>
+    </div>
 </template>
 
 <script>
@@ -27,7 +35,7 @@ export default {
             fields: [
                 {
                     ...numberFieldDefault,
-                    title: this.__("fields.budget_id"),
+                    title: this.__("fields.payment_id"),
                     field: "id",
                 },
                 {
@@ -72,13 +80,16 @@ export default {
                 const { data } = await axios.get("/api/supplier_payments");
                 return data;
             },
-            async createBudget(formData) {
-                await axios.post("/api/supplier_payments", formData);
+            async createItem(formData) {
+                const {
+                    data: { id },
+                } = await axios.post("/api/supplier_payments", formData);
+                this.answerDownloadDocument({ id });
             },
-            async updateBudget({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/supplier_payments/${id}`, formData);
             },
-            async deleteBudget({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/supplier_payments/${id}`);
             },
             async downloadDocument({ id }) {
@@ -91,6 +102,13 @@ export default {
                     "$1"
                 );
                 download(data, fileName);
+            },
+            confirmDownloadAction: () => {},
+            async answerDownloadDocument({ id }) {
+                this.confirmDownloadAction = () => {
+                    this.downloadDocument({ id });
+                };
+                this.$refs.confirmDownloadModal.show();
             },
         };
     },

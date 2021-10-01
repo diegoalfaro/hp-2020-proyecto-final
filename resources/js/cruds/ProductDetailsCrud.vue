@@ -4,9 +4,9 @@
         @items="localItems = $event"
         :fields="fields"
         :form="form"
-        :create="(formData) => createProductDetail(formData)"
-        :update="(formData) => updateProductDetail(formData)"
-        :delete="(formData) => deleteProductDetail(formData)"
+        :create="(formData) => createItem(formData)"
+        :update="(formData) => updateItem(formData)"
+        :delete="(formData) => deleteItem(formData)"
         :readonly="readonly"
     />
 </template>
@@ -79,10 +79,10 @@ export default {
             ],
             localItems: [],
             form: ProductDetailForm,
-            async createProductDetail(formData) {
+            async createItem(formData) {
                 await this.upsertProductDetail(formData);
             },
-            async updateProductDetail(formData) {
+            async updateItem(formData) {
                 await this.upsertProductDetail(formData);
             },
             async upsertProductDetail(formData) {
@@ -100,7 +100,7 @@ export default {
                     this.localItems.push(formData);
                 }
             },
-            async deleteProductDetail({ id }) {
+            async deleteItem({ id }) {
                 const index = this.localItems.findIndex(
                     (item) => item.id == id
                 );

@@ -3,9 +3,9 @@
         :get-data="getData"
         :fields="fields"
         :form="form"
-        :create="createProduct"
-        :update="updateProduct"
-        :delete="deleteProduct"
+        :create="(formData) => createItem(formData)"
+        :update="(formData) => updateItem(formData)"
+        :delete="(formData) => deleteItem(formData)"
     />
 </template>
 
@@ -78,13 +78,13 @@ export default {
                 const { data } = await axios.get("/api/products");
                 return data;
             },
-            async createProduct(formData) {
+            async createItem(formData) {
                 await axios.post("/api/products", formData);
             },
-            async updateProduct({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/products/${id}`, formData);
             },
-            async deleteProduct({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/products/${id}`);
             },
         };

@@ -3,9 +3,9 @@
         :get-data="getData"
         :fields="fields"
         :form="form"
-        :create="createVehicle"
-        :update="updateVehicle"
-        :delete="deleteVehicle"
+        :create="(formData) => createItem(formData)"
+        :update="(formData) => updateItem(formData)"
+        :delete="(formData) => deleteItem(formData)"
     />
 </template>
 
@@ -54,13 +54,13 @@ export default {
                 const { data } = await axios.get("/api/vehicles");
                 return data;
             },
-            async createVehicle(formData) {
+            async createItem(formData) {
                 await axios.post("/api/vehicles", formData);
             },
-            async updateVehicle({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/vehicles/${id}`, formData);
             },
-            async deleteVehicle({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/vehicles/${id}`);
             },
         };

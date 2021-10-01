@@ -4,9 +4,9 @@
             :get-data="getData"
             :fields="fields"
             :form="form"
-            :create="createCustomer"
-            :update="updateCustomer"
-            :delete="deleteCustomer"
+            :create="(formData) => createItem(formData)"
+            :update="(formData) => updateItem(formData)"
+            :delete="(formData) => deleteItem(formData)"
             :additionalContextMenuItems="additionalContextMenuItems"
         />
         <modal
@@ -99,13 +99,13 @@ export default {
                 const { data } = await axios.get("/api/customers");
                 return data;
             },
-            async createCustomer(formData) {
+            async createItem(formData) {
                 await axios.post("/api/customers", formData);
             },
-            async updateCustomer({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/customers/${id}`, formData);
             },
-            async deleteCustomer({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/customers/${id}`);
             },
             async viewBalanceReport({ id }) {

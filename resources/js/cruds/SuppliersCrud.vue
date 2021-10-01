@@ -4,9 +4,9 @@
             :get-data="getData"
             :fields="fields"
             :form="form"
-            :create="createSupplier"
-            :update="updateSupplier"
-            :delete="deleteSupplier"
+            :create="(formData) => createItem(formData)"
+            :update="(formData) => updateItem(formData)"
+            :delete="(formData) => deleteItem(formData)"
             :additionalContextMenuItems="additionalContextMenuItems"
         />
         <modal
@@ -102,13 +102,13 @@ export default {
                 const { data } = await axios.get("/api/suppliers");
                 return data;
             },
-            async createSupplier(formData) {
+            async createItem(formData) {
                 await axios.post("/api/suppliers", formData);
             },
-            async updateSupplier({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/suppliers/${id}`, formData);
             },
-            async deleteSupplier({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/suppliers/${id}`);
             },
             async viewBalanceReport({ id }) {

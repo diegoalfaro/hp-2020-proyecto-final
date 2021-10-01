@@ -1,13 +1,21 @@
 <template>
-    <crud
-        :get-data="getData"
-        :fields="fields"
-        :form="form"
-        :create="createSale"
-        :update="updateSale"
-        :delete="deleteSale"
-        :additionalContextMenuItems="additionalContextMenuItems"
-    />
+    <div>
+        <crud
+            :get-data="getData"
+            :fields="fields"
+            :form="form"
+            :create="(formData) => createItem(formData)"
+            :update="(formData) => updateItem(formData)"
+            :delete="(formData) => deleteItem(formData)"
+            :additionalContextMenuItems="additionalContextMenuItems"
+        />
+        <confirm-modal
+            ref="confirmDownloadModal"
+            :action="confirmDownloadAction"
+        >
+            {{ __("answers.download_sale") }}
+        </confirm-modal>
+    </div>
 </template>
 
 <script>
@@ -87,13 +95,16 @@ export default {
                 const { data } = await axios.get("/api/sales");
                 return data;
             },
-            async createSale(formData) {
-                await axios.post("/api/sales", formData);
+            async createItem(formData) {
+                const {
+                    data: { id },
+                } = await axios.post("/api/sales", formData);
+                this.answerDownloadDocument({ id });
             },
-            async updateSale({ id, ...formData }) {
+            async updateItem({ id, ...formData }) {
                 await axios.put(`/api/sales/${id}`, formData);
             },
-            async deleteSale({ id }) {
+            async deleteItem({ id }) {
                 await axios.delete(`/api/sales/${id}`);
             },
             async downloadDocument({ id }) {
@@ -106,6 +117,13 @@ export default {
                     "$1"
                 );
                 download(data, fileName);
+            },
+            confirmDownloadAction: () => {},
+            async answerDownloadDocument({ id }) {
+                this.confirmDownloadAction = () => {
+                    this.downloadDocument({ id });
+                };
+                this.$refs.confirmDownloadModal.show();
             },
         };
     },
