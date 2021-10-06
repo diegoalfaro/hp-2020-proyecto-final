@@ -35,7 +35,7 @@ export default {
             fields: [
                 {
                     ...numberFieldDefault,
-                    title: this.__("fields.payment_id"),
+                    title: this.__("fields.supplier_payment_id"),
                     field: "id",
                 },
                 {
