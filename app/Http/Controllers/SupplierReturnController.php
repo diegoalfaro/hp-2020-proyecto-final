@@ -10,7 +10,7 @@ use Dompdf\Dompdf;
 class SupplierReturnController extends Controller
 {
     public function index() {
-        return SupplierReturn::with(['supplier', 'products'])->get();
+        return SupplierReturn::all();
     }
 
     public function show(SupplierReturn $supplierReturn)

@@ -13,8 +13,11 @@ class Budget extends Model
         'customer_id',
         'date',
         'due_date',
-        'workforce_cost'
+        'workforce_cost',
+        'observations',
     ];
+
+    protected $with = ['customer', 'products'];
 
     public function customer()
     {

@@ -17,6 +17,8 @@ class Vehicle extends Model
         'observations',
     ];
 
+    protected $with = ['vehicle_brand'];
+
     public function vehicle_brand()
     {
         return $this->belongsTo(VehicleBrand::class)->withTrashed();

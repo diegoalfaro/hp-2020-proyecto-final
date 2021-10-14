@@ -14,6 +14,8 @@ class SupplierReturn extends Model
         'date',
     ];
 
+    protected $with = ['supplier', 'products'];
+
     public function supplier()
     {
         return $this->belongsTo(Supplier::class)->withTrashed();

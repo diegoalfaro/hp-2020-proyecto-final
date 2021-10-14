@@ -15,6 +15,8 @@ class SupplierPayment extends Model
         'amount',
     ];
 
+    protected $with = ['supplier'];
+
     public function supplier()
     {
         return $this->belongsTo(Supplier::class)->withTrashed();

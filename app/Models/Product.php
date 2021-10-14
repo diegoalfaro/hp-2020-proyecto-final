@@ -21,6 +21,8 @@ class Product extends Model
         'initial_stock'
     ];
 
+    protected $with = ['product_brand', 'supplier'];
+
     public function supplier()
     {
         return $this->belongsTo(Supplier::class)->withTrashed();

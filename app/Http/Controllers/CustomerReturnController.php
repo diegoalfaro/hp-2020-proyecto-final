@@ -10,7 +10,7 @@ use Dompdf\Dompdf;
 class CustomerReturnController extends Controller
 {
     public function index() {
-        return CustomerReturn::with(['customer', 'products'])->get();
+        return CustomerReturn::all();
     }
 
     public function show(CustomerReturn $customerReturn)

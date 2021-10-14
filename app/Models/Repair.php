@@ -17,6 +17,8 @@ class Repair extends Model
         'observations',
     ];
 
+    protected $with = ['customer', 'vehicle', 'products'];
+
     public function customer()
     {
         return $this->belongsTo(Customer::class)->withTrashed();

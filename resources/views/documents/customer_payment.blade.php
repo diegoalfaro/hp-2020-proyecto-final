@@ -12,9 +12,8 @@
     <table width="100%">
         <thead style="background-color: lightgray;">
         <tr>
-            <th>#</th>
-            <th align="right">Total</th>
-            <th>$ {{ $customerPayment->amount }}</th>
+            <th align="right">Total $</th>
+            <th>{{ $customerPayment->amount }}</th>
         </tr>
         </thead>
     </table>

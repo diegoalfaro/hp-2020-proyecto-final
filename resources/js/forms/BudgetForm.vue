@@ -54,6 +54,19 @@
             </card>
         </div>
 
+        <div class="col-md-12">
+            <label for="observations" class="form-label">
+                {{ __("fields.observations") }}
+            </label>
+            <textarea
+                type="text"
+                class="form-control"
+                id="observations"
+                v-model="formData.observations"
+                :disabled="!interactiveAction"
+            />
+        </div>
+
         <div class="col-md-6">
             <label for="workforce_cost" class="form-label">
                 {{ __("fields.workforce_cost") }} <em class="text-danger">*</em>

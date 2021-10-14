@@ -9,7 +9,7 @@ use Dompdf\Dompdf;
 class SupplierPaymentController extends Controller
 {
     public function index() {
-        return SupplierPayment::with('supplier')->get();
+        return SupplierPayment::all();
     }
 
     public function show(SupplierPayment $supplierPayment)

@@ -56,6 +56,11 @@ export default {
                     field: "name",
                 },
                 {
+                    ...stringFieldDefault,
+                    title: this.__("fields.brand"),
+                    field: "product_brand.name",
+                },
+                {
                     ...numberFieldDefault,
                     title: this.__("fields.quantity"),
                     field: "detail.quantity",

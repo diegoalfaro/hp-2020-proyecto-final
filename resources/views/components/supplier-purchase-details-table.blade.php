@@ -12,7 +12,9 @@
         @foreach ($products as $product)
             @php
                 $id = $product->id;
-                $description = $product->name;
+                $brand = $product->product_brand->name;
+                $name = $product->name;
+                $description = "$brand | $name";
                 $quantity = $product->detail->quantity;
                 $unit_price = app('MoneyFormatter')->format($product->detail->cost_price);
                 $subtotal = app('MoneyFormatter')->format($product->detail->subtotal);

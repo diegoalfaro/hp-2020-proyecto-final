@@ -10,7 +10,7 @@ use Dompdf\Dompdf;
 class SaleController extends Controller
 {
     public function index() {
-        return Sale::with(['customer', 'products'])->get();
+        return Sale::all();
     }
 
     public function show(Sale $sale)
@@ -30,7 +30,7 @@ class SaleController extends Controller
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-        $dompdf->stream("ventas_$sale->id.pdf");
+        $dompdf->stream("venta_$sale->id.pdf");
     }
 
     public function store(Request $request)

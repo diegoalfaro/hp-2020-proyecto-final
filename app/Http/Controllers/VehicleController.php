@@ -8,7 +8,7 @@ use App\Models\Vehicle;
 class VehicleController extends Controller
 {
     public function index() {
-        return Vehicle::with('vehicle_brand')->get();
+        return Vehicle::all();
     }
 
     public function show(Vehicle $vehicle)

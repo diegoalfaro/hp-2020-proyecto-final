@@ -9,6 +9,8 @@
 @endsection
 
 @push('body')
+    <p><b>Vehículo:</b> {{ $repair->vehicle->vehicle_brand->name }} {{ $repair->vehicle->model }} {{ $repair->vehicle->year }} ({{ $repair->vehicle->domain }})</p>
+
     @php
         $footerLines = [
             (object) ['text' => 'Costo de mano de obra $', 'price' => $repair->workforce_cost],
@@ -17,14 +19,16 @@
     @endphp
     <x-product-details-table :products="$products" :footerLines="$footerLines" />
 
-    <table width="100%">
-        <thead style="background-color: lightgray;">
-            <tr>
-                <th>Observaciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <td>{{ $sale->observations }}</td>
-        </tbody>
-    </table>
+    @if ($repair->observations)
+        <table width="100%">
+            <thead style="background-color: lightgray;">
+                <tr>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td>{{ $repair->observations }}</td>
+            </tbody>
+        </table>
+    @endif
 @endpush

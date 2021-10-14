@@ -8,7 +8,7 @@ use App\Models\Supplier;
 class SupplierController extends Controller
 {
     public function index() {
-        return Supplier::with('products')->get();
+        return Supplier::all();
     }
 
     public function show(Supplier $supplier)

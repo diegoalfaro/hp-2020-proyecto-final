@@ -14,6 +14,8 @@ class SupplierPurchase extends Model
         'date',
     ];
 
+    protected $with = ['supplier', 'products'];
+
     public function supplier()
     {
         return $this->belongsTo(Supplier::class)->withTrashed();
@@ -24,6 +26,7 @@ class SupplierPurchase extends Model
         return $this->belongsToMany(Product::class, 'supplier_purchase_product')
             ->using(SupplierPurchaseProduct::class)
             ->as('detail')
+            ->with('product_brand')
             ->withPivot('quantity', 'cost_price')
             ->withTimestamps();
     }

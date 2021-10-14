@@ -84,6 +84,11 @@ export default {
                     field: "due_date",
                 },
                 {
+                    ...stringFieldDefault,
+                    title: this.__("fields.observations"),
+                    field: "observations",
+                },
+                {
                     ...datetimeFieldDefault,
                     title: this.__("fields.created_at"),
                     field: "created_at",

@@ -16,6 +16,8 @@ class CustomerReturn extends Model
         'date',
     ];
 
+    protected $with = ['customer', 'products'];
+
     public function customer()
     {
         return $this->belongsTo(Customer::class)->withTrashed();

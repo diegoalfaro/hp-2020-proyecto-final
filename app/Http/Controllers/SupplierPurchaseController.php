@@ -10,7 +10,7 @@ use Dompdf\Dompdf;
 class SupplierPurchaseController extends Controller
 {
     public function index() {
-        return SupplierPurchase::with(['supplier', 'products'])->get();
+        return SupplierPurchase::all();
     }
 
     public function show(SupplierPurchase $supplierPurchase)

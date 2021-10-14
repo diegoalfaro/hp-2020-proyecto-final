@@ -19,6 +19,7 @@ class CreateBudgetsTable extends Migration
             $table->date('date');
             $table->date('due_date');
             $table->float('workforce_cost');
+            $table->string('observations')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

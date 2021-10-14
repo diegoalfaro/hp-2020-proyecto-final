@@ -10,7 +10,7 @@ use Dompdf\Dompdf;
 class CustomerPaymentController extends Controller
 {
     public function index() {
-        return CustomerPayment::with('customer')->get();
+        return CustomerPayment::all();
     }
 
     public function show(CustomerPayment $customerPayment)

@@ -15,6 +15,8 @@ class CustomerPayment extends Model
         'amount',
     ];
 
+    protected $with = ['customer'];
+
     public function customer()
     {
         return $this->belongsTo(Customer::class)->withTrashed();

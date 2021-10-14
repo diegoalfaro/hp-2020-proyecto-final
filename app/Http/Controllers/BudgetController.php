@@ -10,7 +10,7 @@ use Dompdf\Dompdf;
 class BudgetController extends Controller
 {
     public function index() {
-        return Budget::with(['customer', 'products'])->get();
+        return Budget::all();
     }
 
     public function show(Budget $budget)
